@@ -15,8 +15,8 @@ The human-facing project overview is in [`README.md`](./README.md). This file fo
   - Italy portal: Ons Chtioui
   - Spain portal: planned, owner not yet assigned
 - **Architecture:** feature-based. Each country owns its pages, components, data, models, and scoped styles. Shared UI and infrastructure are separate.
-- **Current state is small and evolving.** At the time this file was written, only the root app files and `src/app/features/turkey/` exist. `core/`, `shared/`, `home/`, `italy/`, `spain/`, `auth/`, `favorites/`, `about/`, and the destination wheel are planned. Always verify the actual state; never assume a planned folder or feature exists.
-- **Default branch:** historically `master`. The team targets `main`; verify the current branch before doing anything. Do not rename or switch branches on your own.
+- **Current state is small and evolving.** Only the root app files, `src/app/features/turkey/`, and documentation artwork under `docs/assets/` exist. `/` currently redirects to `/turkey`. The dashboard, `core/`, `shared/`, `italy/`, `spain/`, `auth/`, `favorites/`, `about/`, and the destination wheel are planned. Always verify the actual state; never assume a planned folder or feature exists.
+- **Integration branch:** `master` (the current GitHub default; verify with `git symbolic-ref refs/remotes/origin/HEAD`). A rename to `main` has been discussed but is not approved; do not rename or switch branches on your own.
 
 ---
 
@@ -48,7 +48,7 @@ Also confirm the Angular, TypeScript, and dependency versions from `package.json
 | Türkiye portal      | `src/app/features/turkey/**`                                                                                              | Ahmed Ben Mim | Modify only when the task is about Türkiye        |
 | Italy portal        | `src/app/features/italy/**`                                                                                               | Ons Chtioui   | Modify only when the task is about Italy          |
 | Spain portal        | `src/app/features/spain/**`                                                                                               | Unassigned    | Do not create or modify without explicit approval |
-| Home                | `src/app/features/home/**`                                                                                                | Shared        | Approval required                                 |
+| Dashboard           | `src/app/features/home/**`                                                                                                | Shared        | Approval required                                 |
 | Auth                | `src/app/features/auth/**`                                                                                                | Shared        | Approval required                                 |
 | Favorites           | `src/app/features/favorites/**`                                                                                           | Shared        | Approval required                                 |
 | About               | `src/app/features/about/**`                                                                                               | Shared        | Approval required                                 |
@@ -64,6 +64,7 @@ Also confirm the Angular, TypeScript, and dependency versions from `package.json
 - **When working on Türkiye:** prefer changes inside `features/turkey/`. Do not edit Italy. Do not edit global styles or shared components without approval.
 - **When working on Italy:** prefer changes inside `features/italy/`. Do not edit Türkiye. Do not edit global styles or shared components without approval.
 - **No cross-country imports.** A country portal must never import from another country portal. This includes models, data, components, and assets.
+- **Favorites are centralized.** Country portals use the shared favorite button/service. Do not implement per-country favorite state, storage, or a local favorites page.
 - If a country needs a shared model or component, **propose** it for `shared/` and wait for approval. Do not copy another portal's internals.
 - Country styles must be scoped to their components (`styleUrl` / component `styles`). Do not add country-specific rules to `src/styles.css`.
 - Do not modify another developer's portal, even to "fix" something, unless the user explicitly authorizes it.
@@ -87,6 +88,7 @@ The following are **shared**. The AI may analyze and propose changes, but **must
 - `angular.json`, all `tsconfig*.json`
 - `src/main.ts`, `src/main.server.ts`, `src/server.ts`, `src/index.html`
 - `README.md`, `AGENTS.md`, `AI.md`
+- `docs/**`
 - Anything under `public/` that is not inside a single country's asset folder
 
 **Required process for shared changes:**
@@ -162,6 +164,10 @@ If the user explicitly asks for a Git write operation:
 5. Report exactly what was done.
 
 If a merge conflict occurs, stop and hand control back to the user. Do not attempt to resolve it by discarding one side.
+
+### Parallel AI agents
+
+Work in one Git worktree per agent. If another agent is active in the same working tree, stop and ask for a separate worktree and branch. Do not create, move, or remove worktrees on your own.
 
 ---
 

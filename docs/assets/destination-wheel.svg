@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="wheelTitle wheelDesc" style="max-width: 100%; height: auto;">
+  <title id="wheelTitle">DestiGo destination wheel</title>
+  <desc id="wheelDesc">Circular destination selector with three sectors: Turkey, Italy, and Spain. Turkey is the active portal; Italy and Spain are planned.</desc>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    <circle cx="300" cy="300" r="248" fill="none" stroke="#20323D" stroke-width="3" />
+
+    <path d="M 300 205 L 300 60 A 240 240 0 0 1 507.846 420 L 382.272 347.5 A 95 95 0 0 0 300 205 Z" fill="#176B87" stroke="#F7F8F5" stroke-width="6" />
+    <path d="M 382.272 347.5 L 507.846 420 A 240 240 0 0 1 92.154 420 L 217.728 347.5 A 95 95 0 0 0 382.272 347.5 Z" fill="#E8B86D" stroke="#F7F8F5" stroke-width="6" />
+    <path d="M 217.728 347.5 L 92.154 420 A 240 240 0 0 1 300 60 L 300 205 A 95 95 0 0 0 217.728 347.5 Z" fill="#20323D" stroke="#F7F8F5" stroke-width="6" />
+
+    <g text-anchor="middle">
+      <text x="434" y="218" fill="#F7F8F5" font-size="24" font-weight="700" letter-spacing="1">TÜRKİYE</text>
+      <text x="434" y="242" fill="#F7F8F5" font-size="13" letter-spacing="1.5">PORTAL</text>
+
+      <text x="300" y="448" fill="#20323D" font-size="24" font-weight="700" letter-spacing="1">ITALY</text>
+      <text x="300" y="472" fill="#20323D" font-size="13" letter-spacing="1.5">PLANNED</text>
+
+      <text x="166" y="218" fill="#F7F8F5" font-size="24" font-weight="700" letter-spacing="1">SPAIN</text>
+      <text x="166" y="242" fill="#F7F8F5" font-size="13" letter-spacing="1.5">PLANNED</text>
+    </g>
+
+    <circle cx="300" cy="300" r="70" fill="#F7F8F5" stroke="#20323D" stroke-width="3" />
+    <g text-anchor="middle" fill="#20323D">
+      <text x="300" y="294" font-size="23" font-weight="700" letter-spacing="-0.5">DestiGo</text>
+      <text x="300" y="320" font-size="12" letter-spacing="2.5">EXPLORE</text>
+    </g>
+  </g>
+</svg>

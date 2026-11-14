@@ -34,6 +34,7 @@ Weak prompt:
 ## While the assistant works
 
 - Watch which files it opens and edits.
+- If you run two assistants in parallel, give each its own Git worktree; never let them share one working tree.
 - Stop it if it touches another country, `shared/`, `core/`, rules files, or build configuration without approval.
 - Do not let it run Git write commands. Commit, merge, and push yourself, or explicitly approve a single read-only inspection.
 - Never paste `.env` contents, tokens, passwords, or private keys into a prompt.
@@ -57,7 +58,7 @@ Weak prompt:
 
 ## What AI should not decide for you
 
-- Creating or renaming branches.
+- Creating or renaming branches, or creating/removing Git worktrees.
 - Committing, merging, rebasing, resetting, or pushing.
 - Changing Angular versions, dependencies, or build configuration.
 - Creating missing architecture folders or placeholder components.

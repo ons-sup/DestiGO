@@ -1,425 +1,203 @@
-# DestiGo ✈️
+# DestiGo
 
-**Travel Destination Explorer** — an immersive travel discovery platform built with Angular.
+**Discover destinations across Turkey, Italy, and beyond — in one place.**
 
-DestiGo helps users explore countries, discover destinations, and save the places they love. Each supported country has its own visual identity and portal. DestiGo is **not** a booking platform.
+![Angular](https://img.shields.io/badge/Angular-22-DD0031?logo=angular&logoColor=white&style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white&style=flat-square)
+![SSR](https://img.shields.io/badge/SSR-Angular%20%2B%20Express-176B87?style=flat-square)
+![Vitest](https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest&logoColor=white&style=flat-square)
+![Status](https://img.shields.io/badge/Status-early%20development-E8B86D?labelColor=20323D&style=flat-square)
 
-This is an academic project for **SUP'COM — Higher School of Communication of Tunis**, supervised by **Dr. Maroua Nouioua**, and developed by **Ahmed Ben Mim** and **Ons Chtioui**.
+DestiGo is a travel discovery platform for students, young adults, couples, groups of friends, and occasional travelers. It replaces scattered destination research with one interface for country guides, destination details, and saved places. The value is comparison: consistent country portals, comparable destination pages, and one favorites list across every portal.
 
----
+This is an academic project at **SUP'COM — Higher School of Communication of Tunis**. DestiGo does **not** handle bookings, payments, or travel-agency services. The MVP covers discovery, accounts, and saving; search, maps, and recommendations are out of scope for this version.
 
-## Objectives
+## Stack
 
-- Provide an engaging, country-based travel discovery experience.
-- Keep each country portal independently developable by a single owner.
-- Minimize merge conflicts through feature isolation and lazy-loaded routes.
-- Build a small, maintainable MVP without unnecessary dependencies.
-- Practice a professional Git and GitHub collaboration workflow.
+| Layer     | Technology                                        |
+| --------- | ------------------------------------------------- |
+| Framework | Angular 22 with standalone components and signals |
+| Language  | TypeScript 6.0                                    |
+| Routing   | Angular Router with lazy-loaded country routes    |
+| Rendering | Angular SSR with Express                          |
+| Testing   | Vitest                                            |
+| Styling   | Plain CSS, scoped per component                   |
+| Tooling   | npm 11.19.0, Prettier                             |
 
----
-
-## MVP Scope
-
-| Feature             | Description                                             | Status                              |
-| ------------------- | ------------------------------------------------------- | ----------------------------------- |
-| Homepage            | Landing page introducing DestiGo and featured countries | Planned                             |
-| Türkiye portal      | Country landing page, Istanbul, Cappadocia, Antalya     | In progress                         |
-| Italy portal        | Country landing page, Rome, Venice, Florence            | Planned                             |
-| Spain portal        | Country landing page and destinations                   | Planned                             |
-| Destination details | Individual destination page inside a country portal     | In progress (Türkiye scaffold only) |
-| Authentication      | Login and registration                                  | Planned                             |
-| Favorites           | Save and manage favorite destinations                   | Planned                             |
-| About page          | Project and team information                            | Planned                             |
-| Shared navigation   | Navbar, footer, and application shell                   | Planned                             |
-| Destination wheel   | Circular country-selection navigation                   | Planned                             |
-
-> Status reflects the repository, not intentions. A feature is only marked complete when it is merged and verified.
-
----
-
-## Countries and Portals
-
-| Country    | Route     | Owner          | Status      |
-| ---------- | --------- | -------------- | ----------- |
-| 🇹🇷 Türkiye | `/turkey` | Ahmed Ben Mim  | In progress |
-| 🇮🇹 Italy   | `/italy`  | Ons Chtioui    | Planned     |
-| 🇪🇸 Spain   | `/spain`  | To be assigned | Planned     |
-
-Each portal owns its own pages, components, data, models, and scoped styles. Portals must not import from one another. Shared UI belongs in `shared/` and shared infrastructure belongs in `core/`.
-
----
-
-## Tech Stack
-
-Verified from `package.json` and `angular.json`:
-
-| Layer                 | Technology                                     | Version                              |
-| --------------------- | ---------------------------------------------- | ------------------------------------ |
-| Framework             | Angular (standalone components, signals, SSR)  | ^22.2.0                              |
-| Language              | TypeScript                                     | ~6.0.2                               |
-| Routing               | Angular Router with lazy-loaded feature routes | ^22.2.0                              |
-| Reactive streams      | RxJS                                           | ~7.8.0                               |
-| Server-side rendering | Angular SSR + Express                          | ^22.2.7 / ^5.1.0                     |
-| Build                 | `@angular/build` application builder           | ^22.2.7                              |
-| Testing               | Vitest                                         | ^5.0.0                               |
-| Styling               | Plain CSS with scoped component styles         | —                                    |
-| Formatting            | Prettier                                       | ^3.8.1                               |
-| Package manager       | npm                                            | 11.x (`packageManager` pins 11.19.0) |
-
-The Angular CLI for this version requires **Node.js `^22.22.3`, `^24.15.0`, or `^26.0.0`**. Check with `node -v` before installing or building.
-
----
-
-## Architecture Overview
-
-DestiGo follows a **feature-based Angular architecture**:
-
-1. Each country is a self-contained lazy-loaded feature.
-2. Shared UI is maintained separately in `shared/`.
-3. Application-wide concerns (shell, global routing, auth, favorites, tokens) live in `core/` and the root app files.
-4. Country portals never depend on one another.
-5. Global CSS is reserved for design tokens and resets — country styling is scoped to its components.
-6. Authentication and favorites are independent of country features.
-7. Prefer Angular-native solutions and avoid unnecessary dependencies.
+## Explore DestiGo
 
 ```mermaid
 flowchart TD
-  Root["Root component<br/>(Angular placeholder)"]
+  R["/"]
+  R --> T["/turkey"]
+  T --> TD["/turkey/:id<br/>detail scaffold"]
+  R -.-> I["/italy<br/>planned"]
+  R -.-> S["/spain<br/>planned"]
+  R -.-> F["/favorites<br/>planned"]
+  R -.-> L["/login<br/>planned"]
+  R -.-> REG["/register<br/>planned"]
+  R -.-> A["/about<br/>planned"]
 
-  subgraph Now["Exists today"]
-    Root -->|lazy| Turkey["/turkey"]
-    Turkey --> TH["Türkiye home"]
-    Turkey --> TD["Destination detail<br/>(scaffold)"]
+  classDef current fill:#E8B86D,color:#20323D,stroke:#20323D,stroke-width:2px;
+  classDef planned fill:#F7F8F5,color:#20323D,stroke:#176B87,stroke-width:2px,stroke-dasharray:6 4;
+  class R,T current;
+  class TD,I,S,F,L,REG,A planned;
+```
+
+> Solid routes exist on `feature/turkey`; dashed routes are planned. On that branch, `/` redirects to `/turkey`. The dashboard will replace the redirect once it exists.
+
+## Features
+
+| Feature                   | Status      | Notes                                                                         |
+| ------------------------- | ----------- | ----------------------------------------------------------------------------- |
+| Dashboard (`/`)           | Planned     | Guests discover countries; signed-in users get personal content and favorites |
+| Turkey portal (`/turkey`) | In progress | Home page, three destinations, detail-page scaffold                           |
+| Italy portal (`/italy`)   | Planned     | Rome, Venice, Florence                                                        |
+| Spain portal (`/spain`)   | Planned     | Future portal                                                                 |
+| Destination details       | In progress | Turkey route scaffold only                                                    |
+| Authentication            | Planned     | Shared login and registration                                                 |
+| Favorites                 | Planned     | Shared service, reusable button, `/favorites` page                            |
+| About (`/about`)          | Planned     | Project and team information                                                  |
+| Destination wheel         | Planned     | Shared Angular/SVG country selector                                           |
+
+Status reflects the `feature/turkey` branch; planned items are not implemented.
+
+## Architecture
+
+- **Isolated country features.** Each country lives under `src/app/features/<country>/` and owns its pages, components, data, models, and scoped CSS. Portals never import from one another.
+- **Shared application concerns.** Shell, routing, authentication, favorites, and the destination wheel live outside country folders. Shared changes require coordination.
+- **Lazy routing.** Country routes are loaded with `loadChildren`; shared routes will handle the dashboard, auth, favorites, and about pages.
+- **No backend yet.** Destination data is local. Authentication persistence, favorites storage, and any database are not finalized.
+
+Country routes are lazy-loaded through their own route files. Each portal keeps its destination data and model local, while the shared layer only needs a route entry. That keeps country work independent and prevents one portal from breaking another. On `feature/turkey`, the detail route is a scaffold: it exists, but its destination input is not wired yet.
+
+```mermaid
+flowchart TB
+  subgraph Shared["Shared application"]
+    Shell["Application shell"]
+    Dash["Dashboard /<br/>planned"]
+    Auth["Authentication<br/>planned"]
+    Fav["Favorites<br/>planned"]
+    Wheel["Destination wheel<br/>planned"]
   end
 
-  subgraph Later["Planned"]
-    Home["Home"]
-    Italy["/italy"]
-    Spain["/spain"]
-    Auth["Auth"]
-    Fav["Favorites"]
-    About["About"]
-    Wheel["Shared destination wheel"]
+  subgraph Portals["Independent country features"]
+    TR["Turkey /turkey<br/>in progress"]
+    IT["Italy /italy<br/>planned"]
+    ES["Spain /spain<br/>planned"]
+    TRD["Pages · components<br/>data · scoped styles"]
+    ITD["Pages · components<br/>data · scoped styles"]
+    ESD["Pages · components<br/>data · scoped styles"]
   end
 
-  Root -.-> Home
-  Root -.-> Italy
-  Root -.-> Spain
-  Root -.-> Auth
-  Root -.-> Fav
-  Root -.-> About
-  Wheel -.-> Turkey
-  Wheel -.-> Italy
-  Wheel -.-> Spain
+  DG["DestiGo"] --> Shell
+  Shell --> Dash
+  Shell --> Auth
+  Shell --> Fav
+  Shell --> Wheel
+  Shell --> TR
+  Shell --> IT
+  Shell --> ES
+  TR --- TRD
+  IT --- ITD
+  ES --- ESD
+
+  classDef shared fill:#176B87,color:#F7F8F5,stroke:#20323D,stroke-width:2px;
+  classDef country fill:#E8B86D,color:#20323D,stroke:#20323D,stroke-width:2px;
+  classDef planned fill:#F7F8F5,color:#20323D,stroke:#176B87,stroke-width:2px,stroke-dasharray:6 4;
+  class Shell shared;
+  class TR,TRD country;
+  class Dash,Auth,Fav,Wheel,IT,ITD,ES,ESD planned;
 ```
 
-**Solid arrows = implemented. Dashed arrows = planned.**
+### Dashboard
 
-The root app template still contains the Angular starter placeholder plus `<router-outlet />`. The shared shell, navbar, and footer have not been implemented yet.
+The homepage will adapt to the visitor. Guests will discover available countries and reach login or registration. Authenticated users will see personalized content, saved destinations, and account navigation. Authentication and favorites are shared concerns, not country-specific features.
 
----
+### Centralized favorites
 
-## Folder Organization
+Favorites are not implemented per country. Country portals will render one reusable favorite button connected to a shared service; `/favorites` will collect saved destinations from every portal. Storage will sit behind that service once the persistence approach is chosen.
 
-### Implemented today
+```mermaid
+flowchart LR
+  TR["Turkey"] --> B["Shared favorite button"]
+  IT["Italy"] --> B
+  ES["Spain"] --> B
+  B --> S["Shared favorites service<br/>shared state"]
+  S --> P["/favorites<br/>all countries"]
+  S -.-> ST[("Storage<br/>not finalized")]
 
-Only the root application files and the Türkiye feature exist. The Türkiye route is lazy-loaded from `app.routes.ts`.
-
-```text
-src/
-├── app/
-│   ├── app.ts / app.html / app.css
-│   ├── app.config.ts
-│   ├── app.config.server.ts
-│   ├── app.routes.ts
-│   ├── app.routes.server.ts
-│   ├── app.spec.ts
-│   └── features/
-│       └── turkey/
-│           ├── turkey.component.ts
-│           ├── turkey.routes.ts
-│           ├── components/
-│           │   ├── destination-card/
-│           │   ├── hero/
-│           │   └── intro/
-│           ├── data/
-│           │   └── turkey.data.ts
-│           ├── models/
-│           │   └── destination.model.ts
-│           └── pages/
-│               ├── destination-detail/
-│               └── turkey-home/
-├── index.html
-├── main.ts
-├── main.server.ts
-├── server.ts
-└── styles.css
-public/
-└── favicon.ico
+  classDef country fill:#E8B86D,color:#20323D,stroke:#20323D,stroke-width:2px;
+  classDef shared fill:#176B87,color:#F7F8F5,stroke:#20323D,stroke-width:2px;
+  classDef pending fill:#F7F8F5,color:#20323D,stroke:#176B87,stroke-width:2px,stroke-dasharray:6 4;
+  class TR,IT,ES country;
+  class B,S,P shared;
+  class ST pending;
 ```
 
-Not yet present: `core/`, `shared/`, `features/home/`, `features/italy/`, `features/spain/`, `features/auth/`, `features/favorites/`, `features/about/`, and `public/destinations/`.
+All favorites functionality is planned.
 
-### Target architecture
+## Destination wheel
 
-This is the agreed direction, not the current state. Do not create empty folders or placeholder application components just to match this tree.
+The wheel is a planned shared navigation component for switching between country portals. It will use Angular, SVG, and CSS, support mouse, touch, and keyboard input, and remain independent of country-specific code. It should be built after the country routes are stable.
 
-```text
-src/
-└── app/
-    ├── core/
-    │   ├── layout/              # App shell, navbar, footer (planned)
-    │   └── services/            # Shared services (planned)
-    │
-    ├── shared/
-    │   ├── components/          # Reusable UI (planned)
-    │   └── destination-wheel/   # Circular country selector (planned)
-    │
-    ├── features/
-    │   ├── home/                # Planned
-    │   ├── turkey/              # In progress
-    │   │   ├── pages/
-    │   │   ├── components/
-    │   │   ├── data/
-    │   │   ├── models/          # Added during implementation
-    │   │   └── turkey.routes.ts
-    │   ├── italy/               # Planned
-    │   │   ├── pages/
-    │   │   ├── components/
-    │   │   ├── data/
-    │   │   └── italy.routes.ts
-    │   ├── spain/               # Planned
-    │   ├── auth/                # Planned
-    │   ├── favorites/           # Planned
-    │   └── about/               # Planned
-    │
-    ├── app.routes.ts
-    └── app.config.ts
-    │
-public/
-└── destinations/                # Planned
-    ├── turkey/
-    ├── italy/
-    └── spain/
-```
+![Destination wheel concept](docs/assets/destination-wheel.svg)
 
-> **Asset decision:** The target tree in the brief uses `src/assets/`. This repository's `angular.json` serves static files from `public/`, not `src/assets/`. Use `public/destinations/<country>/` unless the team deliberately adds `src/assets` to `angular.json` — that is a shared configuration change.
+The original brief asks for a modern, minimal, responsive travel interface. The wheel artwork follows that direction, while application styling stays scoped per component rather than in global CSS.
 
----
+Artwork palette: ocean blue `#176B87`, sand `#E8B86D`, off-white `#F7F8F5`, dark slate `#20323D`.
 
-## Country Portal Ownership
+## Getting started
 
-### 🇹🇷 Türkiye — Ahmed Ben Mim
-
-Primary directory: `src/app/features/turkey/`
-
-Responsibilities:
-
-- Türkiye landing page
-- Istanbul, Cappadocia, and Antalya content
-- Türkiye-specific components and styles
-- Türkiye destination data and models
-
-### 🇮🇹 Italy — Ons Chtioui
-
-Primary directory: `src/app/features/italy/`
-
-Responsibilities:
-
-- Italy landing page
-- Rome, Venice, and Florence content
-- Italy-specific components and styles
-- Italy destination data and models
-
-### Shared application — both developers
-
-Shared areas include the application shell, global routing, navbar and footer, the destination wheel, authentication, favorites, global design tokens, and build configuration.
-
-Shared changes require coordination and a dedicated branch. **Do not modify another developer's country portal without agreement.** Country styles must remain scoped to their components.
-
----
-
-## Local Development
-
-### Prerequisites
-
-- Node.js `^22.22.3`, `^24.15.0`, or `^26.0.0` (required by Angular 22)
-- npm 11.x
-
-### Install
+**Prerequisites:** Node.js `^22.22.3`, `^24.15.0`, or `^26.0.0`; npm 11.19.0.
 
 ```bash
 npm install
+npm start        # http://localhost:4200
+npm run build    # production build into dist/
+npm test         # Vitest
 ```
 
-### Development server
+The build produces browser and server bundles. Tests run with Vitest through Angular's unit-test builder. Turkey is under active development on `feature/turkey`; its detail route is still a scaffold.
 
-```bash
-npm start
-# equivalent to: ng serve
+## Collaboration
+
+| Area                          | Owner           | Branch                    |
+| ----------------------------- | --------------- | ------------------------- |
+| Turkey portal                 | Ahmed Ben Mim   | `feature/turkey`          |
+| Italy portal                  | Ons Chtioui     | `feature/italy` (planned) |
+| Spain portal                  | Unassigned      | Planned                   |
+| Shell, auth, favorites, wheel | Both developers | Dedicated shared branch   |
+
+Work inside your country folder on a feature branch. Open a Pull Request, review the changes, and merge into `master`. Do not push directly to `master` or edit another developer's portal without agreement.
+
+```mermaid
+flowchart LR
+  M["master<br/>integration"] --> T["feature/turkey"]
+  M -.-> I["feature/italy<br/>planned"]
+  T --> PR["Pull request"]
+  I --> PR
+  PR --> RV["Review"]
+  RV --> M
+
+  classDef stable fill:#176B87,color:#F7F8F5,stroke:#20323D,stroke-width:2px;
+  classDef feature fill:#E8B86D,color:#20323D,stroke:#20323D,stroke-width:2px;
+  classDef planned fill:#F7F8F5,color:#20323D,stroke:#176B87,stroke-width:2px,stroke-dasharray:6 4;
+  class M stable;
+  class T feature;
+  class I planned;
 ```
 
-Open `http://localhost:4200/`. The app reloads on source changes.
+Detailed rules for contributors and AI assistants: [`AGENTS.md`](./AGENTS.md) and [`AI.md`](./AI.md).
 
-### Build and tests
+## Team
 
-```bash
-npm run build        # production build into dist/
-npm run watch        # development watch build
-npm test             # Vitest unit tests via the Angular unit-test builder
-```
+|             |                                                                  |
+| ----------- | ---------------------------------------------------------------- |
+| Institution | SUP'COM — Higher School of Communication of Tunis                |
+| Project     | Web Development                                                  |
+| Supervisor  | Dr. Maroua Nouioua                                               |
+| Developers  | Ahmed Ben Mim (Turkey), Ons Chtioui (Italy)                      |
+| Repository  | [github.com/ons-sup/DestiGO](https://github.com/ons-sup/DestiGO) |
 
-There is no lint script configured. Prettier is installed and configured in `.prettierrc`; check formatting with `npx prettier --check <files>`.
-
-### Server-side rendering
-
-```bash
-npm run build
-npm run serve:ssr:DestiGO
-```
-
-All routes currently use `RenderMode.Prerender` via `src/app/app.routes.server.ts`.
-
----
-
-## Git Collaboration Workflow
-
-> **Branch naming note:** The GitHub repository currently uses `master` as its default branch. This guide targets `main` as the stable branch. Either rename the default branch once (team decision) or replace `main` with `master` in the commands below.
-
-### Branch plan
-
-| Branch                      | Purpose                 | Owner |
-| --------------------------- | ----------------------- | ----- |
-| `main`                      | Stable, integrated code | Both  |
-| `feature/turkey`            | Türkiye portal          | Ahmed |
-| `feature/italy`             | Italy portal            | Ons   |
-| `feature/destination-wheel` | Shared wheel component  | Both  |
-| `feature/auth`              | Authentication          | Both  |
-| `feature/favorites`         | Favorites               | Both  |
-
-The shared Angular architecture and initial route placeholders should be merged into `main` before country development continues.
-
-### Initial setup
-
-Each developer branches from the latest `main`:
-
-```bash
-git switch main
-git pull --ff-only origin main
-git switch -c feature/italy
-```
-
-### Daily development
-
-Work only inside your assigned feature directory. Inspect changes before committing:
-
-```bash
-git status
-git diff
-```
-
-Stage only the intended files:
-
-```bash
-git add src/app/features/italy/
-git commit -m "feat(italy): add destination cards"
-git push -u origin feature/italy
-```
-
-After upstream tracking is configured, `git push` is enough.
-
-### Pull requests
-
-1. Push the feature branch.
-2. Open a Pull Request targeting `main`.
-3. Review the changed files.
-4. Run available checks (`npm run build`, `npm test`).
-5. Resolve issues before merging.
-6. Merge only when the feature is ready.
-
-### Safety rules
-
-- Never push directly to `main`.
-- Never force-push shared branches.
-- Never commit `node_modules` or `dist/`.
-- Never commit credentials, `.env` files, or secrets.
-- Avoid `git add .` when unrelated files are modified.
-- Never run destructive commands without understanding them.
-- Never discard a teammate's uncommitted changes.
-- Ask for help when a merge conflict occurs.
-
-### Beginner troubleshooting
-
-| Problem                              | Safe response                                                                               |
-| ------------------------------------ | ------------------------------------------------------------------------------------------- |
-| `git status` shows unexpected files  | Read the output; stage only files you intentionally changed.                                |
-| You started work on the wrong branch | Do not discard work. Ask for help before switching or stashing.                             |
-| `git push` is rejected               | Run `git pull --ff-only`, resolve locally, then push. Never force-push.                     |
-| Merge conflict                       | Stop. Open the conflicted files, understand both sides, and ask a teammate if unsure.       |
-| Accidentally staged `node_modules`   | `git restore --staged node_modules` (the folder stays on disk).                             |
-| Need to undo an unpushed commit      | `git reset --soft HEAD~1` keeps changes staged. Do not use `--hard` unless you are certain. |
-| You are in a detached HEAD state     | Do not commit. Ask for help to create a branch or return to your feature branch.            |
-
----
-
-## Destination Wheel (Planned)
-
-DestiGo will include a circular destination-selection wheel inspired by the interactive portal navigation concept on Brittany Chiang's website.
-
-**Concept:** a compass-like button opens a circular overlay with selectable country sectors.
-
-| Requirement   | Detail                                                                      |
-| ------------- | --------------------------------------------------------------------------- |
-| Destinations  | Türkiye → `/turkey`, Italy → `/italy`, Spain → `/spain`                     |
-| Visuals       | Circular SVG sectors, country names and flags                               |
-| Interaction   | Click/tap selection, optional press-and-release, active-sector highlighting |
-| Motion        | Smooth open/close animations                                                |
-| Accessibility | Keyboard navigation, Escape to close, accessible labels                     |
-| Layout        | Responsive                                                                  |
-
-Implementation constraints:
-
-- Angular components, Router, signals, SVG, and CSS animations.
-- Angular CDK Overlay only if justified.
-- **No React, Next.js, React hooks, or Radix React Dialog.**
-- One independent shared component in `shared/destination-wheel/`. Country portals must not duplicate it.
-
-The wheel will be built **after** country routes and initial portal pages are functional. Until then, normal Angular navigation is sufficient.
-
----
-
-## Development Roadmap
-
-| Milestone | Scope                                                                        | Status      |
-| --------- | ---------------------------------------------------------------------------- | ----------- |
-| M0        | Angular scaffold, SSR, Vitest, Prettier                                      | Complete    |
-| M1        | Shared shell, navbar/footer, route placeholders, merge shared base to `main` | Planned     |
-| M2        | Türkiye portal (landing, Istanbul, Cappadocia, Antalya, details)             | In progress |
-| M3        | Italy portal (landing, Rome, Venice, Florence, details)                      | Planned     |
-| M4        | Authentication and favorites                                                 | Planned     |
-| M5        | Destination wheel integrated into the shell                                  | Planned     |
-| M6        | About page, responsive polish, accessibility, tests                          | Planned     |
-| M7        | Spain portal                                                                 | Planned     |
-
----
-
-## Team and Academic Information
-
-| Role         | Name / Institution                                               |
-| ------------ | ---------------------------------------------------------------- |
-| Institution  | SUP'COM — Higher School of Communication of Tunis                |
-| Course       | Web Development                                                  |
-| Supervisor   | Dr. Maroua Nouioua                                               |
-| Team members | Ahmed Ben Mim, Ons Chtioui                                       |
-| Repository   | [github.com/ons-sup/DestiGO](https://github.com/ons-sup/DestiGO) |
-
----
-
-## Documentation
-
-- [`AGENTS.md`](./AGENTS.md) — authoritative rules for OpenCode and other AI coding assistants.
-- [`AI.md`](./AI.md) — short human guide for using AI assistants safely on this project.
-
-## License
-
-Academic project for the Web Development course at SUP'COM. Not intended for commercial use.
+Academic project. Not intended for commercial use.
