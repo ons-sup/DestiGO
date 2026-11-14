@@ -200,4 +200,9 @@ Detailed rules for contributors and AI assistants: [`AGENTS.md`](./AGENTS.md) an
 | Developers  | Ahmed Ben Mim (Turkey), Ons Chtioui (Italy)                      |
 | Repository  | [github.com/ons-sup/DestiGO](https://github.com/ons-sup/DestiGO) |
 
+## Demo & Documentation
+
+- Demo videos: https://drive.google.com/file/d/1CQTprmNnjclAI6paFXbfFzBb_CEDwB0R/view?usp=sharing
+- Conception documentation: https://www.canva.com/design/editor/shell?designId=DAHa42ltFeI&extension=KpZnYh1pxGdQTB5hnNPWgw&mode=edit
+
 Academic project. Not intended for commercial use.
