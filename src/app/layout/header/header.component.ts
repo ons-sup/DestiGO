@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CountryService } from '../../core/services/country.service';
+import { FavoritesService } from '../../shared/services/favorites.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ import { CountryService } from '../../core/services/country.service';
 })
 export class HeaderComponent {
   private countryService = inject(CountryService);
-  
+  private favoritesService = inject(FavoritesService);
+
   navLinks = [
     { path: '/', label: 'Home' },
     { path: '/destinations', label: 'Destinations' },
@@ -27,4 +29,6 @@ export class HeaderComponent {
     const country = this.countryService.getCurrentCountry();
     return `${country.name} ${country.flag}`;
   });
+
+  favoritesCount = this.favoritesService.count;
 }

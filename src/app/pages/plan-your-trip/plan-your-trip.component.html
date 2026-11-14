@@ -1,0 +1,160 @@
+<app-hero-section
+  [isDestinationsHero]="true"
+  smallTitle="PLAN YOUR TRIP"
+  subtitle="Let us help you create the perfect Italian itinerary tailored to your preferences."
+/>
+
+<section class="plan-section">
+  <div class="plan-container">
+    <div class="plan-form-card">
+      <div class="section-header">
+        <h2>Trip Planner</h2>
+        <p>Fill in your preferences to get a suggested itinerary</p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="trip-form" novalidate>
+        <div class="form-group">
+          <label for="destination">Destination *</label>
+          <select
+            id="destination"
+            [(ngModel)]="plan().destination"
+            name="destination"
+            required
+            aria-required="true"
+          >
+            <option value="">Select a destination</option>
+            @for (dest of destinations; track dest) {
+              <option [value]="dest">{{ dest }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="days">Number of Days *</label>
+            <input
+              type="number"
+              id="days"
+              [(ngModel)]="plan().days"
+              name="days"
+              min="1"
+              max="30"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="travelers">Travelers *</label>
+            <input
+              type="number"
+              id="travelers"
+              [(ngModel)]="plan().travelers"
+              name="travelers"
+              min="1"
+              max="10"
+              required
+              aria-required="true"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Travel Style *</label>
+          <div class="radio-group" role="radiogroup" aria-label="Travel style">
+            @for (style of travelStyles; track style.value) {
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="travelStyle"
+                  [value]="style.value"
+                  [(ngModel)]="plan().travelStyle"
+                  required
+                >
+                <div class="radio-content">
+                  <span class="radio-label">{{ style.label }}</span>
+                  <span class="radio-description">{{ style.description }}</span>
+                </div>
+              </label>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Budget Range *</label>
+          <div class="radio-group" role="radiogroup" aria-label="Budget range">
+            @for (budget of budgetRanges; track budget.value) {
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="budget"
+                  [value]="budget.value"
+                  [(ngModel)]="plan().budget"
+                  required
+                >
+                <div class="radio-content">
+                  <span class="radio-label">{{ budget.label }}</span>
+                  <span class="radio-description">{{ budget.description }}</span>
+                </div>
+              </label>
+            }
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="submit-btn" [disabled]="!plan().destination">
+            Generate Itinerary
+          </button>
+          <button type="button" class="reset-btn" (click)="resetForm()">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+
+    @if (showItinerary() && itinerary().length > 0) {
+      <div class="itinerary-card">
+        <div class="itinerary-header">
+          <h2>Your {{ plan().days }}-Day {{ plan().destination }} Itinerary</h2>
+          <p class="itinerary-meta">
+            {{ plan().travelers }} traveler{{ plan().travelers > 1 ? 's' : '' }} •
+            {{ getTravelStyleLabel(plan().travelStyle) }} •
+            {{ getBudgetLabel(plan().budget) }}
+          </p>
+        </div>
+
+        <div class="itinerary-days">
+          @for (day of itinerary(); track day.day) {
+            <article class="itinerary-day">
+              <div class="day-header">
+                <h3>{{ day.title }}</h3>
+              </div>
+              <div class="day-activities">
+                <h4>Activities</h4>
+                <ul>
+                  @for (activity of day.activities; track activity) {
+                    <li>{{ activity }}</li>
+                  }
+                </ul>
+              </div>
+              <div class="day-meals">
+                <h4>Suggested Meals</h4>
+                <ul class="meals-list">
+                  <li><strong>Breakfast:</strong> {{ day.meals[0] }}</li>
+                  <li><strong>Lunch:</strong> {{ day.meals[1] }}</li>
+                  <li><strong>Dinner:</strong> {{ day.meals[2] }}</li>
+                </ul>
+              </div>
+            </article>
+          }
+        </div>
+
+        <div class="itinerary-disclaimer">
+          <p><strong>Note:</strong> This is a suggested itinerary generated locally. DestiGo does not handle bookings, payments, or reservations. Please verify availability and book directly with providers.</p>
+        </div>
+
+        <button class="new-plan-btn" (click)="resetForm()">Create Another Plan</button>
+      </div>
+    }
+  </div>
+</section>

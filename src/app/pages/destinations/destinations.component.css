@@ -19,8 +19,8 @@
   font-weight: bold;
 }
 
-.destinations-heading h2 span {
-  color: var(--primary);
+.destinations-heading h2 span.accent {
+  color: var(--accent);
   font-style: italic;
 }
 
@@ -32,8 +32,8 @@
 
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -43,10 +43,6 @@
 
   .destinations-heading h2 {
     font-size: 42px;
-  }
-
-  .destinations-grid {
-    grid-template-columns: 1fr;
   }
 }
 

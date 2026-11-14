@@ -4,7 +4,7 @@
       @if (smallTitle()) {
         <p class="small-title">{{ smallTitle() }}</p>
       }
-      <h1>{{ title() }}</h1>
+      <h1>Discover <span class="accent">Beautiful Destinations</span></h1>
       @if (subtitle()) {
         <p>{{ subtitle() }}</p>
       }
@@ -18,10 +18,12 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>
+        @for (line of titleLines(); track $index) {
+          @if ($index > 0) { <br /> }
+          {{ line }}
+        }
         @if (titleFlag()) {
-          {{ title() }} <img [src]="titleFlag()" alt="Flag" class="title-flag">
-        } @else {
-          {{ title() }}
+          <img [src]="titleFlag()" alt="Flag" class="title-flag">
         }
       </h1>
       @if (subtitle()) {

@@ -132,7 +132,7 @@
   font-family: var(--font-primary);
 }
 
-.destinations-hero-content h1 span {
+.destinations-hero-content h1 span.accent {
   color: var(--accent);
   font-style: italic;
 }

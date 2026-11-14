@@ -1,12 +1,28 @@
 @if (variant() === 'small') {
   <div class="destination-card">
-    <img [src]="destination().imageUrl" [alt]="destination().name">
-    <h3>{{ destination().name }}</h3>
-    <p>{{ destination().subtitle }}</p>
+    <div class="card-image-wrapper">
+      <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
+      <app-favorite-button
+        [destinationId]="destination().id"
+        ariaLabel="Add {{ destination().name }} to favorites"
+        size="small"
+      />
+    </div>
+    <div class="card-content">
+      <h3>{{ destination().name }}</h3>
+      <p>{{ destination().subtitle }}</p>
+    </div>
   </div>
 } @else {
   <div class="destination-card-large">
-    <img [src]="destination().imageUrl" [alt]="destination().name">
+    <div class="card-image-wrapper">
+      <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
+      <app-favorite-button
+        [destinationId]="destination().id"
+        ariaLabel="Add {{ destination().name }} to favorites"
+        size="medium"
+      />
+    </div>
     <div class="destination-info">
       <span class="destination-number">{{ destination().number }}</span>
       <h3>{{ destination().name }}</h3>

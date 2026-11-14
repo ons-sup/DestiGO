@@ -44,21 +44,9 @@
 }
 
 .destination-cards {
-  display: flex;
-  gap: 20px;
-}
-
-.italy-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.italy-title img {
-  width: 34px;
-  height: 23px;
-  object-fit: cover;
-  border-radius: 3px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -86,15 +74,5 @@
 
   .popular-destinations h2 {
     font-size: 24px;
-  }
-
-  .destination-cards {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .italy-title img {
-    width: 28px;
-    height: 19px;
   }
 }

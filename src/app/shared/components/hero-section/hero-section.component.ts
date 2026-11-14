@@ -10,7 +10,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hero-section.component.css'
 })
 export class HeroSectionComponent {
-  title = input.required<string>();
+  title = input<string>('');
+  titleLines = input<string[]>([]);
   titleFlag = input<string>(''); // Optional flag image for title
   subtitle = input<string>('');
   videoSrc = input<string>('');

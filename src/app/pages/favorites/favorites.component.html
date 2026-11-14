@@ -1,0 +1,42 @@
+<app-hero-section
+  [isDestinationsHero]="true"
+  smallTitle="YOUR FAVORITES"
+  subtitle="Your saved destinations, ready for your next adventure."
+/>
+
+<section class="favorites-section">
+  <div class="favorites-container">
+    @if (favoriteDestinations().length > 0) {
+      <div class="favorites-header">
+        <h2>{{ favoriteDestinations().length }} Saved Destination{{ favoriteDestinations().length !== 1 ? 's' : '' }}</h2>
+      </div>
+
+      <div class="favorites-grid">
+        @for (destination of favoriteDestinations(); track destination.id) {
+          <article class="favorite-card">
+            <img [src]="destination.imageUrl" [alt]="destination.name" loading="lazy">
+            <div class="favorite-info">
+              <h3>{{ destination.name }}</h3>
+              <p>{{ destination.subtitle }}</p>
+              <div class="favorite-actions">
+                <app-favorite-button
+                  [destinationId]="destination.id"
+                  ariaLabel="Remove from favorites"
+                  size="small"
+                  (toggled)="removeFavorite(destination.id)"
+                />
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <div class="empty-icon">♡</div>
+        <h2>No Favorites Yet</h2>
+        <p>Start exploring destinations and save the ones you love by clicking the heart icon.</p>
+        <a routerLink="/destinations" class="explore-btn">Explore Destinations</a>
+      </div>
+    }
+  </div>
+</section>

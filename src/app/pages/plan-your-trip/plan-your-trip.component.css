@@ -1,0 +1,358 @@
+.plan-section {
+  padding: 90px 7%;
+  background-color: var(--bg-color);
+}
+
+.plan-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.plan-form-card,
+.itinerary-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 30px;
+}
+
+.section-header {
+  margin-bottom: 30px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group select,
+.form-group input {
+  padding: 14px 16px;
+  border: 2px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(11, 61, 92, 0.15);
+}
+
+.form-group select:invalid {
+  color: var(--text-muted);
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-option:hover {
+  border-color: var(--primary);
+  background-color: rgba(11, 61, 92, 0.04);
+}
+
+.radio-option:has(input:checked) {
+  border-color: var(--primary);
+  background-color: rgba(11, 61, 92, 0.08);
+}
+
+.radio-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.radio-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.radio-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+}
+
+.radio-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.submit-btn,
+.reset-btn,
+.new-plan-btn {
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn,
+.new-plan-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  flex: 1;
+}
+
+.submit-btn:hover:not(:disabled),
+.new-plan-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.reset-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.itinerary-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.itinerary-header h2 {
+  font-size: 32px;
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.itinerary-meta {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.itinerary-days {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.itinerary-day {
+  background-color: var(--bg-color);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.day-header h3 {
+  font-size: 22px;
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.day-activities h4,
+.day-meals h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.day-activities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.day-activities li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 15px;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.day-activities li:last-child {
+  border-bottom: none;
+}
+
+.day-activities li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.meals-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.meals-list li {
+  font-size: 14px;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  background-color: var(--card-bg);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.itinerary-disclaimer {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(232, 207, 167, 0.15);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent);
+}
+
+.itinerary-disclaimer p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+.itinerary-disclaimer strong {
+  color: var(--text-color);
+}
+
+.new-plan-btn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .plan-section {
+    padding: 70px 5%;
+  }
+
+  .plan-form-card,
+  .itinerary-card {
+    padding: 30px 24px;
+  }
+
+  .section-header h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .plan-section {
+    padding: 50px 5%;
+  }
+
+  .plan-form-card,
+  .itinerary-card {
+    padding: 24px 20px;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .submit-btn,
+  .reset-btn {
+    width: 100%;
+  }
+
+  .radio-option {
+    padding: 14px;
+  }
+}
