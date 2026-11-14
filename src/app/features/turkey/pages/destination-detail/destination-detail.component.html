@@ -1,0 +1,39 @@
+@if (destination()) {
+  <article class="detail">
+    <header class="detail__header">
+      <div class="detail__media">
+        <img
+          class="detail__image"
+          [src]="destination().image"
+          [alt]="destination().name"
+          loading="lazy"
+        />
+        <span class="detail__badge">{{ destination().region }}</span>
+      </div>
+      <div class="detail__meta">
+        <a class="detail__back" [routerLink]="['/turkey']">← Back to Türkiye</a>
+        <h1 class="detail__title">{{ destination().name }}</h1>
+        <p class="detail__tagline">{{ destination().tagline }}</p>
+      </div>
+    </header>
+
+    <section class="detail__body">
+      <h2>Overview</h2>
+      <p>{{ destination().description }}</p>
+    </section>
+
+    <section class="detail__highlights">
+      <h2>Places to visit</h2>
+      <ul>
+        @for (highlight of destination().highlights; track highlight) {
+          <li>{{ highlight }}</li>
+        }
+      </ul>
+    </section>
+
+    <section class="detail__info">
+      <h2>Best time to visit</h2>
+      <p>{{ destination().bestTimeToVisit }}</p>
+    </section>
+  </article>
+}

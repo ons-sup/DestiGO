@@ -1,0 +1,46 @@
+<app-turkey-hero
+  [countryName]="countryName"
+  [countryTagline]="countryTagline"
+></app-turkey-hero>
+
+<app-turkey-intro [introduction]="introduction"></app-turkey-intro>
+
+<section class="destinations">
+  <div class="destinations__header">
+    <h2 class="destinations__heading">Featured destinations</h2>
+    <p class="destinations__subtitle">
+      Start your journey in one of these remarkable regions.
+    </p>
+  </div>
+  <div class="destinations__grid">
+    @for (destination of destinations; track destination.id) {
+      <app-destination-card [destination]="destination"></app-destination-card>
+    }
+  </div>
+</section>
+
+<section class="experiences">
+  <div class="experiences__wrapper">
+    <div class="experiences__text">
+      <h2 class="experiences__heading">Places to visit</h2>
+      <p class="experiences__body">
+        From ancient bazaars to cave hotels, Türkiye offers experiences that
+        stay with you long after you return home.
+      </p>
+      <ul class="experiences__list">
+        <li>Historic old towns and UNESCO World Heritage sites</li>
+        <li>Coastal drives along the turquoise Mediterranean</li>
+        <li>Underground cities and rock-cut churches</li>
+        <li>Traditional hamams and Turkish cuisine</li>
+      </ul>
+    </div>
+    <figure class="experiences__figure">
+      <img
+        class="experiences__image"
+        src="https://images.unsplash.com/photo-1543198715-c0caf11e07f1?q=80&w=1600&auto=format&fit=crop"
+        alt="Cappadocia balloons"
+        loading="lazy"
+      />
+    </figure>
+  </div>
+</section>
