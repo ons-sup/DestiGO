@@ -4,7 +4,7 @@ import { getAllExperienceIds } from './features/italy/data/experience-details.da
 
 export const serverRoutes: ServerRoute[] = [
   {
-    path: 'destinations/:id',
+    path: 'italy/destinations/:id',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () => {
       const destinationIds = getAllDestinationIds();
@@ -12,7 +12,7 @@ export const serverRoutes: ServerRoute[] = [
     }
   },
   {
-    path: 'experiences/:id',
+    path: 'italy/experiences/:id',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () => {
       const experienceIds = getAllExperienceIds();
