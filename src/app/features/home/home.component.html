@@ -1,0 +1,41 @@
+<main class="home">
+  <header class="home__header">
+    <div class="home__brand">
+      <span class="home__mark" aria-hidden="true">DG</span>
+      <span class="home__name">DestiGO</span>
+    </div>
+    <nav class="home__auth" aria-label="Account">
+      @if (auth.currentUser(); as user) {
+        <span class="home__greeting">Hi, {{ user.name }}</span>
+        <button
+          type="button"
+          class="home__auth-link home__auth-link--solid"
+          (click)="auth.logout()"
+        >
+          Log out
+        </button>
+      } @else {
+        <a class="home__auth-link home__auth-link--ghost" routerLink="/auth/login">Log in</a>
+        <a class="home__auth-link home__auth-link--solid" routerLink="/auth/register">Sign up</a>
+      }
+    </nav>
+    <p class="home__tagline">Three countries. One unforgettable choice.</p>
+  </header>
+
+  <section class="home__hero" aria-labelledby="home-title">
+    <p class="home__eyebrow">The destination wheel</p>
+    <h1 id="home-title" class="home__title">
+      Where will you <span class="home__accent">go next?</span>
+    </h1>
+    <p class="home__subtitle">
+      Turn the wheel, choose a country, and explore a guide shaped around place, culture, and the
+      moments in between.
+    </p>
+    <p class="home__hint">Use the compass at the bottom right to open the destination wheel.</p>
+  </section>
+
+  <footer class="home__footer">
+    <span>DestiGO</span>
+    <span>Discover first. Book later.</span>
+  </footer>
+</main>

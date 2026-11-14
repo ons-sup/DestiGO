@@ -11,4 +11,5 @@ import { RouterLink } from '@angular/router';
 export class HeroComponent {
   readonly countryName = input.required<string>();
   readonly countryTagline = input.required<string>();
+  readonly countryImage = input.required<string>();
 }

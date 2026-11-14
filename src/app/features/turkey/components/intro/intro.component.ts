@@ -9,4 +9,5 @@ import { Component, input } from '@angular/core';
 })
 export class IntroComponent {
   readonly introduction = input.required<string>();
+  readonly image = input.required<string>();
 }

@@ -15,6 +15,7 @@ import { DestinationCardComponent } from '../../components/destination-card/dest
 export class TurkeyHomeComponent {
   readonly countryName = TURKEY_DATA.name;
   readonly countryTagline = TURKEY_DATA.tagline;
+  readonly countryImage = TURKEY_DATA.image;
   readonly introduction = TURKEY_DATA.introduction;
   readonly destinations: Destination[] = TURKEY_DATA.destinations;
 }

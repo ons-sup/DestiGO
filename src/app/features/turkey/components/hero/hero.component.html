@@ -1,5 +1,10 @@
 <header class="hero">
-  <div class="hero__bg"></div>
+  <img
+    class="hero__bg"
+    [src]="countryImage()"
+    alt="Türkiye landscape"
+    loading="eager"
+  />
   <div class="hero__content">
     <span class="hero__kicker">Türkiye</span>
     <h1 class="hero__title">{{ countryName() }}</h1>
