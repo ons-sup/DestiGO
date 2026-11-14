@@ -1,0 +1,88 @@
+@if (notFound()) {
+  <section class="not-found">
+    <div class="not-found-content">
+      <h1>Experience Not Found</h1>
+      <p>Sorry, we couldn't find an experience with that ID.</p>
+      <a routerLink="/experiences" class="back-link">← Back to Experiences</a>
+    </div>
+  </section>
+} @else if (experience(); as exp) {
+  <app-hero-section
+    [isDetailPage]="true"
+    [eyebrow]="getCategoryLabel(exp.category)"
+    [title]="exp.title"
+    [titleAccent]="' '"
+    [subtitle]="' '"
+    [imageSrc]="exp.heroImage"
+  />
+
+  <main class="detail-main">
+    <div class="detail-header">
+      <div class="header-content">
+        <span class="category-badge">{{ getCategoryLabel(exp.category) }}</span>
+        <h2>{{ exp.title }}</h2>
+        <p class="tagline">{{ exp.description }}</p>
+      </div>
+    </div>
+
+    <section class="detail-section highlights-section" aria-labelledby="highlights-heading">
+      <div class="section-container">
+        <h2 id="highlights-heading">Highlights</h2>
+        <div class="highlights-grid">
+          @for (highlight of exp.highlights; track highlight.name) {
+            <article class="highlight-card">
+              <div class="highlight-image-wrapper">
+                @if (highlight.image) {
+                  <img [src]="highlight.image" [alt]="highlight.name" loading="lazy">
+                } @else {
+                  <div class="image-placeholder" aria-hidden="true">{{ highlight.name }}</div>
+                }
+              </div>
+              <div class="highlight-info">
+                <h3>{{ highlight.name }}</h3>
+                <p class="highlight-region">{{ highlight.region }}</p>
+                <p>{{ highlight.description }}</p>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    @if (exp.wineSection) {
+      <section class="detail-section wine-section" aria-labelledby="wine-heading">
+        <div class="section-container">
+          <h2 id="wine-heading">{{ exp.wineSection.title }}</h2>
+          <div class="wine-grid">
+            @for (wine of exp.wineSection.wines; track wine.name) {
+              <article class="wine-card">
+                <h3>{{ wine.name }}</h3>
+                <p class="wine-region">{{ wine.region }}</p>
+                <p>{{ wine.description }}</p>
+              </article>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <section class="detail-section where-to-try-section" aria-labelledby="where-heading">
+      <div class="section-container">
+        <h2 id="where-heading">Where to Try It</h2>
+        <p class="section-intro">Visit these destinations to experience the authentic flavors and traditions of this category.</p>
+        <div class="where-grid">
+          @for (item of exp.whereToTry; track item.destinationId) {
+            <a [routerLink]="['/destinations', item.destinationId]" class="where-card">
+              <h3>{{ item.destinationName }}</h3>
+              <p>{{ item.note }}</p>
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+}
+
+<ng-template #placeholder>
+  <div class="image-placeholder" aria-hidden="true">Image not available</div>
+</ng-template>

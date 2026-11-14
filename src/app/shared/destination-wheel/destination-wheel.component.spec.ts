@@ -37,12 +37,14 @@ describe('DestinationWheelComponent', () => {
   it('emits the selected available country for the overlay to explore', () => {
     const fixture = createWheel();
     const element = fixture.nativeElement as HTMLElement;
-    const emitted: Array<{ id: string }> = [];
+    const emitted: Array<{ id: string; name: string; available: boolean; color: string; route: string }> = [];
     fixture.componentInstance.exploreSelected.subscribe((country) => emitted.push(country));
 
     element.querySelector<HTMLButtonElement>('.wheel__explore')?.click();
 
-    expect(emitted).toEqual([{ id: 'turkey' }]);
+    expect(emitted).toEqual([
+      { id: 'turkey', name: 'Türkiye', available: true, color: '#7a1fa2', route: '/turkey', tagline: 'Where continents meet.' },
+    ]);
   });
 
   it('moves the selection with arrow keys', () => {

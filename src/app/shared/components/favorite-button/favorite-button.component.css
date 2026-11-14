@@ -1,0 +1,65 @@
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.favorite-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.favorite-btn.size-small {
+  width: 32px;
+  height: 32px;
+}
+
+.favorite-btn.size-medium {
+  width: 40px;
+  height: 40px;
+}
+
+.favorite-btn.size-large {
+  width: 48px;
+  height: 48px;
+}
+
+.heart-icon {
+  width: 60%;
+  height: 60%;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.favorite-btn.filled .heart-icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.favorite-btn:not(.filled) {
+  color: var(--text-muted);
+}
+
+.favorite-btn:not(.filled):hover {
+  color: var(--primary);
+}
+
+.favorite-btn.filled {
+  color: #e74c3c;
+}
+
+.favorite-btn.filled:hover {
+  color: #c0392b;
+}

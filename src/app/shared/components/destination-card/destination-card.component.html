@@ -1,0 +1,37 @@
+@if (variant() === 'small') {
+  <a [routerLink]="['/destinations', destination().id]" class="destination-card" aria-label="View {{ destination().name }} details">
+    <div class="card-image-wrapper">
+      <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
+      <div class="card-favorite-btn">
+        <app-favorite-button
+          [destinationId]="destination().id"
+          [ariaLabel]="'Add ' + destination().name + ' to favorites'"
+          size="small"
+        />
+      </div>
+    </div>
+    <div class="card-content">
+      <h3>{{ destination().name }}</h3>
+      <p>{{ destination().subtitle }}</p>
+    </div>
+  </a>
+} @else {
+  <a [routerLink]="['/destinations', destination().id]" class="destination-card-large" aria-label="View {{ destination().name }} details">
+    <div class="card-image-wrapper">
+      <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
+      <div class="card-favorite-btn">
+        <app-favorite-button
+          [destinationId]="destination().id"
+          [ariaLabel]="'Add ' + destination().name + ' to favorites'"
+          size="medium"
+        />
+      </div>
+    </div>
+    <div class="destination-info">
+      <span class="destination-number">{{ destination().number }}</span>
+      <h3>{{ destination().name }}</h3>
+      <p>{{ destination().description }}</p>
+      <span class="destination-link">{{ destination().linkText }}</span>
+    </div>
+  </a>
+}

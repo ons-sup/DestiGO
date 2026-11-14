@@ -1,13 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { DestinationWheelNavComponent } from './shared/destination-wheel/destination-wheel-nav.component';
+import { Component } from '@angular/core';
+import { LayoutComponent } from './layout/layout.component';
 
 @Component({
-  imports: [RouterOutlet, DestinationWheelNavComponent],
+  imports: [LayoutComponent],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('DestiGO');
-}
+export class App {}
