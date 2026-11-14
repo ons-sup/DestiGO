@@ -1,0 +1,64 @@
+<button
+  class="wheel-launcher"
+  type="button"
+  aria-label="Open destination wheel"
+  aria-haspopup="dialog"
+  [attr.aria-expanded]="isOpen()"
+  [attr.aria-controls]="isOpen() ? 'destination-wheel-dialog' : null"
+  (click)="openWheel()"
+>
+  <span class="wheel-launcher__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  </span>
+  <span class="wheel-launcher__label">Destinations</span>
+</button>
+
+@if (isOpen()) {
+  <div class="wheel-overlay">
+    <div class="wheel-overlay__backdrop" aria-hidden="true" (click)="closeWheel()"></div>
+    <div
+      #dialog
+      class="wheel-overlay__dialog"
+      id="destination-wheel-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="destination-wheel-dialog-title"
+      aria-describedby="destination-wheel-dialog-description"
+      tabindex="-1"
+    >
+      <button
+        class="wheel-overlay__close"
+        type="button"
+        aria-label="Close destination wheel"
+        (click)="closeWheel()"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+
+      <header class="wheel-overlay__header">
+        <p class="wheel-overlay__eyebrow">DestiGO compass</p>
+        <h2 class="wheel-overlay__title" id="destination-wheel-dialog-title">
+          Choose your destination
+        </h2>
+        <p class="wheel-overlay__subtitle" id="destination-wheel-dialog-description">
+          Spin the wheel, then explore a country guide.
+        </p>
+      </header>
+
+      <app-destination-wheel (exploreSelected)="onExplore($event)" />
+    </div>
+  </div>
+}

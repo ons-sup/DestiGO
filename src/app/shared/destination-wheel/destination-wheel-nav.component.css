@@ -1,0 +1,227 @@
+:host {
+  display: block;
+}
+
+.wheel-launcher {
+  position: fixed;
+  right: max(1.15rem, env(safe-area-inset-right));
+  bottom: max(1.15rem, env(safe-area-inset-bottom));
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(22, 10, 36, 0.9);
+  color: #ffffff;
+  box-shadow:
+    0 18px 45px -18px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  font: inherit;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.wheel-launcher:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 171, 145, 0.55);
+  box-shadow:
+    0 24px 55px -20px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.wheel-launcher:focus-visible {
+  outline: 2px solid #ffab91;
+  outline-offset: 3px;
+}
+
+.wheel-launcher__icon {
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7a1fa2, #c2185b);
+  box-shadow: 0 8px 20px -10px rgba(194, 24, 91, 0.9);
+}
+
+.wheel-launcher__icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.wheel-launcher__label {
+  padding-right: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wheel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2.5rem);
+}
+
+.wheel-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 3, 14, 0.82);
+  backdrop-filter: blur(10px);
+  animation: wheel-backdrop-in 0.22s ease both;
+}
+
+.wheel-overlay__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1060px);
+  max-height: min(92dvh, 920px);
+  overflow-y: auto;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(122, 31, 162, 0.28), transparent 40%),
+    linear-gradient(160deg, #1c0c2f, #100619 70%);
+  box-shadow:
+    0 40px 120px -30px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: wheel-dialog-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.wheel-overlay__dialog:focus {
+  outline: none;
+}
+
+.wheel-overlay__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wheel-overlay__close:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: rotate(90deg);
+}
+
+.wheel-overlay__close:focus-visible {
+  outline: 2px solid #ffab91;
+  outline-offset: 3px;
+}
+
+.wheel-overlay__close svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.wheel-overlay__header {
+  margin-bottom: 1.5rem;
+  padding-right: 3.5rem;
+}
+
+.wheel-overlay__eyebrow {
+  margin: 0 0 0.5rem;
+  color: #ffab91;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.wheel-overlay__title {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.wheel-overlay__subtitle {
+  margin: 0.6rem 0 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.wheel-overlay__dialog app-destination-wheel {
+  display: block;
+}
+
+@keyframes wheel-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wheel-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .wheel-launcher {
+    padding: 0.45rem;
+  }
+
+  .wheel-launcher__label {
+    display: none;
+  }
+
+  .wheel-overlay {
+    padding: 0;
+  }
+
+  .wheel-overlay__dialog {
+    width: 100%;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    padding: 1rem;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .wheel-overlay__header {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel-launcher,
+  .wheel-overlay__backdrop,
+  .wheel-overlay__dialog,
+  .wheel-overlay__close {
+    animation: none;
+    transition: none;
+  }
+}

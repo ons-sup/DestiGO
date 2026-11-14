@@ -1,0 +1,238 @@
+:host {
+  position: fixed;
+  inset: 0;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #12071f;
+  color: #ffffff;
+  font-family:
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.home {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 4vw, 2.5rem) 1.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(122, 31, 162, 0.32), transparent 38%),
+    radial-gradient(circle at 86% 18%, rgba(194, 24, 91, 0.22), transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(255, 171, 145, 0.14), transparent 42%),
+    linear-gradient(180deg, #170a27 0%, #12071f 58%, #0c0414 100%);
+}
+
+.home::before,
+.home::after {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  content: '';
+}
+
+.home::before {
+  top: -12rem;
+  left: -10rem;
+  width: 32rem;
+  height: 32rem;
+  background: rgba(122, 31, 162, 0.25);
+}
+
+.home::after {
+  top: 22%;
+  right: -8rem;
+  width: 26rem;
+  height: 26rem;
+  background: rgba(194, 24, 91, 0.18);
+}
+
+.home__header,
+.home__hero,
+.home__footer {
+  position: relative;
+  z-index: 1;
+}
+
+.home__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.home__mark {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7a1fa2, #c2185b);
+  box-shadow: 0 10px 24px -10px rgba(194, 24, 91, 0.9);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.home__name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.home__tagline {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+}
+
+.home__auth {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.home__greeting {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.home__auth-link {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home__auth-link--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.home__auth-link--solid {
+  border: none;
+  background: linear-gradient(135deg, #7a1fa2, #c2185b);
+  box-shadow: 0 10px 24px -12px rgba(194, 24, 91, 0.9);
+}
+
+.home__auth-link--solid:hover {
+  filter: brightness(1.1);
+}
+
+.home__auth-link:focus-visible {
+  outline: 2px solid #ffab91;
+  outline-offset: 2px;
+}
+
+.home__hero {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 780px;
+  margin: clamp(3rem, 8vh, 5.5rem) auto clamp(2rem, 5vh, 3.25rem);
+  text-align: center;
+}
+
+.home__eyebrow {
+  margin: 0 0 0.9rem;
+  color: #ffab91;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.home__title {
+  margin: 0;
+  font-size: clamp(2.5rem, 6.4vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.home__accent {
+  background: linear-gradient(120deg, #ffab91 0%, #e879b9 48%, #b388ff 100%);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+.home__subtitle {
+  max-width: 620px;
+  margin: 1.2rem auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+  line-height: 1.7;
+}
+
+.home__hint {
+  margin: 1.6rem 0 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.home__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .home__header {
+    justify-content: center;
+  }
+
+  .home__tagline {
+    display: none;
+  }
+
+  .home__greeting {
+    display: none;
+  }
+
+  .home__hero {
+    margin-top: 2.5rem;
+  }
+
+  .home__footer {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__mark {
+    transition: none;
+  }
+}

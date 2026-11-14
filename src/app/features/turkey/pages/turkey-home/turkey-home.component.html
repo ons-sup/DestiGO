@@ -1,9 +1,10 @@
 <app-turkey-hero
   [countryName]="countryName"
   [countryTagline]="countryTagline"
+  [countryImage]="countryImage"
 ></app-turkey-hero>
 
-<app-turkey-intro [introduction]="introduction"></app-turkey-intro>
+<app-turkey-intro [introduction]="introduction" [image]="countryImage"></app-turkey-intro>
 
 <section class="destinations">
   <div class="destinations__header">
@@ -37,7 +38,7 @@
     <figure class="experiences__figure">
       <img
         class="experiences__image"
-        src="https://images.unsplash.com/photo-1543198715-c0caf11e07f1?q=80&w=1600&auto=format&fit=crop"
+        src="/images/turkey/cappadocia.jpg"
         alt="Cappadocia balloons"
         loading="lazy"
       />

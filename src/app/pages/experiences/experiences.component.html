@@ -1,0 +1,53 @@
+<app-hero-section
+  [eyebrow]="'EXPERIENCE ITALY'"
+  [title]="'Live the '"
+  [titleAccent]="'Italian Way'"
+  [subtitle]="'Immerse yourself in authentic Italian culture, cuisine, and unforgettable adventures.'"
+  [imageSrc]="'/assets/images/amalfi.jpg'"
+/>
+
+<section class="experiences-section">
+  <div class="section-header">
+    <h2>Experiences</h2>
+    <p>Choose your Italian adventure</p>
+  </div>
+
+  <div class="category-filter" role="group" aria-label="Experience categories">
+    @for (category of categories; track category.value) {
+      <button
+        type="button"
+        class="category-btn"
+        [class.active]="selectedCategory() === category.value"
+        (click)="selectCategory(category.value)"
+        [attr.aria-pressed]="selectedCategory() === category.value"
+      >
+        {{ category.label }}
+      </button>
+    }
+  </div>
+
+  <div class="experiences-grid">
+    @for (experience of filteredExperiences(); track experience.id) {
+      <a [routerLink]="['/experiences', experience.id]" class="experience-card-link" aria-label="Learn more about {{ experience.title }}">
+        <article class="experience-card">
+          <img [src]="experience.imageUrl" [alt]="experience.title" loading="lazy">
+          <div class="experience-info">
+            <span class="experience-category">{{ getCategoryLabel(experience.category) }}</span>
+            <h3>{{ experience.title }}</h3>
+            <p>{{ experience.description }}</p>
+            <div class="experience-footer">
+              <span class="related-destination">📍 {{ experience.relatedDestination }}</span>
+              <span class="experience-btn">Learn More</span>
+            </div>
+          </div>
+        </article>
+      </a>
+    }
+  </div>
+
+  @if (filteredExperiences().length === 0) {
+    <div class="empty-state">
+      <p>No experiences found for this category.</p>
+    </div>
+  }
+</section>

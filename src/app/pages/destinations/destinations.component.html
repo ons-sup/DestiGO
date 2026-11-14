@@ -1,0 +1,23 @@
+<app-hero-section
+  [eyebrow]="'EXPLORE ITALY'"
+  [title]="'Discover '"
+  [titleAccent]="'Beautiful Destinations'"
+  [subtitle]="'From ancient cities to breathtaking coastlines, discover the places that make Italy unforgettable.'"
+  [imageSrc]="'/assets/images/italy-destinations.jpg'"
+/>
+
+<section class="destinations-section">
+  <div class="destinations-heading">
+    <div>
+      <p class="section-label">WHERE TO GO</p>
+      <h2>Explore Our <span class="accent">Destinations</span></h2>
+      <p>Discover the most beautiful places across Italy.</p>
+    </div>
+  </div>
+
+  <div class="destinations-grid">
+    @for (destination of destinations; track destination.id) {
+      <app-destination-card [destination]="destination" variant="large" />
+    }
+  </div>
+</section>

@@ -8,7 +8,7 @@ export const TURKEY_DATA: CountryData = {
     'landscapes, and flavors. From the minaret-dotted skyline of Istanbul to ' +
     'the fairy-chimney valleys of Cappadocia and the turquoise coast of Antalya, ' +
     'every region tells a different story.',
-  image: 'https://images.unsplash.com/photo-1528559918855-f28d756eb26e?q=80&w=2000&auto=format&fit=crop',
+      image: '/images/turkey/turkey-hero.jpg',
   destinations: [
     {
       id: 'istanbul',
@@ -18,7 +18,7 @@ export const TURKEY_DATA: CountryData = {
         'Istanbul spans the Bosphorus, uniting East and West in a single ' +
         'vibrant metropolis. Wander the historic peninsula, explore the ' +
         'Grand Bazaar, and watch the sunset over the Golden Horn.',
-      image: 'https://images.unsplash.com/photo-1527937266351-2a7a4456e9f3?q=80&w=2000&auto=format&fit=crop',
+      image: '/images/turkey/istanbul.jpg',
       region: 'Marmara',
       highlights: [
         'Hagia Sophia',
@@ -36,7 +36,7 @@ export const TURKEY_DATA: CountryData = {
         'Cappadocia\u2019s surreal landscape of cone-shaped rock formations ' +
         'and cave dwellings is best appreciated at dawn, from the basket of ' +
         'a hot air balloon drifting over the valley.',
-      image: 'https://images.unsplash.com/photo-1543198715-c0caf11e07f1?q=80&w=2000&auto=format&fit=crop',
+      image: '/images/turkey/cappadocia.jpg',
       region: 'Central Anatolia',
       highlights: [
         'Göreme Open-Air Museum',
@@ -54,7 +54,7 @@ export const TURKEY_DATA: CountryData = {
         'Antalya blends Mediterranean beaches with Roman history. Stroll ' +
         'through the narrow streets of Kaleiçi, then head to the coast for ' +
         'turquoise water and Taurus Mountain views.',
-      image: 'https://images.unsplash.com/photo-1541509272076-e1b39c97770e?q=80&w=2000&auto=format&fit=crop',
+      image: '/images/turkey/antalya.jpg',
       region: 'Mediterranean',
       highlights: [
         'Kaleiçi old town',
