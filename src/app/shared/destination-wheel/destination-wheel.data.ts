@@ -14,7 +14,7 @@ export const DESTINATION_WHEEL_COUNTRIES: readonly WheelCountry[] = [
     name: 'Italy',
     tagline: 'La dolce vita, from the Alps to the sea.',
     route: '/italy',
-    available: false,
+    available: true,
     color: '#c2185b',
   },
   {

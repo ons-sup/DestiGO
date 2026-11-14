@@ -31,7 +31,7 @@ describe('DestinationWheelComponent', () => {
     fixture.detectChanges();
 
     expect(element.querySelector('.wheel__country')?.textContent).toContain('Italy');
-    expect(element.querySelector<HTMLButtonElement>('.wheel__explore')?.disabled).toBe(true);
+    expect(element.querySelector<HTMLButtonElement>('.wheel__explore')?.disabled).toBe(false);
   });
 
   it('emits the selected available country for the overlay to explore', () => {
