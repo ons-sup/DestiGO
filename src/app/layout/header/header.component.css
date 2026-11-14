@@ -1,0 +1,92 @@
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 70px;
+  z-index: 3;
+}
+
+.logo {
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.country-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.bar a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.bar a:hover,
+.bar a.active {
+  color: var(--accent);
+}
+
+.icon {
+  font-size: 23px;
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .top-bar {
+    padding: 20px 30px;
+  }
+
+  .bar {
+    gap: 18px;
+  }
+
+  .bar a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 18px 20px;
+  }
+
+  .bar {
+    gap: 10px;
+  }
+
+  .bar a {
+    display: none;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,37 @@
+@if (isDestinationsHero()) {
+  <section class="destinations-hero">
+    <div class="destinations-hero-content">
+      @if (smallTitle()) {
+        <p class="small-title">{{ smallTitle() }}</p>
+      }
+      <h1>{{ title() }}</h1>
+      @if (subtitle()) {
+        <p>{{ subtitle() }}</p>
+      }
+    </div>
+  </section>
+} @else {
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source [src]="videoSrc()" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>
+        @if (titleFlag()) {
+          {{ title() }} <img [src]="titleFlag()" alt="Flag" class="title-flag">
+        } @else {
+          {{ title() }}
+        }
+      </h1>
+      @if (subtitle()) {
+        <p>{{ subtitle() }}</p>
+      }
+      @if (showCta() && ctaText() && ctaRoute()) {
+        <a [routerLink]="ctaRoute()" class="explore-btn">
+          {{ ctaText() }} <span>→</span>
+        </a>
+      }
+    </div>
+  </section>
+}

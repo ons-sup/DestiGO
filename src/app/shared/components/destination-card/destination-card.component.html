@@ -1,0 +1,17 @@
+@if (variant() === 'small') {
+  <div class="destination-card">
+    <img [src]="destination().imageUrl" [alt]="destination().name">
+    <h3>{{ destination().name }}</h3>
+    <p>{{ destination().subtitle }}</p>
+  </div>
+} @else {
+  <div class="destination-card-large">
+    <img [src]="destination().imageUrl" [alt]="destination().name">
+    <div class="destination-info">
+      <span class="destination-number">{{ destination().number }}</span>
+      <h3>{{ destination().name }}</h3>
+      <p>{{ destination().description }}</p>
+      <a href="#" class="destination-link">{{ destination().linkText }}</a>
+    </div>
+  </div>
+}

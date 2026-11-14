@@ -1,0 +1,199 @@
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.30);
+}
+
+.hero-content {
+  position: relative;
+  color: white;
+  z-index: 2;
+  padding-left: 5%;
+  padding-top: 80px;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  line-height: 1.05;
+  margin-bottom: 25px;
+  font-family: var(--font-primary);
+  font-weight: bold;
+}
+
+.hero-content h1 img.title-flag {
+  width: 34px;
+  height: 23px;
+  object-fit: cover;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 18px;
+}
+
+.hero-content p {
+  font-size: 24px;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+  max-width: 600px;
+}
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 14px 30px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 17px;
+  font-family: var(--font-primary);
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.explore-btn span {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.explore-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.destinations-hero {
+  height: 72vh;
+  min-height: 550px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.destinations-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45));
+  z-index: 1;
+}
+
+.destinations-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/images/italy-destinations.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.destinations-hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 750px;
+  margin-left: 7%;
+  padding-top: 50px;
+}
+
+.small-title {
+  font-size: 14px;
+  letter-spacing: 4px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+}
+
+.destinations-hero-content h1 {
+  font-size: 68px;
+  line-height: 1.05;
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-family: var(--font-primary);
+}
+
+.destinations-hero-content h1 span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.destinations-hero-content > p:last-child {
+  max-width: 600px;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #f5f5f5;
+  font-family: var(--font-sans);
+}
+
+@media (max-width: 900px) {
+  .hero-content h1 {
+    font-size: 52px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+  }
+
+  .destinations-hero-content {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .destinations-hero-content h1 {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .destinations-hero {
+    height: 65vh;
+    min-height: 500px;
+  }
+
+  .destinations-hero-content h1 {
+    font-size: 42px;
+  }
+
+  .destinations-hero-content > p:last-child {
+    font-size: 16px;
+  }
+
+  .explore-btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
