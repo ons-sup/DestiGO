@@ -1,0 +1,23 @@
+<article class="card" [routerLink]="['/turkey', destination().id]">
+  <div class="card__image-wrapper">
+    <img
+      class="card__image"
+      [src]="destination().image"
+      [alt]="destination().name"
+      loading="lazy"
+    />
+    <div class="card__overlay"></div>
+    <span class="card__badge">{{ destination().region }}</span>
+  </div>
+  <div class="card__content">
+    <h2 class="card__title">{{ destination().name }}</h2>
+    <p class="card__tagline">{{ destination().tagline }}</p>
+    <p class="card__description">{{ destination().description }}</p>
+    <ul class="card__highlights">
+      @for (highlight of destination().highlights; track highlight) {
+        <li>{{ highlight }}</li>
+      }
+    </ul>
+    <span class="card__meta">Best time: {{ destination().bestTimeToVisit }}</span>
+  </div>
+</article>
