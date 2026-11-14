@@ -1,6 +1,11 @@
+## Demo & Documentation
+
+- Demo videos: https://drive.google.com/file/d/1CQTprmNnjclAI6paFXbfFzBb_CEDwB0R/view?usp=sharing
+- Conception documentation: https://www.canva.com/design/editor/shell?designId=DAHa42ltFeI&extension=KpZnYh1pxGdQTB5hnNPWgw&mode=edit
+
 # DestiGo
 
-**Discover destinations across Turkey, Italy, and beyond — in one place.**
+**Discover destinations across Turkey, Italy, and beyond **" in one place.**
 
 ![Angular](https://img.shields.io/badge/Angular-22-DD0031?logo=angular&logoColor=white&style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white&style=flat-square)
@@ -10,7 +15,7 @@
 
 DestiGo is a travel discovery platform for students, young adults, couples, groups of friends, and occasional travelers. It replaces scattered destination research with one interface for country guides, destination details, and saved places. The value is comparison: consistent country portals, comparable destination pages, and one favorites list across every portal.
 
-This is an academic project at **SUP'COM — Higher School of Communication of Tunis**. DestiGo does **not** handle bookings, payments, or travel-agency services. The MVP covers discovery, accounts, and saving; search, maps, and recommendations are out of scope for this version.
+This is an academic project at **SUP'COM **" Higher School of Communication of Tunis**. DestiGo does **not** handle bookings, payments, or travel-agency services. The MVP covers discovery, accounts, and saving; search, maps, and recommendations are out of scope for this version.
 
 ## Stack
 
@@ -85,9 +90,9 @@ flowchart TB
     TR["Turkey /turkey<br/>in progress"]
     IT["Italy /italy<br/>planned"]
     ES["Spain /spain<br/>planned"]
-    TRD["Pages · components<br/>data · scoped styles"]
-    ITD["Pages · components<br/>data · scoped styles"]
-    ESD["Pages · components<br/>data · scoped styles"]
+    TRD["Pages —— components<br/>data —— scoped styles"]
+    ITD["Pages —— components<br/>data —— scoped styles"]
+    ESD["Pages —— components<br/>data —— scoped styles"]
   end
 
   DG["DestiGo"] --> Shell
@@ -194,15 +199,10 @@ Detailed rules for contributors and AI assistants: [`AGENTS.md`](./AGENTS.md) an
 
 |             |                                                                  |
 | ----------- | ---------------------------------------------------------------- |
-| Institution | SUP'COM — Higher School of Communication of Tunis                |
+| Institution | SUP'COM **" Higher School of Communication of Tunis                |
 | Project     | Web Development                                                  |
 | Supervisor  | Dr. Maroua Nouioua                                               |
 | Developers  | Ahmed Ben Mim (Turkey), Ons Chtioui (Italy)                      |
 | Repository  | [github.com/ons-sup/DestiGO](https://github.com/ons-sup/DestiGO) |
-
-## Demo & Documentation
-
-- Demo videos: https://drive.google.com/file/d/1CQTprmNnjclAI6paFXbfFzBb_CEDwB0R/view?usp=sharing
-- Conception documentation: https://www.canva.com/design/editor/shell?designId=DAHa42ltFeI&extension=KpZnYh1pxGdQTB5hnNPWgw&mode=edit
 
 Academic project. Not intended for commercial use.
