@@ -2,11 +2,13 @@
   <div class="destination-card">
     <div class="card-image-wrapper">
       <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
-      <app-favorite-button
-        [destinationId]="destination().id"
-        ariaLabel="Add {{ destination().name }} to favorites"
-        size="small"
-      />
+      <div class="card-favorite-btn">
+        <app-favorite-button
+          [destinationId]="destination().id"
+          ariaLabel="Add {{ destination().name }} to favorites"
+          size="small"
+        />
+      </div>
     </div>
     <div class="card-content">
       <h3>{{ destination().name }}</h3>
@@ -17,11 +19,13 @@
   <div class="destination-card-large">
     <div class="card-image-wrapper">
       <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
-      <app-favorite-button
-        [destinationId]="destination().id"
-        ariaLabel="Add {{ destination().name }} to favorites"
-        size="medium"
-      />
+      <div class="card-favorite-btn">
+        <app-favorite-button
+          [destinationId]="destination().id"
+          ariaLabel="Add {{ destination().name }} to favorites"
+          size="medium"
+        />
+      </div>
     </div>
     <div class="destination-info">
       <span class="destination-number">{{ destination().number }}</span>

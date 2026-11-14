@@ -50,9 +50,13 @@
 .icon {
   font-size: 23px;
   color: white;
-  margin-left: 5px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
 }
 
 .icon:hover {
@@ -61,11 +65,13 @@
 
 .favorite-icon {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: white;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .favorite-icon:hover {
@@ -75,21 +81,22 @@
 
 .favorite-badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  min-width: 18px;
-  height: 18px;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  height: 20px;
   background-color: #e74c3c;
   color: white;
   font-size: 11px;
   font-weight: bold;
   font-family: var(--font-sans);
-  border-radius: 9px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  padding: 0 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 4;
 }
 
 @media (max-width: 900px) {

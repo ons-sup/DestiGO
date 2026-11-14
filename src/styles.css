@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #F7F7F2;
+  --text-color: #24332D;
+  --primary: #0B3D5C;
+  --primary-hover: #082F47;
+  --accent: #E8CFA7;
+  --card-bg: #ffffff;
+  --text-muted: #68736D;
+  --footer-bg: #24332D;
+  --footer-text: #D5DAD6;
+  --font-primary: Georgia, serif;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --shadow-sm: 0 10px 30px rgba(36, 51, 45, 0.08);
+  --shadow-md: 0 18px 40px rgba(36, 51, 45, 0.15);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+video {
+  display: block;
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.view-all {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.view-all:hover {
+  color: var(--primary-hover);
+  transform: translateX(5px);
+}
+
+@media (max-width: 900px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-all {
+    font-size: 14px;
+  }
+}

@@ -19,11 +19,11 @@ export class HeaderComponent {
     { path: '/', label: 'Home' },
     { path: '/destinations', label: 'Destinations' },
     { path: '/experiences', label: 'Experiences' },
-    { path: '/plan-trip', label: 'Plan Your Trip' },
+    { path: '/plan-your-trip', label: 'Plan Your Trip' },
     { path: '/about', label: 'About' }
   ];
 
-  icons = ['⌕', '♡', '🎵'];
+  icons = ['♡'];
 
   countryName = computed(() => {
     const country = this.countryService.getCurrentCountry();

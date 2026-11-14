@@ -14,8 +14,8 @@ export const COUNTRIES: Record<CountryCode, Country> = {
     code: 'italy',
     name: 'Italy',
     flag: '🇮🇹',
-    heroVideo: 'assets/videos/italy-hero.mp4',
-    heroImage: 'assets/images/italy-destinations.jpg',
+    heroVideo: '/assets/videos/italy-hero.mp4',
+    heroImage: '/assets/images/italy-destinations.jpg',
     destinations: []
   },
   turkey: {

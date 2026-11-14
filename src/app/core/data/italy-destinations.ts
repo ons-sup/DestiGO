@@ -7,7 +7,7 @@ export const ITALY_DESTINATIONS: Destination[] = [
     name: 'Rome',
     subtitle: 'The Eternal City',
     description: 'Walk through history in the Eternal City, where ancient ruins meet vibrant Italian life.',
-    imageUrl: 'assets/images/Rome.jfif',
+    imageUrl: '/assets/images/Rome.jfif',
     linkText: 'Discover Rome →'
   },
   {
@@ -16,7 +16,7 @@ export const ITALY_DESTINATIONS: Destination[] = [
     name: 'Venice',
     subtitle: 'The City Of Canals',
     description: 'Lose yourself among canals, bridges and romantic streets in the floating city.',
-    imageUrl: 'assets/images/Venice.jfif',
+    imageUrl: '/assets/images/Venice.jfif',
     linkText: 'Discover Venice →'
   },
   {
@@ -25,7 +25,7 @@ export const ITALY_DESTINATIONS: Destination[] = [
     name: 'Florence',
     subtitle: 'The Art City',
     description: 'Experience Renaissance art, beautiful architecture and authentic Tuscan culture.',
-    imageUrl: 'assets/images/florence.jpg',
+    imageUrl: '/assets/images/florence.jpg',
     linkText: 'Discover Florence →'
   },
   {
@@ -34,7 +34,7 @@ export const ITALY_DESTINATIONS: Destination[] = [
     name: 'Milan',
     subtitle: 'Fashion & Design Capital',
     description: 'Discover Italian fashion, modern design and the impressive Duomo.',
-    imageUrl: 'assets/images/milan.jpg',
+    imageUrl: '/assets/images/milan.jpg',
     linkText: 'Discover Milan →'
   },
   {
@@ -43,7 +43,7 @@ export const ITALY_DESTINATIONS: Destination[] = [
     name: 'Amalfi Coast',
     subtitle: 'Mediterranean Paradise',
     description: 'Enjoy dramatic cliffs, colorful villages and breathtaking Mediterranean views.',
-    imageUrl: 'assets/images/amalfi.jpg',
+    imageUrl: '/assets/images/amalfi.jpg',
     linkText: 'Discover Amalfi →'
   },
   {
@@ -52,7 +52,7 @@ export const ITALY_DESTINATIONS: Destination[] = [
     name: 'Cinque Terre',
     subtitle: 'Colorful Seaside Villages',
     description: 'Explore colorful seaside villages, hiking trails and spectacular landscapes.',
-    imageUrl: 'assets/images/cinque-terre.jpg',
+    imageUrl: '/assets/images/cinque-terre.jpg',
     linkText: 'Discover Cinque Terre →'
   }
 ];

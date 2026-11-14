@@ -27,11 +27,11 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 40px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .category-btn {
-  padding: 10px 20px;
+  padding: 10px 22px;
   background-color: transparent;
   border: 2px solid var(--primary);
   border-radius: 25px;
@@ -70,6 +70,9 @@
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .experience-card:hover {
@@ -79,8 +82,9 @@
 
 .experience-card img {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -90,6 +94,9 @@
 
 .experience-info {
   padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .experience-category {
@@ -125,6 +132,7 @@
   align-items: center;
   padding-top: 16px;
   border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: auto;
 }
 
 .related-destination {
@@ -193,6 +201,6 @@
   }
 
   .experience-card img {
-    height: 180px;
+    aspect-ratio: 16 / 9;
   }
 }
