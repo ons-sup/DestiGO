@@ -16,13 +16,34 @@
       }
     </div>
   </section>
-} @else {
+} @else if (videoSrc()) {
   <section class="hero">
     <video autoplay muted loop playsinline class="hero-video">
       <source [src]="videoSrc()" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
+      <h1>{{ title() }} <span class="accent">{{ titleAccent() }}</span></h1>
+      @if (subtitle()) {
+        <p>{{ subtitle() }}</p>
+      }
+      @if (showCta() && ctaText() && ctaRoute()) {
+        <a [routerLink]="ctaRoute()" class="explore-btn">
+          {{ ctaText() }} <span>→</span>
+        </a>
+      }
+    </div>
+  </section>
+} @else if (imageSrc()) {
+  <section class="hero hero-image">
+    <div class="hero-image-bg">
+      <img [src]="imageSrc()" [alt]="" aria-hidden="true">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      @if (eyebrow()) {
+        <p class="eyebrow">{{ eyebrow() }}</p>
+      }
       <h1>{{ title() }} <span class="accent">{{ titleAccent() }}</span></h1>
       @if (subtitle()) {
         <p>{{ subtitle() }}</p>
