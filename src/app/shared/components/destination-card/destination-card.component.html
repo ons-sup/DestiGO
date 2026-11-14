@@ -1,11 +1,11 @@
 @if (variant() === 'small') {
-  <div class="destination-card">
+  <a [routerLink]="['/destinations', destination().id]" class="destination-card" aria-label="View {{ destination().name }} details">
     <div class="card-image-wrapper">
       <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
       <div class="card-favorite-btn">
         <app-favorite-button
           [destinationId]="destination().id"
-          ariaLabel="Add {{ destination().name }} to favorites"
+          [ariaLabel]="'Add ' + destination().name + ' to favorites'"
           size="small"
         />
       </div>
@@ -14,15 +14,15 @@
       <h3>{{ destination().name }}</h3>
       <p>{{ destination().subtitle }}</p>
     </div>
-  </div>
+  </a>
 } @else {
-  <div class="destination-card-large">
+  <a [routerLink]="['/destinations', destination().id]" class="destination-card-large" aria-label="View {{ destination().name }} details">
     <div class="card-image-wrapper">
       <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
       <div class="card-favorite-btn">
         <app-favorite-button
           [destinationId]="destination().id"
-          ariaLabel="Add {{ destination().name }} to favorites"
+          [ariaLabel]="'Add ' + destination().name + ' to favorites'"
           size="medium"
         />
       </div>
@@ -31,7 +31,7 @@
       <span class="destination-number">{{ destination().number }}</span>
       <h3>{{ destination().name }}</h3>
       <p>{{ destination().description }}</p>
-      <a href="#" class="destination-link">{{ destination().linkText }}</a>
+      <span class="destination-link">{{ destination().linkText }}</span>
     </div>
-  </div>
+  </a>
 }

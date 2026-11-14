@@ -1,12 +1,13 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { HeroSectionComponent } from '../../shared/components/hero-section/hero-section.component';
 import { Experience, ExperienceCategory, ITALY_EXPERIENCES, EXPERIENCE_CATEGORIES } from './experience.data';
 
 @Component({
   selector: 'app-experiences',
   standalone: true,
-  imports: [CommonModule, HeroSectionComponent],
+  imports: [CommonModule, RouterLink, HeroSectionComponent],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css'
 })

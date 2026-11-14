@@ -1,10 +1,16 @@
-@if (isDestinationsHero()) {
-  <section class="destinations-hero">
-    <div class="destinations-hero-content">
-      @if (smallTitle()) {
-        <p class="small-title">{{ smallTitle() }}</p>
+@if (isDetailPage()) {
+  <section class="detail-hero">
+    <div class="detail-hero-bg">
+      @if (imageSrc()) {
+        <img [src]="imageSrc()" [alt]="" aria-hidden="true">
       }
-      <h1>Discover <span class="accent">Beautiful Destinations</span></h1>
+      <div class="detail-hero-overlay"></div>
+    </div>
+    <div class="detail-hero-content">
+      @if (eyebrow()) {
+        <p class="eyebrow">{{ eyebrow() }}</p>
+      }
+      <h1>{{ title() }} <span class="accent">{{ titleAccent() }}</span></h1>
       @if (subtitle()) {
         <p>{{ subtitle() }}</p>
       }
@@ -17,15 +23,7 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>
-        @for (line of titleLines(); track $index) {
-          @if ($index > 0) { <br /> }
-          {{ line }}
-        }
-        @if (titleFlag()) {
-          <img [src]="titleFlag()" alt="Flag" class="title-flag">
-        }
-      </h1>
+      <h1>{{ title() }} <span class="accent">{{ titleAccent() }}</span></h1>
       @if (subtitle()) {
         <p>{{ subtitle() }}</p>
       }

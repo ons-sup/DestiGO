@@ -39,6 +39,11 @@
   font-weight: bold;
 }
 
+.hero-content h1 span.accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
 .hero-content h1 img.title-flag {
   width: 34px;
   height: 23px;
@@ -81,7 +86,7 @@
   transform: translateY(-2px);
 }
 
-.destinations-hero {
+.detail-hero {
   min-height: 72vh;
   position: relative;
   overflow: hidden;
@@ -89,36 +94,37 @@
   align-items: center;
 }
 
-.destinations-hero::before {
-  content: "";
+.detail-hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
-  z-index: 1;
-}
-
-.destinations-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("/assets/images/italy-destinations.jpg");
-  background-size: cover;
-  background-position: center;
   z-index: 0;
 }
 
-.destinations-hero-content {
+.detail-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.35));
+  z-index: 1;
+}
+
+.detail-hero-content {
   position: relative;
   z-index: 2;
   color: white;
-  max-width: 750px;
+  max-width: 800px;
   margin-left: 7%;
   margin-right: 7%;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
-.small-title {
+.eyebrow {
   font-size: 14px;
   letter-spacing: 4px;
   font-weight: bold;
@@ -128,7 +134,7 @@
   text-transform: uppercase;
 }
 
-.destinations-hero-content h1 {
+.detail-hero-content h1 {
   font-size: 68px;
   line-height: 1.05;
   margin-bottom: 25px;
@@ -136,12 +142,12 @@
   font-family: var(--font-primary);
 }
 
-.destinations-hero-content h1 span.accent {
+.detail-hero-content h1 span.accent {
   color: var(--accent);
   font-style: italic;
 }
 
-.destinations-hero-content > p:last-child {
+.detail-hero-content > p:last-child {
   max-width: 600px;
   font-size: 19px;
   line-height: 1.7;
@@ -158,12 +164,12 @@
     font-size: 20px;
   }
 
-  .destinations-hero-content {
+  .detail-hero-content {
     margin-left: 5%;
     margin-right: 5%;
   }
 
-  .destinations-hero-content h1 {
+  .detail-hero-content h1 {
     font-size: 52px;
   }
 }
@@ -184,15 +190,15 @@
     font-size: 18px;
   }
 
-  .destinations-hero {
+  .detail-hero {
     min-height: 65vh;
   }
 
-  .destinations-hero-content h1 {
+  .detail-hero-content h1 {
     font-size: 42px;
   }
 
-  .destinations-hero-content > p:last-child {
+  .detail-hero-content > p:last-child {
     font-size: 16px;
   }
 

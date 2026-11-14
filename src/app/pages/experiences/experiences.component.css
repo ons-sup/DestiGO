@@ -58,6 +58,13 @@
   outline-offset: 2px;
 }
 
+.experience-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
 .experiences-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -75,7 +82,7 @@
   height: 100%;
 }
 
-.experience-card:hover {
+.experience-card-link:hover .experience-card {
   transform: translateY(-8px);
   box-shadow: var(--shadow-md);
 }
@@ -88,7 +95,7 @@
   transition: transform 0.5s ease;
 }
 
-.experience-card:hover img {
+.experience-card-link:hover .experience-card img {
   transform: scale(1.04);
 }
 

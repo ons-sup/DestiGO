@@ -10,15 +10,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hero-section.component.css'
 })
 export class HeroSectionComponent {
+  eyebrow = input<string>('');
   title = input<string>('');
-  titleLines = input<string[]>([]);
-  titleFlag = input<string>(''); // Optional flag image for title
+  titleAccent = input<string>('');
   subtitle = input<string>('');
   videoSrc = input<string>('');
   imageSrc = input<string>('');
   ctaText = input<string>('');
   ctaRoute = input<string>('');
   showCta = input<boolean>(false);
-  smallTitle = input<string>('');
-  isDestinationsHero = input<boolean>(false);
+  isDetailPage = input<boolean>(false);
 }

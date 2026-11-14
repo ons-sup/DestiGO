@@ -1,7 +1,8 @@
 <app-hero-section
-  [isDestinationsHero]="true"
-  smallTitle="EXPERIENCE ITALY"
-  subtitle="Immerse yourself in authentic Italian culture, cuisine, and unforgettable adventures."
+  [eyebrow]="'EXPERIENCE ITALY'"
+  [title]="'Live the '"
+  [titleAccent]="'Italian Way'"
+  [subtitle]="'Immerse yourself in authentic Italian culture, cuisine, and unforgettable adventures.'"
 />
 
 <section class="experiences-section">
@@ -26,18 +27,20 @@
 
   <div class="experiences-grid">
     @for (experience of filteredExperiences(); track experience.id) {
-      <article class="experience-card">
-        <img [src]="experience.imageUrl" [alt]="experience.title" loading="lazy">
-        <div class="experience-info">
-          <span class="experience-category">{{ getCategoryLabel(experience.category) }}</span>
-          <h3>{{ experience.title }}</h3>
-          <p>{{ experience.description }}</p>
-          <div class="experience-footer">
-            <span class="related-destination">📍 {{ experience.relatedDestination }}</span>
-            <button class="experience-btn" aria-label="Learn more about {{ experience.title }}">Learn More</button>
+      <a [routerLink]="['/experiences', experience.id]" class="experience-card-link" aria-label="Learn more about {{ experience.title }}">
+        <article class="experience-card">
+          <img [src]="experience.imageUrl" [alt]="experience.title" loading="lazy">
+          <div class="experience-info">
+            <span class="experience-category">{{ getCategoryLabel(experience.category) }}</span>
+            <h3>{{ experience.title }}</h3>
+            <p>{{ experience.description }}</p>
+            <div class="experience-footer">
+              <span class="related-destination">📍 {{ experience.relatedDestination }}</span>
+              <span class="experience-btn">Learn More</span>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </a>
     }
   </div>
 
