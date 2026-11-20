@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/turkey/turkey.routes').then((m) => m.TURKEY_ROUTES),
   },
   {
+    path: 'spain',
+    loadChildren: () => import('./features/spain/spain.routes').then((m) => m.SPAIN_ROUTES),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
