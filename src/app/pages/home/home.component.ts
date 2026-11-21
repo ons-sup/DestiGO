@@ -23,9 +23,7 @@ export class HomeComponent {
   constructor(
     private destinationService: DestinationService,
     private countryService: CountryService
-  ) {
-    this.countryService.setCountry('italy');
-  }
+  ) {}
 
   get popularDestinations() {
     return this.countryService.currentCountry() === 'spain' ? SPAIN_POPULAR : ITALY_POPULAR;
