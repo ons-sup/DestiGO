@@ -3,7 +3,7 @@
     <div class="not-found-content">
       <h1>Destination Not Found</h1>
       <p>Sorry, we couldn't find a destination with that ID.</p>
-      <a routerLink="/destinations" class="back-link">← Back to Destinations</a>
+      <a routerLink="/italy/destinations" class="back-link">← Back to Destinations</a>
     </div>
   </section>
 } @else if (destination(); as dest) {
@@ -28,7 +28,7 @@
           [ariaLabel]="'Add ' + dest.name + ' to favorites'"
           size="large"
         />
-        <a routerLink="/destinations" class="back-link" aria-label="Back to destinations">← Destinations</a>
+        <a routerLink="/italy/destinations" class="back-link" aria-label="Back to destinations">← Destinations</a>
       </div>
     </div>
 
@@ -132,7 +132,7 @@
       @if (previousId() || nextId()) {
         <div class="nav-inner">
           @if (previousId(); as prevId) {
-            <a [routerLink]="['/destinations', prevId]" class="nav-link prev">
+            <a [routerLink]="['/italy/destinations', prevId]" class="nav-link prev">
               <span class="nav-label">Previous</span>
               <span class="nav-name">{{ getDestinationName(prevId) }}</span>
             </a>
@@ -140,7 +140,7 @@
             <div class="nav-link prev disabled"></div>
           }
           @if (nextId(); as nextId) {
-            <a [routerLink]="['/destinations', nextId]" class="nav-link next">
+            <a [routerLink]="['/italy/destinations', nextId]" class="nav-link next">
               <span class="nav-label">Next</span>
               <span class="nav-name">{{ getDestinationName(nextId) }}</span>
             </a>

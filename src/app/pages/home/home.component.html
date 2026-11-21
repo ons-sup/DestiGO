@@ -5,7 +5,7 @@
   [subtitle]="'Explore the most beautiful places. Live the culture, taste the best food and create unforgettable memories.'"
   [videoSrc]="getHeroVideo()"
   [ctaText]="'Explore Destinations'"
-  [ctaRoute]="'/destinations'"
+  [ctaRoute]="'/italy/destinations'"
   [showCta]="true"
 />
 
@@ -15,7 +15,7 @@
       <h2>Popular Destinations</h2>
       <p>Hand-picked places you can't miss.</p>
     </div>
-    <a routerLink="/destinations" class="view-all">View All →</a>
+    <a routerLink="/italy/destinations" class="view-all">View All →</a>
   </div>
   <div class="destination-cards">
     @for (destination of popularDestinations; track destination.id) {

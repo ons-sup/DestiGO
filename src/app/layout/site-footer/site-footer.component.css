@@ -1,4 +1,4 @@
-﻿:host {
+:host {
   display: block;
   font-family: var(
     --font-sans,
@@ -66,19 +66,20 @@
   color: inherit;
 }
 
-.site-footer__badge {
+.site-footer__logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 9999px;
-  background-color: #fcd34d;
-  color: #0f172a;
-  font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: -0.02em;
-  box-shadow: 0 2px 8px rgba(252, 211, 77, 0.25);
+  flex-shrink: 0;
+  color: #c9a84c;
+}
+
+.site-footer__logo svg {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .site-footer__brand-name {

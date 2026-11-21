@@ -19,7 +19,9 @@ export class HomeComponent {
   constructor(
     private destinationService: DestinationService,
     private countryService: CountryService
-  ) {}
+  ) {
+    this.countryService.setCountry('italy');
+  }
 
   getHeroVideo() {
     return this.countryService.getCurrentCountry().heroVideo || '';

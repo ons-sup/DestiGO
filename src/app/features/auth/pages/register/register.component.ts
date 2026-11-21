@@ -15,6 +15,7 @@ export class RegisterComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
+  protected readonly showPassword = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
   protected readonly form = inject(FormBuilder).nonNullable.group({
     name: ['', [Validators.required]],
@@ -35,6 +36,10 @@ export class RegisterComponent {
   protected get passwordInvalid(): boolean {
     const password = this.form.controls.password;
     return password.invalid && (password.touched || password.dirty);
+  }
+
+  protected togglePasswordVisibility(): void {
+    this.showPassword.update((visible) => !visible);
   }
 
   protected submit(): void {

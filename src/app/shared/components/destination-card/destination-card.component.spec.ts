@@ -39,7 +39,7 @@ describe('DestinationCardComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     const link = element.querySelector('a') as HTMLAnchorElement;
 
-    expect(link.getAttribute('href')).toBe('/destinations/rome');
+    expect(link.getAttribute('href')).toBe('/italy/destinations/rome');
     expect(link.getAttribute('aria-label')).toContain('View Rome details');
     expect(element.querySelector('img')?.getAttribute('alt')).toBe('Rome');
     expect(element.querySelector('h3')?.textContent).toContain('Rome');

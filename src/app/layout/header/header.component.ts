@@ -31,13 +31,16 @@ export class HeaderComponent {
 
   favoritesCount = this.favoritesService.count;
 
-  navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/destinations', label: 'Destinations' },
-    { path: '/experiences', label: 'Experiences' },
-    { path: '/plan-your-trip', label: 'Plan Your Trip' },
-    { path: '/about', label: 'About' }
-  ];
+  readonly navLinks = computed(() => {
+    const base = `/${this.countryName()}`;
+    return [
+      { path: base, label: 'Home', exact: true },
+      { path: `${base}/destinations`, label: 'Destinations', exact: false },
+      { path: `${base}/experiences`, label: 'Experiences', exact: false },
+      { path: `${base}/plan-your-trip`, label: 'Plan Your Trip', exact: false },
+      { path: `${base}/about`, label: 'About', exact: false },
+    ];
+  });
 
   icons = ['♡'];
 }

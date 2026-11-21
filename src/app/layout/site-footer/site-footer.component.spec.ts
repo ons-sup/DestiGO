@@ -39,8 +39,15 @@ describe('SiteFooterComponent', () => {
     fixture.detectChanges();
 
     const text = fixture.nativeElement.textContent;
-    expect(text).toContain('Türkiye Home');
-    expect(text).toContain('Global Home');
+    const hrefs = Array.from(fixture.nativeElement.querySelectorAll('a')).map((a) =>
+      (a as HTMLAnchorElement).getAttribute('href'),
+    );
+    expect(text).toContain('Home');
+    expect(text).toContain('Destinations');
+    expect(text).toContain('Experiences');
+    expect(text).toContain('Plan Your Trip');
+    expect(hrefs).toContain('/turkey/destinations');
+    expect(hrefs).toContain('/turkey/experiences');
   });
 
   it('should not display bullet points on list items', () => {

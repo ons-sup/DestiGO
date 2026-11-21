@@ -17,35 +17,38 @@ This is an academic project at **SUP'COM** Higher School of Communication of Tun
 | Routing   | Angular Router with lazy-loaded country routes    |
 | Rendering | Angular SSR with Express                          |
 | Testing   | Vitest                                            |
-| Styling   | Plain CSS, scoped per component                   |
+| Styling   | Plain CSS, Angular Material, Tailwind CSS, Flowbite |
 | Tooling   | npm 11.19.0, PowerShell, Prettier                 |
 
 ### Explore DestiGo
 
-| Route         | Status   | Notes                      |
-| ------------- | -------- | -------------------------- |
-| `/`           | Current  | Redirects to `/turkey`     |
-| `/turkey`     | In progress | Home, destinations, detail scaffold |
-| `/italy`      | Planned  | Rome, Venice, Florence     |
-| `/spain`      | Planned  | Coming Soon                |
-| `/favorites`  | Planned  | Shared service, reusable button |
-| `/auth`       | Planned  | Login and registration     |
-| `/about`      | Planned  | Project and team info      |
-
-*Solid routes exist; dashed routes are planned.*
+| Route              | Status  | Notes                                                      |
+| ------------------ | ------- | ---------------------------------------------------------- |
+| `/`                | Current | Dark DestiGO landing page with destination wheel           |
+| `/turkey`          | Current | Türkiye portal: home, destinations, and detail pages       |
+| `/italy`           | Current | Italy portal: home, destinations, experiences, and details |
+| `/spain`           | Planned | Coming Soon                                                |
+| `/auth/login`      | Current | Demo login                                                 |
+| `/auth/register`   | Current | Demo registration                                          |
+| `/favorites`       | Current | Shared favorites page                                      |
+| `/about`           | Current | Project and team information                               |
+| `/destinations`    | Current | Shared destination overview                                |
+| `/experiences`     | Current | Shared experience overview                                 |
+| `/plan-your-trip`  | Current | Shared trip-planning page                                  |
 
 ### Features Status
 
-| Feature                | Status     | Notes                                                       |
-| ---------------------- | ---------- | ----------------------------------------------------------- |
-| Turkey portal (`/turkey`) | In progress | Home page, three destinations, detail-page scaffold         |
-| Italy portal (`/italy`)   | Planned    | Rome, Venice, Florence (data and components implemented)    |
-| Spain portal (`/spain`)   | Planned    | Future portal                                               |
-| Destination details    | In progress | Turkey route scaffold only; Italy data complete             |
-| Authentication          | Planned    | Shared login and registration                               |
-| Favorites               | Planned    | Shared service, reusable button, `/favorites` page          |
-| About (`/about`)        | Planned    | Project and team information                                |
-| Destination wheel       | Planned    | Shared Angular/SVG country selector                         |
+| Feature                     | Status  | Notes                                                        |
+| --------------------------- | ------- | ------------------------------------------------------------ |
+| Dark homepage (`/`)         | Current | Black/gold theme, hero imagery, animations, destination cards |
+| Turkey portal (`/turkey`)   | Current | Home, destinations, experiences, about, plan-your-trip, detail |
+| Italy portal (`/italy`)     | Current | Home, destinations, experiences, detail pages, favorites      |
+| Spain portal (`/spain`)     | Planned | Future portal                                                |
+| Destination details         | Current | Türkiye and Italy detail pages                               |
+| Authentication              | Current | Demo login and registration backed by localStorage           |
+| Favorites                   | Current | Shared service, reusable button, `/favorites` page           |
+| About (`/about`)            | Current | Project and team information                                 |
+| Destination wheel           | Current | Shared Angular/SVG country selector                          |
 
 ### Architecture
 
@@ -60,10 +63,10 @@ Country routes are lazy-loaded through their own route files. Each portal keeps 
 flowchart TB
   subgraph Shared["Shared application"]
     Shell["Application shell"]
-    Dash["Dashboard /<br/>planned"]
-    Auth["Authentication<br/>planned"]
-    Fav["Favorites<br/>planned"]
-    Wheel["Destination wheel<br/>planned"]
+    Dash["Dark homepage /<br/>current"]
+    Auth["Authentication<br/>current"]
+    Fav["Favorites<br/>current"]
+    Wheel["Destination wheel<br/>current"]
   end
 
   subgraph Portals["Independent country features"]
@@ -86,7 +89,7 @@ flowchart TB
   classDef planned fill:#F7F8F5,color:#20323D,stroke:#176B87,stroke-width:2px,stroke-dasharray:6 4;
   class Shell shared;
   class TR,IT country;
-  class Dash,Auth,Fav,Wheel,IT planned;
+  class Dash,Auth,Fav,Wheel,IT country;
   class ES planned;
 ```
 
@@ -103,7 +106,7 @@ npm test         # Vitest unit tests
 
 The build produces browser and server bundles. Tests run with Vitest through Angular's unit-test builder.
 
-Turkey is under active development; Italy data and components are implemented.
+The Türkiye and Italy portals are implemented; Spain is planned. The global homepage is the dark DestiGO landing page.
 
 ### Collaboration
 

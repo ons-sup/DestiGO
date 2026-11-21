@@ -1,6 +1,8 @@
-import { Component, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { Destination } from '../../models/destination.model';
+import { Component, computed, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
+import { TURKEY_DATA } from '../../data/turkey.data';
 
 @Component({
   selector: 'app-destination-detail',
@@ -10,5 +12,12 @@ import { Destination } from '../../models/destination.model';
   styleUrl: './destination-detail.component.css',
 })
 export class DestinationDetailComponent {
-  readonly destination = input.required<Destination>();
+  private readonly route = inject(ActivatedRoute);
+  private readonly id = toSignal(this.route.paramMap.pipe(map((p) => p.get('id') ?? '')), {
+    initialValue: this.route.snapshot.paramMap.get('id') ?? '',
+  });
+
+  readonly destination = computed(() =>
+    TURKEY_DATA.destinations.find((d) => d.id === this.id()),
+  );
 }

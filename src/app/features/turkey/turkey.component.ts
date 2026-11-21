@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../layout/header/header.component';
 import { SiteFooterComponent } from '../../layout/site-footer/site-footer.component';
+import { CountryService } from '../../core/services/country.service';
 
 @Component({
   selector: 'app-turkey',
@@ -15,4 +16,10 @@ import { SiteFooterComponent } from '../../layout/site-footer/site-footer.compon
     <app-site-footer variant="turkey" />
   `,
 })
-export class TurkeyComponent {}
+export class TurkeyComponent {
+  private readonly countryService = inject(CountryService);
+
+  constructor() {
+    this.countryService.setCountry('turkey');
+  }
+}

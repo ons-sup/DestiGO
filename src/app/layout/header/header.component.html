@@ -3,18 +3,18 @@
     <span class="country-name">{{ countryName_() }}</span>
   </div>
   <nav class="bar" aria-label="Main navigation">
-    @for (link of navLinks; track link.path) {
+    @for (link of navLinks(); track link.path) {
       <a
         [routerLink]="link.path"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+        [routerLinkActiveOptions]="{ exact: link.exact }"
       >
         {{ link.label }}
       </a>
     }
     @for (icon of icons; track icon) {
       @if (icon === '♡') {
-        <a routerLink="/favorites" class="icon favorite-icon" aria-label="Favorites" title="Favorites">
+        <a [routerLink]="['/', countryName(), 'favorites']" class="icon favorite-icon" aria-label="Favorites" title="Favorites">
           {{ icon }}
           @if (favoritesCount() > 0) {
             <span class="favorite-badge">{{ favoritesCount() }}</span>

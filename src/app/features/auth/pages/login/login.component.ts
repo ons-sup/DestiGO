@@ -16,6 +16,7 @@ export class LoginComponent {
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 
+  protected readonly showPassword = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
   protected readonly form = inject(FormBuilder).nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -25,6 +26,15 @@ export class LoginComponent {
   protected get emailInvalid(): boolean {
     const email = this.form.controls.email;
     return email.invalid && (email.touched || email.dirty);
+  }
+
+  protected get passwordInvalid(): boolean {
+    const password = this.form.controls.password;
+    return password.invalid && (password.touched || password.dirty);
+  }
+
+  protected togglePasswordVisibility(): void {
+    this.showPassword.update((visible) => !visible);
   }
 
   protected submit(): void {

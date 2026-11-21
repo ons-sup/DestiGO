@@ -1,4 +1,4 @@
-﻿import { Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 type FooterVariant = 'global' | 'turkey';
@@ -36,8 +36,11 @@ export class SiteFooterComponent {
   protected readonly navigationLinks = computed<FooterLink[]>(() => {
     if (this.variant() === 'turkey') {
       return [
-        { label: 'Türkiye Home', path: '/turkey' },
-        { label: 'Global Home', path: '/' },
+        { label: 'Home', path: '/turkey' },
+        { label: 'Destinations', path: '/turkey/destinations' },
+        { label: 'Experiences', path: '/turkey/experiences' },
+        { label: 'About', path: '/turkey/about' },
+        { label: 'Plan Your Trip', path: '/turkey/plan-your-trip' },
       ];
     }
 

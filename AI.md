@@ -16,7 +16,7 @@ The application contains **independent country portals** that each own their pag
 - **Italy portal** (`/italy`): Developed by Ons Chtioui. Contains Rome, Venice, Florence, and all major destinations/experiences.
 - **Spain portal** (`/spain`): Not yet implemented. Marked "Coming Soon" in the destination wheel.
 
-The global application shell (`app.ts`) renders `<router-outlet />` and the shared destination wheel (`app-destination-wheel-nav`). The homepage (`/`) currently redirects to `/turkey`.
+The global application shell (`app.ts`) renders `<router-outlet />` and the shared destination wheel (`app-destination-wheel-nav`). The homepage (`/`) is the global dark DestiGO landing page; `/turkey` and `/italy` are independent country portals.
 
 ---
 
@@ -32,9 +32,11 @@ The actual component and routing hierarchy in the repository:
 - `src/app/app.routes.server.ts` — SSR prerender config for Italy detail/experience routes
 - `src/app/app.config.ts` — Client-side providers (Router, hydration)
 - `src/app/app.config.server.ts` — Server-side rendering with `withRoutes()`
-- `src/app/layout/layout.component.ts` — Global layout with header + footer
-- `src/app/layout/header/header.component.ts` — Global header with country switcher and favorites count
-- `src/app/layout/footer/footer.component.ts` — Global footer
+- `src/app/layout/layout.component.ts` — Italy portal layout with header + footer
+- `src/app/layout/header/header.component.ts` — Country-aware header with navigation and favorites count
+- `src/app/layout/footer/footer.component.ts` — Shared footer
+- `src/app/layout/site-footer/site-footer.component.ts` — Configurable shared site footer (`global` and `turkey` variants)
+- `src/app/features/auth/` — Shared demo authentication pages
 - `src/styles.css` — Global styles (scoped variables only)
 
 ### Country Portals
@@ -46,8 +48,11 @@ The actual component and routing hierarchy in the repository:
 
 ### Shared UI Components (outside country folders)
 
+- `src/app/shared/components/button/` — Reusable button component
 - `src/app/shared/components/destination-card/` — Reusable destination display
 - `src/app/shared/components/favorite-button/` — Favorite toggle button
+- `src/app/shared/components/feedback/` — Empty, error, and loading state components
+- `src/app/shared/components/form-field/` — Shared form field wrapper
 - `src/app/shared/components/hero-section/` — Hero image/title/subtitle component
 - `src/app/shared/components/destination-wheel/` — Radial country selector (global, mounted once)
 - `src/app/shared/services/favorites.service.ts` — Centralized favorites state
@@ -98,14 +103,14 @@ The actual component and routing hierarchy in the repository:
 
 - Header shows the **current country** via `CountryService` (flag + name).
 - Destination wheel color per country is defined in `destination-wheel.data.ts` (`#c0392b` Turkey, `#1a7a4c` Italy, `#c2710c` Spain "coming soon").
-- Each portal maintains its own visual identity; header/footer are **not** shared across portals.
+- Each portal maintains its own visual identity; headers are country-scoped, while the site footer is a shared configurable component.
 
-### Header & Footer Must Not Leak Between Portals
+### Header & Footer Isolation
 
-- The header is part of `layout.component.ts`, which is used globally.
-- However, the **country selector** in the header (`countryName` computed) reflects only the currently selected country via `CountryService.setCountry()`.
-- Portals do not re-render their own headers; the single global header shows the active country.
-- Footers are similarly global; do not add country-specific content to them.
+- The header is rendered by country layout components (`layout.component.ts` for Italy and `turkey.component.ts` for Türkiye), not by the global shell.
+- Header navigation is computed from the active country input, so each portal keeps its own links.
+- `site-footer` is a shared configurable footer; country portals may pass a `variant` such as `turkey`.
+- Do not add country-specific styles to global CSS.
 
 ---
 

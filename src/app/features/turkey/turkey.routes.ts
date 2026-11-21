@@ -13,8 +13,46 @@ export const TURKEY_ROUTES: Routes = [
         component: TurkeyHomeComponent,
       },
       {
-        path: ':id',
+        path: 'destinations',
+        loadComponent: () =>
+          import('./pages/turkey-destinations/turkey-destinations.component').then(
+            (m) => m.TurkeyDestinationsComponent,
+          ),
+      },
+      {
+        path: 'destinations/:id',
         component: DestinationDetailComponent,
+      },
+      {
+        path: 'experiences',
+        loadComponent: () =>
+          import('./pages/turkey-experiences/turkey-experiences.component').then(
+            (m) => m.TurkeyExperiencesComponent,
+          ),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./pages/turkey-about/turkey-about.component').then(
+            (m) => m.TurkeyAboutComponent,
+          ),
+      },
+      {
+        path: 'plan-your-trip',
+        loadComponent: () =>
+          import('./pages/turkey-plan-your-trip/turkey-plan-your-trip.component').then(
+            (m) => m.TurkeyPlanYourTripComponent,
+          ),
+      },
+      {
+        path: 'favorites',
+        loadComponent: () =>
+          import('../../pages/favorites/favorites.component').then((m) => m.FavoritesComponent),
+      },
+      {
+        path: ':id',
+        redirectTo: 'destinations/:id',
+        pathMatch: 'full',
       },
     ],
   },
