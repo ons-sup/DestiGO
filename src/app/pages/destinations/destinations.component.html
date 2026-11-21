@@ -1,9 +1,9 @@
 <app-hero-section
-  [eyebrow]="'EXPLORE ITALY'"
+  [eyebrow]="'EXPLORE ' + countryName().toUpperCase()"
   [title]="'Discover '"
   [titleAccent]="'Beautiful Destinations'"
-  [subtitle]="'From ancient cities to breathtaking coastlines, discover the places that make Italy unforgettable.'"
-  [imageSrc]="'/assets/images/italy-destinations.jpg'"
+  [subtitle]="'From ancient cities to breathtaking coastlines, discover the places that make ' + countryName() + ' unforgettable.'"
+  [imageSrc]="heroImage()"
 />
 
 <section class="destinations-section" appRevealOnScroll>
@@ -11,7 +11,7 @@
     <div>
       <p class="section-label reveal-item" style="--item-delay:40ms">WHERE TO GO</p>
       <h2 class="reveal-item" style="--item-delay:120ms">Explore Our <span class="accent">Destinations</span></h2>
-      <p class="reveal-item" style="--item-delay:200ms">Discover the most beautiful places across Italy.</p>
+      <p class="reveal-item" style="--item-delay:200ms">Discover the most beautiful places across {{ countryName() }}.</p>
     </div>
   </div>
 

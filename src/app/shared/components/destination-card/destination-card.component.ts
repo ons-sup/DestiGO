@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Destination } from '../../../core/models/destination.model';
@@ -20,10 +20,9 @@ export class DestinationCardComponent {
   destination = input.required<Destination>();
   variant = input<CardVariant>('small');
 
-  readonly destinationRoute = computed(() => [
-    '/',
-    this.countryService.currentCountry(),
-    'destinations',
-    this.destination().id,
-  ]);
+  detailRoute(): string[] {
+    const code = this.countryService.currentCountry();
+    const prefix = code === 'spain' ? '/spain' : '';
+    return [prefix, 'destinations', this.destination().id];
+  }
 }

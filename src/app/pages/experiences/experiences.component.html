@@ -1,9 +1,9 @@
 <app-hero-section
-  [eyebrow]="'EXPERIENCE ITALY'"
+  [eyebrow]="'EXPERIENCE ' + countryName()"
   [title]="'Live the '"
-  [titleAccent]="'Italian Way'"
-  [subtitle]="'Immerse yourself in authentic Italian culture, cuisine, and unforgettable adventures.'"
-  [imageSrc]="'/assets/images/amalfi.jpg'"
+  [titleAccent]="countryName() + ' Way'"
+  [subtitle]="'Immerse yourself in authentic ' + countryName() + ' culture, cuisine, and unforgettable adventures.'"
+  [imageSrc]="heroImage()"
 />
 
 <section class="experiences-section" appRevealOnScroll>
@@ -27,8 +27,8 @@
   </div>
 
   <div class="experiences-grid">
-    @for (experience of filteredExperiences(); track experience.id + '-' + animKey(); let i = $index) {
-      <a [routerLink]="['/italy/experiences', experience.id]" class="experience-card-link" aria-label="Learn more about {{ experience.title }}" [style.--i]="i">
+    @for (experience of filteredExperiences(); track experience.id) {
+      <a [routerLink]="experienceRoute(experience.id)" class="experience-card-link" aria-label="Learn more about {{ experience.title }}">
         <article class="experience-card">
           <img [src]="experience.imageUrl" [alt]="experience.title" loading="lazy">
           <div class="experience-info">

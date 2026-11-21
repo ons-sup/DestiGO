@@ -28,6 +28,7 @@ export const COUNTRIES: Record<CountryCode, Country> = {
     code: 'spain',
     name: 'Spain',
     flag: '🇪🇸',
+    heroImage: '/images/spain/hero.jpg',
     destinations: []
   }
 };

@@ -30,6 +30,10 @@ export class HeaderComponent {
   });
 
   favoritesCount = this.favoritesService.count;
+  favoritesRoute = computed(() => {
+    const prefix = this.countryName() === 'spain' ? '/spain' : this.countryName() === 'turkey' ? '/turkey' : '';
+    return prefix + '/favorites';
+  });
 
   readonly navLinks = computed(() => {
     const base = `/${this.countryName()}`;

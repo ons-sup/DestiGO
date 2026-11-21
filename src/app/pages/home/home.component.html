@@ -1,9 +1,10 @@
 <app-hero-section
-  [eyebrow]="'DISCOVER ITALY'"
+  [eyebrow]="'DISCOVER ' + countryName()"
   [title]="'Discover '"
-  [titleAccent]="'Italy'"
+  [titleAccent]="countryName()"
   [subtitle]="'Explore the most beautiful places. Live the culture, taste the best food and create unforgettable memories.'"
   [videoSrc]="getHeroVideo()"
+  [imageSrc]="getHeroImage()"
   [ctaText]="'Explore Destinations'"
   [ctaRoute]="'/italy/destinations'"
   [showCta]="true"

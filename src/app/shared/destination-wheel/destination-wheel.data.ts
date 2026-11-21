@@ -31,7 +31,7 @@ export const DESTINATION_WHEEL_COUNTRIES: readonly WheelCountry[] = [
     name: 'Spain',
     tagline: 'Sun, rhythm, and timeless cities.',
     route: '/spain',
-    available: false,
-    color: '#c2710c',
+    available: true,
+    color: '#c2410c',
   },
 ];

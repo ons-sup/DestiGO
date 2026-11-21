@@ -1,8 +1,10 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeroSectionComponent } from '../../shared/components/hero-section/hero-section.component';
+import { CountryService } from '../../core/services/country.service';
 import { TripPlan, TravelStyle, BudgetRange, ITALY_DESTINATIONS_FOR_PLANNING, TRAVEL_STYLES, BUDGET_RANGES, generateItinerary, ItineraryDay } from './plan-your-trip.data';
+import { SPAIN_DESTINATIONS_FOR_PLANNING, generateSpainItinerary } from '../../core/data/spain-plan-your-trip';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
@@ -13,7 +15,10 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
   styleUrl: './plan-your-trip.component.css'
 })
 export class PlanYourTripComponent {
-  destinations = ITALY_DESTINATIONS_FOR_PLANNING;
+  private countryService = inject(CountryService);
+  isSpain = this.countryService.currentCountry() === 'spain';
+
+  destinations = this.isSpain ? SPAIN_DESTINATIONS_FOR_PLANNING : ITALY_DESTINATIONS_FOR_PLANNING;
   travelStyles = TRAVEL_STYLES;
   budgetRanges = BUDGET_RANGES;
 
@@ -28,7 +33,7 @@ export class PlanYourTripComponent {
   showItinerary = signal(false);
   itinerary = computed(() => {
     if (!this.showItinerary()) return [];
-    return generateItinerary(this.plan());
+    return this.isSpain ? generateSpainItinerary(this.plan()) : generateItinerary(this.plan());
   });
 
   onSubmit() {
@@ -54,5 +59,13 @@ export class PlanYourTripComponent {
 
   getBudgetLabel(value: BudgetRange): string {
     return this.budgetRanges.find(b => b.value === value)?.label || value;
+  }
+
+  countryName() {
+    return this.countryService.getCurrentCountry().name;
+  }
+
+  heroImage() {
+    return this.isSpain ? '/images/spain/spain1.jpg' : '/assets/images/italy-destinations.jpg';
   }
 }

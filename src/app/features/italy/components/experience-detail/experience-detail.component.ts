@@ -1,13 +1,17 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HeroSectionComponent } from '../../../../shared/components/hero-section/hero-section.component';
+import { CountryService } from '../../../../core/services/country.service';
 import {
   ExperienceDetail,
   ExperienceCategory,
-  getExperienceDetail,
-  getAllExperienceIds
+  getExperienceDetail
 } from '../../data/experience-details.data';
+import {
+  SPAIN_EXPERIENCE_DETAILS,
+  getExperienceDetail as getSpainExperienceDetail
+} from '../../../spain/data/experience-details.data';
 
 @Component({
   selector: 'app-experience-detail',
@@ -18,15 +22,17 @@ import {
 })
 export class ExperienceDetailComponent {
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
+  private countryService = inject(CountryService);
 
-  experience = signal<ExperienceDetail | null>(null);
+  isSpain = this.countryService.currentCountry() === 'spain';
+
+  experience = signal<ExperienceDetail | (typeof SPAIN_EXPERIENCE_DETAILS)[number] | null>(null);
   notFound = signal(false);
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      const detail = getExperienceDetail(id);
+      const detail = this.isSpain ? getSpainExperienceDetail(id) : getExperienceDetail(id);
       if (detail) {
         this.experience.set(detail);
       } else {
@@ -37,12 +43,18 @@ export class ExperienceDetailComponent {
     }
   }
 
-  getCategoryLabel(category: ExperienceCategory): string {
-    const labels: Record<ExperienceCategory, string> = {
+  backRoute(path: string): string {
+    const prefix = this.isSpain ? '/spain' : '';
+    return prefix + path;
+  }
+
+  getCategoryLabel(category: ExperienceCategory | 'all'): string {
+    const labels: Record<ExperienceCategory | 'all', string> = {
       'food-wine': 'Food & Wine',
       'art-culture': 'Art & Culture',
       'coast-beaches': 'Coast & Beaches',
-      'mountains-lakes': 'Mountains & Lakes'
+      'mountains-lakes': 'Mountains & Lakes',
+      'all': 'All'
     };
     return labels[category] || category;
   }
