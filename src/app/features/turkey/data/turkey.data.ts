@@ -72,7 +72,7 @@ export const TURKEY_DATA: CountryData = {
   tagline: 'Where continents meet.',
   introduction:
     'Straddling Europe and Asia, Türkiye is a crossroads of civilizations, landscapes, and flavors. From the minaret-dotted skyline of Istanbul to the fairy-chimney valleys of Cappadocia and the turquoise coast of Antalya, every region tells a different story.',
-  image: '/images/turkey/destinations/istanbul.jpg',
+  image: '/images/turkey/destinations/cappadocia.jpg',
   destinations: [
     {
       id: 'istanbul',

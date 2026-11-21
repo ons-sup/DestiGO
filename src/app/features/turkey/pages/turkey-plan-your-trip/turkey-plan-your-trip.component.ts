@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+﻿import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TURKEY_DATA } from '../../data/turkey.data';
 
@@ -11,11 +11,16 @@ interface TripPlan { destinations: string[]; days: number; interests: string[]; 
   template: `
     <section class="tr-plan">
       <header class="tr-hero">
+        <div class="tr-hero__bg"><img src="/images/turkey/destinations/cappadocia.jpg" alt="" aria-hidden="true" /></div>
+        <div class="tr-hero__overlay"></div>
+        <div class="tr-hero__content">
         <p class="tr-eyebrow">PLAN YOUR TRIP</p>
-        <h1 class="tr-title">Build your <span class="tr-accent">Türkiye journey</span></h1>
+        <h1 class="tr-title">Build your <span class="tr-accent">TÃ¼rkiye journey</span></h1>
         <p class="tr-lead">Choose destinations, trip length, and interests to generate a simple itinerary suggestion. Your plan is saved locally in this browser.</p>
+        </div>
       </header>
 
+      <div class="tr-body">
       <div class="tr-layout">
         <form class="tr-form" (ngSubmit)="generate()" aria-label="Trip planner form">
           <label class="tr-label" for="days">Trip duration (days)</label>
@@ -55,14 +60,21 @@ interface TripPlan { destinations: string[]; days: number; interests: string[]; 
           }
         </section>
       </div>
+      </div>
     </section>
   `,
   styles: [`
-    .tr-plan{max-width:1240px;margin:0 auto;padding:7rem 1.5rem 4rem;color:#1f2937;}
-    .tr-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:#b45309;margin:0 0 .75rem;}
+    .tr-plan{color:#1f2937;}
+    .tr-hero{position:relative;min-height:52vh;display:flex;align-items:flex-end;overflow:hidden;}
+    .tr-hero__bg,.tr-hero__overlay{position:absolute;inset:0;}
+    .tr-hero__bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .tr-hero__overlay{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.72) 100%);}
+    .tr-hero__content{position:relative;z-index:1;max-width:1240px;width:100%;margin:0 auto;padding:8rem 1.5rem 3.5rem;color:#fff;}
+    .tr-body{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+    .tr-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:#fbbf24;margin:0 0 .75rem;}
     .tr-title{font-size:clamp(2.2rem,5vw,4rem);line-height:1.08;margin:0 0 1rem;font-weight:700;}
-    .tr-accent{color:#b45309;}
-    .tr-lead{max-width:48rem;color:#4b5563;line-height:1.75;margin:0 2rem 2rem 0;font-size:1.05rem;}
+    .tr-accent{color:#fbbf24;}
+    .tr-lead{max-width:48rem;color:rgba(255,255,255,.92);line-height:1.75;margin:0;font-size:1.05rem;}
     .tr-layout{display:grid;grid-template-columns:1fr;gap:1.5rem;}
     .tr-form,.tr-result{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:1.5rem;box-shadow:0 8px 30px rgba(15,23,42,.04);}
     .tr-label,.tr-fieldset legend,h2{font-weight:700;}

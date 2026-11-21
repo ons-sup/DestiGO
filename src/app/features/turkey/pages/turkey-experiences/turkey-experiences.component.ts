@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+﻿import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TURKEY_EXPERIENCES } from '../../data/turkey.data';
 
@@ -9,15 +9,20 @@ import { TURKEY_EXPERIENCES } from '../../data/turkey.data';
   template: `
     <section class="tr-exp">
       <header class="tr-hero">
-        <p class="tr-eyebrow">EXPERIENCES IN TÜRKİYE</p>
+        <div class="tr-hero__bg"><img src="/images/turkey/experiences/bosphorus-cruise.jpg" alt="" aria-hidden="true" /></div>
+        <div class="tr-hero__overlay"></div>
+        <div class="tr-hero__content">
+        <p class="tr-eyebrow">EXPERIENCES IN TÃœRKÄ°YE</p>
         <h1 class="tr-title">Live the <span class="tr-accent">Turkish Way</span></h1>
-        <p class="tr-lead">Go beyond sightseeing with experiences that connect you to Türkiye’s culture, cuisine, landscapes, and history.</p>
+        <p class="tr-lead">Go beyond sightseeing with experiences that connect you to TÃ¼rkiyeâ€™s culture, cuisine, landscapes, and history.</p>
+        </div>
+      </header>
+      <div class="tr-body">
         <div class="tr-filters" role="group" aria-label="Filter experiences by category">
           @for (cat of categories; track cat.value) {
             <button type="button" class="tr-filter" [class.active]="selected() === cat.value" (click)="selected.set(cat.value)">{{ cat.label }}</button>
           }
         </div>
-      </header>
       <div class="tr-grid">
         @for (exp of filtered(); track exp.id) {
           <article class="tr-card">
@@ -26,22 +31,29 @@ import { TURKEY_EXPERIENCES } from '../../data/turkey.data';
               <span class="tr-card__cat">{{ labelFor(exp.category) }}</span>
             </div>
             <div class="tr-card__body">
-              <p class="tr-card__loc">{{ exp.location }} · {{ exp.duration }}</p>
+              <p class="tr-card__loc">{{ exp.location }} Â· {{ exp.duration }}</p>
               <h2>{{ exp.title }}</h2>
               <p class="tr-card__desc">{{ exp.description }}</p>
-              <a class="tr-card__cta" [routerLink]="['/turkey/destinations']">Explore related destinations →</a>
+              <a class="tr-card__cta" [routerLink]="['/turkey/destinations']">Explore related destinations â†’</a>
             </div>
           </article>
         }
       </div>
+      </div>
     </section>
   `,
   styles: [`
-    .tr-exp{max-width:1240px;margin:0 auto;padding:7rem 1.5rem 4rem;color:#1f2937;}
-    .tr-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:#b45309;margin:0 0 .75rem;}
+    .tr-exp{color:#1f2937;}
+    .tr-hero{position:relative;min-height:52vh;display:flex;align-items:flex-end;overflow:hidden;}
+    .tr-hero__bg,.tr-hero__overlay{position:absolute;inset:0;}
+    .tr-hero__bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .tr-hero__overlay{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.72) 100%);}
+    .tr-hero__content{position:relative;z-index:1;max-width:1240px;width:100%;margin:0 auto;padding:8rem 1.5rem 3.5rem;color:#fff;}
+    .tr-body{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+    .tr-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:#fbbf24;margin:0 0 .75rem;}
     .tr-title{font-size:clamp(2.2rem,5vw,4rem);line-height:1.08;margin:0 0 1rem;font-weight:700;}
-    .tr-accent{color:#b45309;}
-    .tr-lead{max-width:46rem;color:#4b5563;line-height:1.75;margin:0 0 1.75rem;font-size:1.05rem;}
+    .tr-accent{color:#fbbf24;}
+    .tr-lead{max-width:46rem;color:rgba(255,255,255,.92);line-height:1.75;margin:0;font-size:1.05rem;}
     .tr-filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem;}
     .tr-filter{border:1px solid #d1d5db;background:#fff;color:#374151;padding:.55rem 1rem;border-radius:999px;font:inherit;cursor:pointer;}
     .tr-filter:hover,.tr-filter.active{background:#1f2937;color:#fff;border-color:#1f2937;}
@@ -73,3 +85,4 @@ export class TurkeyExperiencesComponent {
   readonly filtered = computed(() => this.selected() === 'all' ? this.experiences : this.experiences.filter((e) => e.category === this.selected()));
   labelFor(cat: string) { return this.categories.find((c) => c.value === cat)?.label ?? cat; }
 }
+
