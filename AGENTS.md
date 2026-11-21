@@ -2,7 +2,23 @@
 
 **This file is authoritative for OpenCode and any other AI coding assistant working in this repository.** Read it fully before inspecting or modifying code. If an instruction here conflicts with a casual request, stop and ask the user.
 
-The human-facing project overview is in [`README.md`](./README.md). This file focuses on boundaries, safety, and expected behavior.
+---
+## 0. Execution Environment — Windows PowerShell
+
+DestiGO is developed on Windows using PowerShell.
+
+MANDATORY:
+- Verify the active shell before running commands.
+- Use Windows PowerShell-compatible commands only.
+- Never assume Bash, Linux, WSL, or Git Bash.
+- Never use Unix-specific utilities such as grep, sed, awk, touch, or python3.
+- Never use Bash syntax such as `&&`, `||`, `2>/dev/null`, `export`, or `source`.
+- Use PowerShell commands including Get-ChildItem, Get-Content, Select-String, New-Item, Set-Content, and Remove-Item.
+- Use standard git and npm commands normally.
+- Use separate commands rather than Bash-style chaining.
+- Do not create temporary Bash scripts.
+- If a command fails because of shell incompatibility, rewrite it for PowerShell.
+- Apply these rules to subagents and generated terminal instructions.
 
 ---
 
@@ -134,7 +150,40 @@ If a country task cannot be completed without a shared change, pause and report 
 
 ---
 
-## 6. Git Safety
+## 6. Git Workflow
+
+The team currently develops on master.
+
+- Do not create branches unless explicitly requested.
+- Do not merge branches unless explicitly requested.
+- Do not push automatically unless explicitly authorized.
+- Never force push.
+- Never rewrite Git history without explicit approval.
+- Never discard uncommitted or untracked changes.
+- Inspect git status before modifying files.
+- Do not use destructive Git commands to resolve conflicts.
+- Never assume the default branch is main; inspect the repository. The current branch is master.
+- Do not commit unrelated changes.
+- Do not overwrite another agent's active work.
+
+---
+
+## 7. Multi-agent Collaboration
+
+DestiGO is developed using multiple coding agents.
+
+- Inspect the current working tree before editing.
+- Identify files another agent may be modifying.
+- Avoid simultaneous modifications to the same files.
+- If another agent is editing the same working directory, do not perform overlapping writes.
+- Prefer clearly separated tasks and file ownership.
+- Do not modify files outside the assigned task without a clear reason.
+- Report dependencies or conflicts instead of silently changing unrelated components.
+- Do not automatically commit another agent's uncommitted work.
+
+---
+
+## 8. Git Safety
 
 The AI **must never automatically** perform any of the following:
 
@@ -171,7 +220,7 @@ Work in one Git worktree per agent. If another agent is active in the same worki
 
 ---
 
-## 7. Scope Discipline
+## 9. Scope Discipline
 
 Unless the user explicitly requests otherwise:
 
@@ -188,7 +237,7 @@ For a documentation-only task: only edit the requested documentation files. Do n
 
 ---
 
-## 8. Verification
+## 10. Verification
 
 After a coding task, verify with the available scripts:
 
@@ -207,7 +256,7 @@ Notes:
 
 ---
 
-## 9. Required Completion Report
+## 11. Required Completion Report
 
 After every coding task, report:
 
@@ -222,7 +271,7 @@ After every coding task, report:
 
 ---
 
-## 10. Escalation Rules
+## 12. Escalation Rules
 
 Stop and ask the user when:
 
@@ -238,7 +287,7 @@ Do not invent requirements, silently broaden scope, or make architectural decisi
 
 ---
 
-## 11. Quick Checklist
+## 13. Quick Checklist
 
 - [ ] Read `AGENTS.md`
 - [ ] Checked `git status` and current branch

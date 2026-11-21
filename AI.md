@@ -6,57 +6,137 @@ This is a short guide for team members. It is not a second rulebook.
 
 ---
 
-## Core idea
+## Project Overview
 
-DestiGo is split into independently owned country portals. AI assistants are useful inside one clearly scoped area, and risky when they roam across shared code, another developer's portal, or Git history.
+DestiGo is a travel destination discovery platform built with Angular 22. It is **not** a booking or payment platform.
 
-Give the assistant a narrow task, review every change, and keep Git operations in human hands.
+The application contains **independent country portals** that each own their pages, components, data, and scoped CSS. Portals never import from one another. Shared UI primitives and services live outside the country folders.
 
----
+- **Turkey portal** (`/turkey`): Developed by Ahmed Ben Mim. Contains home, destination lists, and detail pages.
+- **Italy portal** (`/italy`): Developed by Ons Chtioui. Contains Rome, Venice, Florence, and all major destinations/experiences.
+- **Spain portal** (`/spain`): Not yet implemented. Marked "Coming Soon" in the destination wheel.
 
-## Before you prompt
-
-1. Confirm you are on the right branch (`git branch --show-current`).
-2. Know who owns the area you are asking about.
-3. Tell the assistant exactly which files or folder are in scope.
-4. State whether the task is country-local or touches shared code.
-
-Good prompt:
-
-> Work only inside `src/app/features/italy/`. Add a destination card component that uses the existing data shape. Do not edit routes, global styles, or shared components. Report every file you change.
-
-Weak prompt:
-
-> Make the Italy page better.
+The global application shell (`app.ts`) renders `<router-outlet />` and the shared destination wheel (`app-destination-wheel-nav`). The homepage (`/`) currently redirects to `/turkey`.
 
 ---
 
-## While the assistant works
+## Application Architecture
 
-- Watch which files it opens and edits.
-- If you run two assistants in parallel, give each its own Git worktree; never let them share one working tree.
-- Stop it if it touches another country, `shared/`, `core/`, rules files, or build configuration without approval.
-- Do not let it run Git write commands. Commit, merge, and push yourself, or explicitly approve a single read-only inspection.
-- Never paste `.env` contents, tokens, passwords, or private keys into a prompt.
-- Treat generated image URLs, external links, and data as unverified until you check them.
+The actual component and routing hierarchy in the repository:
+
+### Global Shell
+
+- `src/app/app.ts` — Root component with `<router-outlet />` and `<app-destination-wheel-nav />`
+- `src/app/app.html` — Template: `<router-outlet />` + destination wheel nav
+- `src/app/app.routes.ts` — Global route definitions (home, turkey, italy, auth, fallbacks)
+- `src/app/app.routes.server.ts` — SSR prerender config for Italy detail/experience routes
+- `src/app/app.config.ts` — Client-side providers (Router, hydration)
+- `src/app/app.config.server.ts` — Server-side rendering with `withRoutes()`
+- `src/app/layout/layout.component.ts` — Global layout with header + footer
+- `src/app/layout/header/header.component.ts` — Global header with country switcher and favorites count
+- `src/app/layout/footer/footer.component.ts` — Global footer
+- `src/styles.css` — Global styles (scoped variables only)
+
+### Country Portals
+
+| Portal | Route | Key Files |
+|--------|-------|-----------|
+| **Turkey** | `/turkey` | `features/turkey/turkey.routes.ts`, `turkey.component.ts`, `turkey-home/`, `destination-detail/` |
+| **Italy** | `/italy` (lazy) | `features/italy/`, `italy.routes.ts` (via app.routes.ts children), components, data |
+
+### Shared UI Components (outside country folders)
+
+- `src/app/shared/components/destination-card/` — Reusable destination display
+- `src/app/shared/components/favorite-button/` — Favorite toggle button
+- `src/app/shared/components/hero-section/` — Hero image/title/subtitle component
+- `src/app/shared/components/destination-wheel/` — Radial country selector (global, mounted once)
+- `src/app/shared/services/favorites.service.ts` — Centralized favorites state
+
+### Shared Services
+
+- `src/app/core/country.service.ts` — Current country state (signal), available countries
+- `src/app/core/destination.service.ts` — Destination lookup by country code
+- `src/app/core/services/` — Other core services
 
 ---
 
-## Review checklist
+## Data Architecture
 
-- [ ] Only intended files changed.
-- [ ] No cross-country imports.
-- [ ] Country styles are scoped to components.
-- [ ] Shared files were not modified without approval.
-- [ ] No new dependency was added.
-- [ ] Accessibility basics are present (alt text, labels, keyboard access, focus).
-- [ ] Layout works on mobile and desktop.
-- [ ] `npm run build` and `npm test` were run, or the failure is explained.
-- [ ] The completion report lists files, verification, and remaining work.
+### Authentication
+
+- No backend persistence yet. Country code is stored in a `signal` in `CountryService` (`providedIn: 'root'`).
+- `window.localStorage` is not currently used; state is purely in-memory during a session.
+- `CountryService.setCountry(code)` updates the signal; `getCurrentCountry()` reads it.
+
+### Favorites
+
+- `FavoritesService` manages a `Set<string>` of favorite destination IDs.
+- Emits events when favorites change.
+- `FavoriteButtonComponent` (`app-favorite-button`) connects the UI to the service.
+- Favorites filter is currently Italy-only in `FavoritesComponent`; the shared service is framework-ready for multi-country use.
+
+### Destination & Experience Data
+
+- **Italy data** (`features/italy/data/`): `destination-details.data.ts` (6 destinations with rich detail), `experience-details.data.ts` (4 categories with highlights, wines, where-to-try).
+- **Turkey data** (`features/turkey/data/`): `turkey.data.ts` (3 destinations: Istanbul, Cappadocia, Antalya).
+- Both portals have their own local data; no shared data layer yet.
+- `getAllDestinationIds()` and `getAllExperienceIds()` are exported for SSR prerender param generation.
 
 ---
 
-## What AI should not decide for you
+## Component Conventions
+
+- **Standalone components** are the norm. Import only what is needed.
+- `input()` / `output()` for component API; `signal()` for internal state.
+- Component styles are **scoped** via `styleUrl` (CSS per component).
+- No inline styles in templates unless trivial.
+- Use `CommonModule` for *ngIf/ngFor/Angular pipes.
+- Router links use `routerLink`; navigation is asynchronous with `loadComponent` / `loadChildren`.
+- Accessibility: meaningful `alt` text, focus-visible outlines, keyboard-friendly interactive elements.
+
+### Country-Specific Branding
+
+- Header shows the **current country** via `CountryService` (flag + name).
+- Destination wheel color per country is defined in `destination-wheel.data.ts` (`#c0392b` Turkey, `#1a7a4c` Italy, `#c2710c` Spain "coming soon").
+- Each portal maintains its own visual identity; header/footer are **not** shared across portals.
+
+### Header & Footer Must Not Leak Between Portals
+
+- The header is part of `layout.component.ts`, which is used globally.
+- However, the **country selector** in the header (`countryName` computed) reflects only the currently selected country via `CountryService.setCountry()`.
+- Portals do not re-render their own headers; the single global header shows the active country.
+- Footers are similarly global; do not add country-specific content to them.
+
+---
+
+## UI/UX Conventions
+
+- **Responsive layouts**: components adapt from mobile to desktop via media queries in their scoped CSS.
+- **Accessible navigation**: visible `focus-visible` outlines, keyboard-friendly order, `tabindex` management in the destination wheel.
+- **Loading states**: hero sections show content progressively; skeleton loading not yet implemented but patterns are established.
+- **Error states**: detail pages display "not found" when an ID has no data; console errors are guarded.
+- **Focus reduced motion**: CSS media queries respect `prefers-reduced-motion` where animations exist.
+- **Image loading**: `loading="lazy"` on images; optimized assets in `public/assets/`.
+- **Purposeful animations**: hover transforms, subtle transitions; no auto-playing videos without user intent.
+- **Color variables**: use CSS custom properties (e.g., `--primary`, `--accent`, `--text-color`) defined in component styles or global `:root`.
+
+---
+
+## Agent Workflow
+
+Follow this sequence for every task:
+
+1. **Inspect documentation and current Git state.** Run `git status` and `git branch --show-current`. Read `AGENTS.md` and the relevant feature folders.
+2. **Understand the existing implementation.** Read the actual files — components, templates, routes, data. Do not infer from filenames.
+3. **Identify the exact files involved.** Determine if the change is country-local, shared, or ambiguous.
+4. **Make scoped changes.** Edit only the files needed. Prefer standalone components and scoped styles. Do not refactor unrelated code.
+5. **Run relevant tests and build.** `npm run build` and `npm test`. Verify no regressions.
+6. **Verify visually when appropriate.** Check affected routes in the browser. Confirm country layouts remain isolated. Check responsive behavior.
+7. **Review the Git diff.** Ensure only intended files are modified. No unintended changes.
+8. **Report changes and limitations.** Use the completion report format from `AGENTS.md:11`. List files created/modified, shared impact, verification results, failures, remaining work.
+9. **Commit or push only when authorized.** Do not perform Git write operations without explicit user request.
+
+### What AI Should Not Decide
 
 - Creating or renaming branches, or creating/removing Git worktrees.
 - Committing, merging, rebasing, resetting, or pushing.
@@ -70,7 +150,7 @@ When in doubt, stop and ask your teammate or supervisor.
 
 ---
 
-## Working across the two portals
+## Working Across the Two Portals
 
 | Situation                                    | Action                                              |
 | -------------------------------------------- | --------------------------------------------------- |
@@ -81,21 +161,9 @@ When in doubt, stop and ask your teammate or supervisor.
 
 ---
 
-## Keep Git human
+## Quick Prompt Template
 
-Use the assistant for code and explanations, not for history changes. The safe default:
-
-- You run `git status`, `git diff`, `git log` (read-only, either of you).
-- You stage files explicitly with `git add <path>`.
-- You write and run the commit, merge, and push commands.
-
-If you explicitly ask an assistant for a Git write operation, inspect `git status` and `git diff` first and stage only the intended files.
-
----
-
-## Quick prompt template
-
-```text
+```
 Scope: src/app/features/<country>/
 Task: <one concrete change>
 Constraints: no shared files, no new dependencies, scoped styles, responsive, accessible
@@ -104,4 +172,4 @@ Report: files created/modified, shared impact, verification results, failures, r
 Do not commit, push, merge, or switch branches.
 ```
 
-For the full rules, see [`AGENTS.md`](./AGENTS.md). For project structure and workflows, see [`README.md`](./README.md).
+For the full rules, see [`AGENTS.md`](./AGENTS.md). For project structure and data, see [`README.md`](./README.md).

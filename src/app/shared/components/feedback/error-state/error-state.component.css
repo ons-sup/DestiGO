@@ -1,0 +1,50 @@
+:host {
+  --error-bg: var(--card-bg, #ffffff);
+  --error-text: var(--text-color, #24332d);
+  --error-muted: var(--text-muted, #68736d);
+  --error-accent: #c0392b;
+  --error-shadow: var(--shadow-sm, 0 10px 30px rgba(36, 51, 45, 0.08));
+  display: block;
+}
+
+.error-state {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--error-accent) 30%, transparent);
+  border-radius: 1.25rem;
+  background: var(--error-bg);
+  box-shadow: var(--error-shadow);
+  text-align: center;
+}
+
+.error-state__icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--error-accent) 15%, transparent);
+  color: var(--error-accent);
+  font-family: var(--font-sans, 'Segoe UI', system-ui, -apple-system, sans-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.error-state__title {
+  margin: 0;
+  color: var(--error-text);
+  font-family: var(--font-primary, Georgia, serif);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.error-state__message {
+  max-width: 26rem;
+  margin: 0 0 1rem;
+  color: var(--error-muted);
+  font-family: var(--font-sans, 'Segoe UI', system-ui, -apple-system, sans-serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

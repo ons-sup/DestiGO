@@ -6,12 +6,10 @@
 
 <app-turkey-intro [introduction]="introduction" [image]="countryImage"></app-turkey-intro>
 
-<section class="destinations">
+<section class="destinations" id="destinations">
   <div class="destinations__header">
     <h2 class="destinations__heading">Featured destinations</h2>
-    <p class="destinations__subtitle">
-      Start your journey in one of these remarkable regions.
-    </p>
+    <p class="destinations__subtitle">Start your journey in one of these remarkable regions.</p>
   </div>
   <div class="destinations__grid">
     @for (destination of destinations; track destination.id) {
@@ -25,8 +23,8 @@
     <div class="experiences__text">
       <h2 class="experiences__heading">Places to visit</h2>
       <p class="experiences__body">
-        From ancient bazaars to cave hotels, Türkiye offers experiences that
-        stay with you long after you return home.
+        From ancient bazaars to cave hotels, Türkiye offers experiences that stay with you long
+        after you return home.
       </p>
       <ul class="experiences__list">
         <li>Historic old towns and UNESCO World Heritage sites</li>

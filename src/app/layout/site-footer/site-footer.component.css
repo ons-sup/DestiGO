@@ -1,0 +1,217 @@
+﻿:host {
+  display: block;
+  font-family: var(
+    --font-sans,
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif
+  );
+  background-color: #0c0d11;
+  color: #cbd5e1;
+}
+
+.site-footer {
+  background-color: #0c0d11;
+  color: #cbd5e1;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-footer__container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-footer__container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer__container {
+    padding: 3rem 2rem;
+  }
+}
+
+.site-footer__main {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .site-footer__main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer__main {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 2rem;
+  }
+}
+
+.site-footer__brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-footer__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #fcd34d;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: -0.02em;
+  box-shadow: 0 2px 8px rgba(252, 211, 77, 0.25);
+}
+
+.site-footer__brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.site-footer__tagline {
+  margin-top: 1rem;
+  max-width: 24rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: #94a3b8;
+}
+
+.site-footer__links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .site-footer__links-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.site-footer__heading {
+  margin: 0 0 1rem 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Explicit list reset to eliminate any default bullets or indentations */
+.site-footer ul,
+.site-footer ol,
+.site-footer__list {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.site-footer li,
+.site-footer__item {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-footer__link {
+  color: #94a3b8;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    text-decoration 0.2s ease;
+}
+
+.site-footer__link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.site-footer__link--disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+}
+
+.site-footer__pill {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.04);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.site-footer__divider {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .site-footer__divider {
+    margin: 2.5rem 0;
+  }
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+@media (min-width: 640px) {
+  .site-footer__bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-footer__copyright {
+  margin: 0;
+  color: #94a3b8;
+}
+
+.site-footer__credit {
+  margin: 0;
+  color: #64748b;
+}
+
+:host a:focus-visible {
+  outline: 2px solid #fcd34d;
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}

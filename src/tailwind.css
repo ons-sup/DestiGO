@@ -1,0 +1,17 @@
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'flowbite/src/themes/default';
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@source "./app/layout/site-footer/**/*.html";
+@source "./app/layout/site-footer/**/*.ts";
+@source "./app/features/home/**/*.html";
+@source "./app/features/home/**/*.ts";
+@source "./app/features/turkey/**/*.html";
+@source "./app/features/turkey/**/*.ts";
+
+@layer utilities {
+  .list-none {
+    list-style-type: none !important;
+  }
+}

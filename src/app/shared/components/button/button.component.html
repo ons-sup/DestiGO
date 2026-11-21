@@ -1,0 +1,31 @@
+<ng-template #content><ng-content /></ng-template>
+
+@if (link()) {
+  <a
+    [routerLink]="link()"
+    [class]="linkClasses()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-disabled]="isInactive() ? true : null"
+    [attr.aria-busy]="loading() ? true : null"
+    [attr.tabindex]="isInactive() ? -1 : null"
+    (click)="handleLinkClick($event)"
+  >
+    @if (loading()) {
+      <span class="btn__spinner" aria-hidden="true"></span>
+    }
+    <span class="btn__label"><ng-container [ngTemplateOutlet]="content" /></span>
+  </a>
+} @else {
+  <button
+    [type]="type()"
+    [class]="classes()"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-busy]="loading() ? true : null"
+    [disabled]="isInactive()"
+  >
+    @if (loading()) {
+      <span class="btn__spinner" aria-hidden="true"></span>
+    }
+    <span class="btn__label"><ng-container [ngTemplateOutlet]="content" /></span>
+  </button>
+}

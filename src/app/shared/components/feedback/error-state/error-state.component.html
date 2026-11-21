@@ -1,0 +1,12 @@
+<section class="error-state" role="alert">
+  <span class="error-state__icon" aria-hidden="true">!</span>
+  <h2 class="error-state__title">{{ title() }}</h2>
+  @if (message()) {
+    <p class="error-state__message">{{ message() }}</p>
+  }
+  @if (actionLabel()) {
+    <app-button variant="secondary" [link]="actionLink()" (click)="action.emit()">
+      {{ actionLabel() }}
+    </app-button>
+  }
+</section>

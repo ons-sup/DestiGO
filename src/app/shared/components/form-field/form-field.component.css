@@ -1,0 +1,62 @@
+:host {
+  --field-label-color: var(--text-muted, #68736d);
+  --field-bg: var(--card-bg, #ffffff);
+  --field-border: var(--border-color, #e0e0e0);
+  --field-text: var(--text-color, #24332d);
+  --field-focus: var(--primary, #0b3d5c);
+  --field-error: #c0392b;
+  display: block;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field__label {
+  color: var(--field-label-color);
+  font-family: var(--font-sans, 'Segoe UI', system-ui, -apple-system, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field__required {
+  margin-left: 0.25rem;
+  color: var(--field-error);
+}
+
+.field__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--field-border);
+  border-radius: 0.6rem;
+  background: var(--field-bg);
+  color: var(--field-text);
+  font-family: var(--font-sans, 'Segoe UI', system-ui, -apple-system, sans-serif);
+  font-size: 0.95rem;
+}
+
+.field__input:focus-visible {
+  border-color: transparent;
+  outline: 2px solid var(--field-focus);
+  outline-offset: 2px;
+}
+
+.field__input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field--invalid .field__input {
+  border-color: var(--field-error);
+}
+
+.field__error {
+  margin: 0;
+  color: var(--field-error);
+  font-family: var(--font-sans, 'Segoe UI', system-ui, -apple-system, sans-serif);
+  font-size: 0.78rem;
+}

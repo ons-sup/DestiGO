@@ -1,5 +1,14 @@
 import { WheelCountry } from './destination-wheel.model';
 
+export const HOME_DESTINATION: WheelCountry = {
+  id: 'home',
+  name: 'Home',
+  tagline: 'Your starting point for all journeys.',
+  route: '/',
+  available: true,
+  color: '#d4a96a',
+};
+
 export const DESTINATION_WHEEL_COUNTRIES: readonly WheelCountry[] = [
   {
     id: 'turkey',
@@ -7,7 +16,7 @@ export const DESTINATION_WHEEL_COUNTRIES: readonly WheelCountry[] = [
     tagline: 'Where continents meet.',
     route: '/turkey',
     available: true,
-    color: '#7a1fa2',
+    color: '#c0392b',
   },
   {
     id: 'italy',
@@ -15,7 +24,7 @@ export const DESTINATION_WHEEL_COUNTRIES: readonly WheelCountry[] = [
     tagline: 'La dolce vita, from the Alps to the sea.',
     route: '/italy',
     available: true,
-    color: '#c2185b',
+    color: '#1a7a4c',
   },
   {
     id: 'spain',
