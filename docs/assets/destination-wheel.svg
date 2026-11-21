@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-labelledby="wheelTitle wheelDesc" style="max-width: 100%; height: auto;">
   <title id="wheelTitle">DestiGo destination wheel</title>
-  <desc id="wheelDesc">Circular destination selector with three sectors: Turkey, Italy, and Spain. Turkey is the active portal; Italy and Spain are planned.</desc>
+  <desc id="wheelDesc">Circular destination selector with three sectors: Türkiye, Italy, and Spain. All three portals are current.</desc>
 
   <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
     <circle cx="300" cy="300" r="248" fill="none" stroke="#20323D" stroke-width="3" />
@@ -14,10 +14,10 @@
       <text x="434" y="242" fill="#F7F8F5" font-size="13" letter-spacing="1.5">PORTAL</text>
 
       <text x="300" y="448" fill="#20323D" font-size="24" font-weight="700" letter-spacing="1">ITALY</text>
-      <text x="300" y="472" fill="#20323D" font-size="13" letter-spacing="1.5">PLANNED</text>
+      <text x="300" y="472" fill="#20323D" font-size="13" letter-spacing="1.5">CURRENT</text>
 
       <text x="166" y="218" fill="#F7F8F5" font-size="24" font-weight="700" letter-spacing="1">SPAIN</text>
-      <text x="166" y="242" fill="#F7F8F5" font-size="13" letter-spacing="1.5">PLANNED</text>
+      <text x="166" y="242" fill="#F7F8F5" font-size="13" letter-spacing="1.5">CURRENT</text>
     </g>
 
     <circle cx="300" cy="300" r="70" fill="#F7F8F5" stroke="#20323D" stroke-width="3" />

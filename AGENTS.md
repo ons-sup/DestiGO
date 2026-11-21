@@ -29,9 +29,9 @@ MANDATORY:
 - **Team:** two developers working independently.
   - Türkiye portal: Ahmed Ben Mim
   - Italy portal: Ons Chtioui
-  - Spain portal: planned, owner not yet assigned
+  - Spain portal: implemented
 - **Architecture:** feature-based. Each country owns its pages, components, data, models, and scoped styles. Shared UI and infrastructure are separate.
-- **Current state is small and evolving.** Only the root app files, `src/app/features/turkey/`, and documentation artwork under `docs/assets/` exist. `/` currently redirects to `/turkey`. The dashboard, `core/`, `shared/`, `italy/`, `spain/`, `auth/`, `favorites/`, `about/`, and the destination wheel are planned. Always verify the actual state; never assume a planned folder or feature exists.
+- **Current state is small and evolving.** Only the root app files, `src/app/features/turkey/`, `src/app/features/spain/`, and documentation artwork under `docs/assets/` exist. `/` currently redirects to `/turkey`. The dashboard, `core/`, `shared/`, `italy/`, `auth/`, `favorites/`, `about/`, and the destination wheel are planned. Always verify the actual state; never assume a planned folder or feature exists.
 - **Integration branch:** `master` (the current GitHub default; verify with `git symbolic-ref refs/remotes/origin/HEAD`). A rename to `main` has been discussed but is not approved; do not rename or switch branches on your own.
 
 ---
@@ -63,7 +63,7 @@ Also confirm the Angular, TypeScript, and dependency versions from `package.json
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------- |
 | Türkiye portal      | `src/app/features/turkey/**`                                                                                              | Ahmed Ben Mim | Modify only when the task is about Türkiye        |
 | Italy portal        | `src/app/features/italy/**`                                                                                               | Ons Chtioui   | Modify only when the task is about Italy          |
-| Spain portal        | `src/app/features/spain/**`                                                                                               | Unassigned    | Do not create or modify without explicit approval |
+| Spain portal        | `src/app/features/spain/**`                                                                                               | Implemented    | Modify only when the task is about Spain        |
 | Dashboard           | `src/app/features/home/**`                                                                                                | Shared        | Approval required                                 |
 | Auth                | `src/app/features/auth/**`                                                                                                | Shared        | Approval required                                 |
 | Favorites           | `src/app/features/favorites/**`                                                                                           | Shared        | Approval required                                 |

@@ -14,7 +14,7 @@ The application contains **independent country portals** that each own their pag
 
 - **Turkey portal** (`/turkey`): Developed by Ahmed Ben Mim. Contains home, destination lists, and detail pages.
 - **Italy portal** (`/italy`): Developed by Ons Chtioui. Contains Rome, Venice, Florence, and all major destinations/experiences.
-- **Spain portal** (`/spain`): Not yet implemented. Marked "Coming Soon" in the destination wheel.
+- **Spain portal** (`/spain`): Implemented. Contains home, destinations, and detail pages.
 
 The global application shell (`app.ts`) renders `<router-outlet />` and the shared destination wheel (`app-destination-wheel-nav`). The homepage (`/`) is the global dark DestiGO landing page; `/turkey` and `/italy` are independent country portals.
 
@@ -102,7 +102,7 @@ The actual component and routing hierarchy in the repository:
 ### Country-Specific Branding
 
 - Header shows the **current country** via `CountryService` (flag + name).
-- Destination wheel color per country is defined in `destination-wheel.data.ts` (`#c0392b` Turkey, `#1a7a4c` Italy, `#c2710c` Spain "coming soon").
+- Destination wheel color per country is defined in `destination-wheel.data.ts` (`#c0392b` Türkiye, `#1a7a4c` Italy, `#c2710c` Spain).
 - Each portal maintains its own visual identity; headers are country-scoped, while the site footer is a shared configurable component.
 
 ### Header & Footer Isolation

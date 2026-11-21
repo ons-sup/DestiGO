@@ -27,7 +27,7 @@ This is an academic project at **SUP'COM** Higher School of Communication of Tun
 | `/`                | Current | Dark DestiGO landing page with destination wheel           |
 | `/turkey`          | Current | Türkiye portal: home, destinations, and detail pages       |
 | `/italy`           | Current | Italy portal: home, destinations, experiences, and details |
-| `/spain`           | Planned | Coming Soon                                                |
+| `/spain`           | Current | Spain portal: home, destinations, and detail pages       |
 | `/auth/login`      | Current | Demo login                                                 |
 | `/auth/register`   | Current | Demo registration                                          |
 | `/favorites`       | Current | Shared favorites page                                      |
@@ -43,12 +43,16 @@ This is an academic project at **SUP'COM** Higher School of Communication of Tun
 | Dark homepage (`/`)         | Current | Black/gold theme, hero imagery, animations, destination cards |
 | Turkey portal (`/turkey`)   | Current | Home, destinations, experiences, about, plan-your-trip, detail |
 | Italy portal (`/italy`)     | Current | Home, destinations, experiences, detail pages, favorites      |
-| Spain portal (`/spain`)     | Planned | Future portal                                                |
+| Spain portal (`/spain`)     | Current | Home, destinations, detail pages                          |
 | Destination details         | Current | Türkiye and Italy detail pages                               |
 | Authentication              | Current | Demo login and registration backed by localStorage           |
 | Favorites                   | Current | Shared service, reusable button, `/favorites` page           |
 | About (`/about`)            | Current | Project and team information                                 |
 | Destination wheel           | Current | Shared Angular/SVG country selector                          |
+
+### Destination Wheel
+
+The destination wheel (`app-destination-wheel-nav`, rendered on the global homepage `/`) is a shared SVG country selector that lets visitors pick a country portal. It opens as a modal dialog with three segments — Türkiye, Italy, and Spain — each linked to its portal route (`/turkey`, `/italy`, `/spain`). Selecting a segment and clicking Explore navigates to that country's portal. The wheel is fully keyboard accessible (arrow navigation, Enter/Space to select, Escape to close) and honors `prefers-reduced-motion`.
 
 ### Architecture
 
@@ -72,7 +76,7 @@ flowchart TB
   subgraph Portals["Independent country features"]
     TR["Turkey /turkey<br/>in progress"]
     IT["Italy /italy<br/>implemented"]
-    ES["Spain /spain<br/>planned"]
+    ES["Spain /spain<br/>current"]
   end
 
   DG["DestiGo"] --> Shell
@@ -88,9 +92,8 @@ flowchart TB
   classDef country fill:#E8B86D,color:#20323D,stroke:#20323D,stroke-width:2px;
   classDef planned fill:#F7F8F5,color:#20323D,stroke:#176B87,stroke-width:2px,stroke-dasharray:6 4;
   class Shell shared;
-  class TR,IT country;
+  class TR,IT,ES country;
   class Dash,Auth,Fav,Wheel,IT country;
-  class ES planned;
 ```
 
 ### Getting Started
@@ -106,7 +109,7 @@ npm test         # Vitest unit tests
 
 The build produces browser and server bundles. Tests run with Vitest through Angular's unit-test builder.
 
-The Türkiye and Italy portals are implemented; Spain is planned. The global homepage is the dark DestiGO landing page.
+The Türkiye, Italy, and Spain portals are implemented. The global homepage is the dark DestiGO landing page.
 
 ### Collaboration
 
@@ -114,7 +117,7 @@ The Türkiye and Italy portals are implemented; Spain is planned. The global hom
 | ----------------------------- | --------------- | ------------------------- |
 | Turkey portal                 | Ahmed Ben Mim   | `feature/turkey`          |
 | Italy portal                  | Ons Chtioui     | `feature/italy` (planned) |
-| Spain portal                  | Unassigned      | Planned                   |
+| Spain portal                  | Implemented      | `feature/spain` (merged to master)  |
 | Shell, auth, favorites, wheel | Both developers | Dedicated shared branch   |
 
 Work inside your country folder on a feature branch. Open a Pull Request, review the changes, and merge into `master`. Do not push directly to `master` or edit another developer's portal without agreement.

@@ -30,7 +30,7 @@ export class SiteFooterComponent {
   protected readonly exploreLinks: FooterLink[] = [
     { label: 'Türkiye', path: '/turkey' },
     { label: 'Italy', path: '/italy' },
-    { label: 'Spain', disabled: true, note: 'Coming Soon' },
+    { label: 'Spain', path: '/spain' },
   ];
 
   protected readonly navigationLinks = computed<FooterLink[]>(() => {
