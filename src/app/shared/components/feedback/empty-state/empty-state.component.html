@@ -1,0 +1,14 @@
+<section class="empty-state" [attr.aria-label]="title()">
+  @if (icon()) {
+    <span class="empty-state__icon" aria-hidden="true">{{ icon() }}</span>
+  }
+  <h2 class="empty-state__title">{{ title() }}</h2>
+  @if (message()) {
+    <p class="empty-state__message">{{ message() }}</p>
+  }
+  @if (actionLabel()) {
+    <app-button variant="primary" [link]="actionLink()" (click)="action.emit()">
+      {{ actionLabel() }}
+    </app-button>
+  }
+</section>

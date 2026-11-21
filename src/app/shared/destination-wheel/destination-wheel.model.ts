@@ -1,4 +1,4 @@
-export type WheelCountryId = 'turkey' | 'italy' | 'spain';
+export type WheelCountryId = 'turkey' | 'italy' | 'spain' | 'home';
 
 export interface WheelCountry {
   readonly id: WheelCountryId;

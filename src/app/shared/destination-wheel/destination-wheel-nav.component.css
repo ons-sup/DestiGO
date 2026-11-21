@@ -1,5 +1,7 @@
 :host {
   display: block;
+  --color-accent: #d4a96a;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .wheel-launcher {
@@ -7,60 +9,85 @@
   right: max(1.15rem, env(safe-area-inset-right));
   bottom: max(1.15rem, env(safe-area-inset-bottom));
   z-index: 900;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.5rem 0.9rem 0.5rem 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(22, 10, 36, 0.9);
+  height: 3.3rem;
+  max-width: 3.3rem;
+  padding: 0.45rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(17, 17, 19, 0.94);
   color: #ffffff;
-  box-shadow:
-    0 18px 45px -18px rgba(0, 0, 0, 0.9),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(14px);
   cursor: pointer;
   font: inherit;
   transition:
+    max-width 0.35s var(--ease-out),
+    padding 0.35s var(--ease-out),
     transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.wheel-launcher:hover {
+.wheel-launcher:hover,
+.wheel-launcher:focus-visible {
+  max-width: 14rem;
+  padding: 0.45rem 1.1rem 0.45rem 0.45rem;
   transform: translateY(-3px);
-  border-color: rgba(255, 171, 145, 0.55);
-  box-shadow:
-    0 24px 55px -20px rgba(0, 0, 0, 0.95),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: rgba(212, 169, 106, 0.45);
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.85);
 }
 
 .wheel-launcher:focus-visible {
-  outline: 2px solid #ffab91;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
 .wheel-launcher__icon {
   display: grid;
-  width: 2.7rem;
-  height: 2.7rem;
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
   place-items: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #7a1fa2, #c2185b);
-  box-shadow: 0 8px 20px -10px rgba(194, 24, 91, 0.9);
+  border-radius: 8px;
+  background: rgba(212, 169, 106, 0.15);
+  color: var(--color-accent);
 }
 
 .wheel-launcher__icon svg {
-  width: 1.45rem;
-  height: 1.45rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .wheel-launcher__label {
-  padding-right: 0.25rem;
-  font-size: 0.72rem;
-  font-weight: 800;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  padding-left: 0;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  pointer-events: none;
+  transform: translateX(-8px);
+  transition:
+    max-width 0.35s var(--ease-out),
+    opacity 0.2s ease,
+    padding 0.35s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.wheel-launcher:hover .wheel-launcher__label,
+.wheel-launcher:focus-visible .wheel-launcher__label {
+  max-width: 130px;
+  opacity: 1;
+  padding-left: 0.65rem;
+  transform: translateX(0);
 }
 
 .wheel-overlay {
@@ -75,9 +102,9 @@
 .wheel-overlay__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(8, 3, 14, 0.82);
+  background: rgba(8, 8, 10, 0.88);
   backdrop-filter: blur(10px);
-  animation: wheel-backdrop-in 0.22s ease both;
+  animation: wheel-backdrop-in 0.25s ease both;
 }
 
 .wheel-overlay__dialog {
@@ -87,15 +114,13 @@
   max-height: min(92dvh, 920px);
   overflow-y: auto;
   padding: clamp(1.25rem, 3vw, 2.25rem);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   background:
-    radial-gradient(circle at 20% 0%, rgba(122, 31, 162, 0.28), transparent 40%),
-    linear-gradient(160deg, #1c0c2f, #100619 70%);
-  box-shadow:
-    0 40px 120px -30px rgba(0, 0, 0, 0.95),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  animation: wheel-dialog-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+    radial-gradient(circle at 20% 0%, rgba(212, 169, 106, 0.06), transparent 40%),
+    linear-gradient(160deg, #151517, #0c0c0e 70%);
+  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.95);
+  animation: wheel-dialog-in 0.35s var(--ease-out) both;
 }
 
 .wheel-overlay__dialog:focus {
@@ -108,32 +133,29 @@
   right: 1rem;
   z-index: 2;
   display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
   color: #ffffff;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .wheel-overlay__close:hover {
-  background: rgba(255, 255, 255, 0.14);
-  transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .wheel-overlay__close:focus-visible {
-  outline: 2px solid #ffab91;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
 .wheel-overlay__close svg {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .wheel-overlay__header {
@@ -143,25 +165,26 @@
 
 .wheel-overlay__eyebrow {
   margin: 0 0 0.5rem;
-  color: #ffab91;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.26em;
+  color: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
 }
 
 .wheel-overlay__title {
   margin: 0;
   color: #ffffff;
+  font-family: Georgia, serif;
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .wheel-overlay__subtitle {
-  margin: 0.6rem 0 0;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.88rem;
   line-height: 1.6;
 }
 
@@ -181,23 +204,15 @@
 @keyframes wheel-dialog-in {
   from {
     opacity: 0;
-    transform: translateY(1rem) scale(0.97);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
 }
 
 @media (max-width: 640px) {
-  .wheel-launcher {
-    padding: 0.45rem;
-  }
-
-  .wheel-launcher__label {
-    display: none;
-  }
-
   .wheel-overlay {
     padding: 0;
   }
@@ -218,6 +233,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .wheel-launcher,
+  .wheel-launcher__label,
   .wheel-overlay__backdrop,
   .wheel-overlay__dialog,
   .wheel-overlay__close {

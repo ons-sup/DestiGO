@@ -1,0 +1,25 @@
+<div class="field" [class.field--invalid]="invalid()">
+  <label class="field__label" [for]="inputId()">
+    {{ label() }}
+    @if (required()) {
+      <span class="field__required" aria-hidden="true">*</span>
+    }
+  </label>
+  <input
+    class="field__input"
+    [id]="inputId()"
+    [type]="type()"
+    [attr.autocomplete]="autocomplete() || null"
+    [attr.required]="required() ? true : null"
+    [attr.aria-required]="required() ? true : null"
+    [attr.aria-invalid]="invalid() ? true : null"
+    [attr.aria-describedby]="describedBy()"
+    [value]="value()"
+    [disabled]="disabled()"
+    (input)="handleInput($event)"
+    (blur)="handleBlur()"
+  />
+  @if (error(); as message) {
+    <p class="field__error" [id]="errorId()">{{ message }}</p>
+  }
+</div>

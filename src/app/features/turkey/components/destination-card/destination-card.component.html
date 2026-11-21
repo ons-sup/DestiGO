@@ -1,4 +1,4 @@
-<article class="card" [routerLink]="['/turkey', destination().id]">
+<article class="card">
   <div class="card__image-wrapper">
     <img
       class="card__image"
@@ -10,7 +10,11 @@
     <span class="card__badge">{{ destination().region }}</span>
   </div>
   <div class="card__content">
-    <h2 class="card__title">{{ destination().name }}</h2>
+    <h2 class="card__title">
+      <a class="card__link" [routerLink]="['/turkey', destination().id]">
+        {{ destination().name }}
+      </a>
+    </h2>
     <p class="card__tagline">{{ destination().tagline }}</p>
     <p class="card__description">{{ destination().description }}</p>
     <ul class="card__highlights">

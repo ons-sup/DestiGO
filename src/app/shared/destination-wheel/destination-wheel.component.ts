@@ -1,13 +1,12 @@
 import { Component, ElementRef, computed, inject, input, output, signal } from '@angular/core';
-import { DESTINATION_WHEEL_COUNTRIES } from './destination-wheel.data';
+import { DESTINATION_WHEEL_COUNTRIES, HOME_DESTINATION } from './destination-wheel.data';
 import { WheelCountry, WheelSegment } from './destination-wheel.model';
 
 const VIEWBOX_CENTER = 200;
 const OUTER_RADIUS = 172;
-const INNER_RADIUS = 64;
-const LABEL_RADIUS = 112;
-const SEGMENT_GAP_DEGREES = 2;
-const DRAG_THRESHOLD_DEGREES = 4;
+const INNER_RADIUS = 80;
+const LABEL_RADIUS = 128;
+const SEGMENT_GAP_DEGREES = 3;
 
 let nextWheelId = 0;
 
@@ -21,29 +20,28 @@ export class DestinationWheelComponent {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly instanceId = `destination-wheel-${nextWheelId++}`;
 
-  private pointerId: number | null = null;
-  private pointerLastAngle = 0;
-  private dragDistance = 0;
-  private dragged = false;
-
   readonly countries = input<readonly WheelCountry[]>(DESTINATION_WHEEL_COUNTRIES);
   readonly countrySelected = output<WheelCountry>();
   readonly exploreSelected = output<WheelCountry>();
 
+  protected readonly homeDestination = HOME_DESTINATION;
+  protected readonly isHomeSelected = signal(false);
   protected readonly wheelTitleId = `${this.instanceId}-title`;
   protected readonly hintId = `${this.instanceId}-hint`;
-  protected readonly glowId = `${this.instanceId}-glow`;
   protected readonly selectedIndex = signal(0);
-  protected readonly rotation = signal(0);
-  protected readonly dragging = signal(false);
-  protected readonly labelRotation = computed(() => -this.rotation());
+
   protected readonly segments = computed<readonly WheelSegment[]>(() =>
     this.buildSegments(this.countries()),
   );
+
   protected readonly selectedCountry = computed<WheelCountry | null>(() => {
+    if (this.isHomeSelected()) {
+      return this.homeDestination;
+    }
     const countries = this.countries();
     return countries[this.selectedIndex()] ?? countries[0] ?? null;
   });
+
   protected readonly selectedAnnouncement = computed(() => {
     const country = this.selectedCountry();
     if (!country) {
@@ -54,82 +52,43 @@ export class DestinationWheelComponent {
     }`;
   });
 
-  protected flagClipId(countryId: string): string {
-    return `${this.instanceId}-flag-${countryId}`;
-  }
-
   protected segmentAriaLabel(country: WheelCountry): string {
     return country.available ? country.name : `${country.name}, coming soon`;
   }
 
-  protected onPointerDown(event: PointerEvent): void {
-    if (event.pointerType === 'mouse' && event.button !== 0) {
-      return;
-    }
-    const svg = event.currentTarget as SVGSVGElement;
-    svg.setPointerCapture(event.pointerId);
-    this.pointerId = event.pointerId;
-    this.pointerLastAngle = this.pointerAngle(event, svg);
-    this.dragDistance = 0;
-    this.dragged = false;
-    this.dragging.set(true);
-  }
-
-  protected onPointerMove(event: PointerEvent): void {
-    if (this.pointerId !== event.pointerId || !this.dragging()) {
-      return;
-    }
-    const svg = event.currentTarget as SVGSVGElement;
-    const angle = this.pointerAngle(event, svg);
-    const delta = this.shortestDelta(angle - this.pointerLastAngle);
-    this.pointerLastAngle = angle;
-    if (Math.abs(delta) < 0.01) {
-      return;
-    }
-    this.dragDistance += Math.abs(delta);
-    if (this.dragDistance >= DRAG_THRESHOLD_DEGREES) {
-      this.dragged = true;
-    }
-    this.rotation.update((rotation) => rotation + delta);
-  }
-
-  protected onPointerUp(event: PointerEvent): void {
-    if (this.pointerId !== event.pointerId) {
-      return;
-    }
-    const svg = event.currentTarget as SVGSVGElement;
-    if (svg.hasPointerCapture(event.pointerId)) {
-      svg.releasePointerCapture(event.pointerId);
-    }
-    this.pointerId = null;
-    this.dragging.set(false);
-    if (this.dragged) {
-      this.snapToNearest();
-    }
-  }
-
-  protected onPointerCancel(event: PointerEvent): void {
-    if (this.pointerId !== event.pointerId) {
-      return;
-    }
-    const svg = event.currentTarget as SVGSVGElement;
-    if (svg.hasPointerCapture(event.pointerId)) {
-      svg.releasePointerCapture(event.pointerId);
-    }
-    this.pointerId = null;
-    this.dragging.set(false);
-    if (this.dragged) {
-      this.snapToNearest();
-    }
-    this.dragged = false;
+  protected onSegmentEnter(index: number): void {
+    this.isHomeSelected.set(false);
+    this.selectIndex(index);
   }
 
   protected onSegmentClick(index: number): void {
-    if (this.dragged) {
-      this.dragged = false;
-      return;
+    this.isHomeSelected.set(false);
+    const country = this.countries()[index];
+    if (country?.available) {
+      this.exploreSelected.emit(country);
     }
-    this.selectIndex(index);
+  }
+
+  protected onHomeEnter(): void {
+    this.isHomeSelected.set(true);
+    this.countrySelected.emit(this.homeDestination);
+  }
+
+  protected onHomeClick(): void {
+    this.isHomeSelected.set(true);
+    this.exploreSelected.emit(this.homeDestination);
+  }
+
+  protected onHomeKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.onHomeClick();
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      this.isHomeSelected.set(false);
+      this.selectIndex(0);
+      this.focusSegment(0);
+    }
   }
 
   protected onSegmentKeydown(event: KeyboardEvent, index: number): void {
@@ -148,22 +107,28 @@ export class DestinationWheelComponent {
         nextIndex = index - 1;
         break;
       case 'Home':
-        nextIndex = 0;
-        break;
+      case 'h':
+      case 'H':
+        event.preventDefault();
+        this.onHomeEnter();
+        this.focusHome();
+        return;
       case 'End':
         nextIndex = count - 1;
         break;
       case 'Enter':
       case ' ':
         event.preventDefault();
-        this.selectIndex(index);
+        this.onSegmentClick(index);
         return;
       default:
         return;
     }
     event.preventDefault();
-    this.selectIndex(nextIndex);
-    this.focusSegment(nextIndex);
+    this.isHomeSelected.set(false);
+    const normalized = ((nextIndex % count) + count) % count;
+    this.selectIndex(normalized);
+    this.focusSegment(normalized);
   }
 
   protected explore(): void {
@@ -185,48 +150,7 @@ export class DestinationWheelComponent {
       return;
     }
     this.selectedIndex.set(normalized);
-    this.rotation.set(this.targetRotation(normalized, this.rotation()));
     this.countrySelected.emit(country);
-  }
-
-  private snapToNearest(): void {
-    const segments = this.segments();
-    if (!segments.length) {
-      return;
-    }
-    let nearest = 0;
-    let nearestDistance = Infinity;
-    for (let index = 0; index < segments.length; index += 1) {
-      const segment = segments[index];
-      if (!segment) {
-        continue;
-      }
-      const distance = Math.abs(this.shortestDelta(segment.midAngle + this.rotation()));
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearest = index;
-      }
-    }
-    this.selectIndex(nearest);
-  }
-
-  private targetRotation(index: number, from: number): number {
-    const segment = this.segments()[index];
-    if (!segment) {
-      return from;
-    }
-    return from + this.shortestDelta(-segment.midAngle - from);
-  }
-
-  private shortestDelta(degrees: number): number {
-    return ((((degrees + 180) % 360) + 360) % 360) - 180;
-  }
-
-  private pointerAngle(event: PointerEvent, svg: SVGSVGElement): number {
-    const bounds = svg.getBoundingClientRect();
-    const centerX = bounds.left + bounds.width / 2;
-    const centerY = bounds.top + bounds.height / 2;
-    return (Math.atan2(event.clientX - centerX, centerY - event.clientY) * 180) / Math.PI;
   }
 
   private focusSegment(index: number): void {
@@ -240,6 +164,13 @@ export class DestinationWheelComponent {
     );
     if (segment && typeof segment.focus === 'function') {
       segment.focus();
+    }
+  }
+
+  private focusHome(): void {
+    const hub = this.host.nativeElement.querySelector<SVGGElement>('.wheel__hub');
+    if (hub && typeof hub.focus === 'function') {
+      hub.focus();
     }
   }
 
