@@ -100,11 +100,28 @@ flowchart TB
 
 **Prerequisites:** Node.js `^22.22.3`, `^24.15.0`, or `^26.0.0`; PowerShell 5.1+; npm 11.19.0.
 
+**Install dependencies:**
+
 ```bash
 npm install
-npm start        # http://localhost:4200 (Angular dev server)
-npm run build    # production build into dist/
-npm test         # Vitest unit tests
+```
+
+Key dependencies (`package.json`):
+- `@angular/*` ^22.2.0 (core, common, router, forms, platform-browser, platform-server, cdk, material)
+- `@angular/ssr` ^22.2.7, `express` ^5.1.0 (SSR/server)
+- `rxjs` ~7.8.0, `tslib` ^2.3.0
+- `tailwindcss` ^4.3.5, `@tailwindcss/postcss` ^4.3.5, `postcss` ^8.5.33
+- `flowbite` ^4.0.2
+- `vitest` ^5.0.0, `jsdom` ^30.0.0 (testing)
+- `prettier` ^3.8.1 (formatting)
+- `typescript` ~6.0.2
+
+```bash
+npm install          # install all dependencies
+npm start            # http://localhost:4200 (Angular dev server)
+npm run build        # production build into dist/
+npm test             # Vitest unit tests
+npm run serve:ssr:DestiGO  # run SSR server from dist/
 ```
 
 The build produces browser and server bundles. Tests run with Vitest through Angular's unit-test builder.
