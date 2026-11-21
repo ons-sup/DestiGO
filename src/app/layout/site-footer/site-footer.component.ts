@@ -21,6 +21,12 @@ export class SiteFooterComponent {
   readonly variant = input<FooterVariant>('global');
   readonly year = new Date().getFullYear();
 
+  protected readonly tagline = computed(() => {
+    return this.variant() === 'turkey'
+      ? 'Discover destinations, cultures, and unforgettable Turkish journeys.'
+      : 'Discover destinations, cultures, and experiences across the globe.';
+  });
+
   protected readonly exploreLinks: FooterLink[] = [
     { label: 'Türkiye', path: '/turkey' },
     { label: 'Italy', path: '/italy' },
@@ -29,7 +35,10 @@ export class SiteFooterComponent {
 
   protected readonly navigationLinks = computed<FooterLink[]>(() => {
     if (this.variant() === 'turkey') {
-      return [{ label: 'Home', path: '/turkey' }];
+      return [
+        { label: 'Türkiye Home', path: '/turkey' },
+        { label: 'Global Home', path: '/' },
+      ];
     }
 
     return [
