@@ -11,6 +11,44 @@ export const routes: Routes = [
   },
   {
     path: 'spain',
+    loadComponent: () => import('./layout/layout.component').then((m) => m.LayoutComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
+      },
+      {
+        path: 'destinations',
+        loadComponent: () => import('./pages/destinations/destinations.component').then((m) => m.DestinationsComponent),
+      },
+      {
+        path: 'destinations/:id',
+        loadComponent: () => import('./features/spain/components/destination-detail/destination-detail.component').then((m) => m.DestinationDetailComponent),
+      },
+      {
+        path: 'experiences',
+        loadComponent: () => import('./pages/experiences/experiences.component').then((m) => m.ExperiencesComponent),
+      },
+      {
+        path: 'experiences/:id',
+        loadComponent: () => import('./features/italy/components/experience-detail/experience-detail.component').then((m) => m.ExperienceDetailComponent),
+      },
+      {
+        path: 'plan-your-trip',
+        loadComponent: () => import('./pages/plan-your-trip/plan-your-trip.component').then((m) => m.PlanYourTripComponent),
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./pages/about/about.component').then((m) => m.AboutComponent),
+      },
+      {
+        path: 'favorites',
+        loadComponent: () => import('./pages/favorites/favorites.component').then((m) => m.FavoritesComponent),
+      },
+    ],
+  },
+  {
+    path: 'spain-old',
     loadChildren: () => import('./features/spain/spain.routes').then((m) => m.SPAIN_ROUTES),
   },
   {
@@ -69,11 +107,12 @@ export const routes: Routes = [
   },
   {
     path: 'favorites',
-    loadComponent: () => import('./pages/favorites/favorites.component').then((m) => m.FavoritesComponent),
+    loadComponent: () => import('./layout/layout.component').then((m) => m.LayoutComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/favorites/favorites.component').then((m) => m.FavoritesComponent),
+      },
+    ],
   },
-  {
-    path: 'plan-your-trip',
-    loadComponent: () => import('./pages/plan-your-trip/plan-your-trip.component').then((m) => m.PlanYourTripComponent),
-  },
-  { path: '**', redirectTo: '' }
 ];

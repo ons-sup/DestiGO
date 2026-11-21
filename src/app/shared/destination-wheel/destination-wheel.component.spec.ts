@@ -61,17 +61,18 @@ describe('DestinationWheelComponent', () => {
     ]);
   });
 
-  it('does not emit on click for unavailable country', () => {
+  it('emits Spain on segment click now that Spain is available', () => {
     const fixture = createWheel();
     const element = fixture.nativeElement as HTMLElement;
-    const emitted: unknown[] = [];
-    fixture.componentInstance.exploreSelected.subscribe((country) => emitted.push(country));
+    const emitted: Array<{ id: string; name: string; available: boolean; route: string }> = [];
+    fixture.componentInstance.exploreSelected.subscribe((country) => emitted.push(country as any));
 
     const segments = element.querySelectorAll<SVGGElement>('.wheel__segment');
-    // Select Spain (index 2, unavailable)
     segments[2].dispatchEvent(new MouseEvent('click', { bubbles: true }));
 
-    expect(emitted.length).toBe(0);
+    expect(emitted.length).toBe(1);
+    expect(emitted[0].id).toBe('spain');
+    expect(emitted[0].available).toBe(true);
   });
 
   it('moves the selection with arrow keys', () => {

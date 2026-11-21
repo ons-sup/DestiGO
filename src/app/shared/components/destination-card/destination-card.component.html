@@ -1,5 +1,5 @@
 @if (variant() === 'small') {
-  <a [routerLink]="['/destinations', destination().id]" class="destination-card" aria-label="View {{ destination().name }} details">
+  <a [routerLink]="detailRoute()" class="destination-card" aria-label="View {{ destination().name }} details">
     <div class="card-image-wrapper">
       <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
       <div class="card-favorite-btn">
@@ -16,7 +16,7 @@
     </div>
   </a>
 } @else {
-  <a [routerLink]="['/destinations', destination().id]" class="destination-card-large" aria-label="View {{ destination().name }} details">
+  <a [routerLink]="detailRoute()" class="destination-card-large" aria-label="View {{ destination().name }} details">
     <div class="card-image-wrapper">
       <img [src]="destination().imageUrl" [alt]="destination().name" loading="lazy">
       <div class="card-favorite-btn">

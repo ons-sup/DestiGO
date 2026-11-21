@@ -1,6 +1,7 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import { getAllDestinationIds } from './features/italy/data/destination-details.data';
 import { getAllExperienceIds } from './features/italy/data/experience-details.data';
+import { getAllDestinationIds as getAllSpainDestinationIds } from './features/spain/data/destination-details.data';
 
 export const serverRoutes: ServerRoute[] = [
   {
@@ -17,6 +18,14 @@ export const serverRoutes: ServerRoute[] = [
     getPrerenderParams: async () => {
       const experienceIds = getAllExperienceIds();
       return experienceIds.map(id => ({ id }));
+    }
+  },
+  {
+    path: 'spain/destinations/:id',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      const destinationIds = getAllSpainDestinationIds();
+      return destinationIds.map(id => ({ id }));
     }
   },
   {

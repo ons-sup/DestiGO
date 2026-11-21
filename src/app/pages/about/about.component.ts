@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroSectionComponent } from '../../shared/components/hero-section/hero-section.component';
+import { CountryService } from '../../core/services/country.service';
 
 @Component({
   selector: 'app-about',
@@ -10,6 +11,8 @@ import { HeroSectionComponent } from '../../shared/components/hero-section/hero-
   styleUrl: './about.component.css'
 })
 export class AboutComponent {
+  private countryService = inject(CountryService);
+
   developers = [
     {
       name: 'Ahmed Ben Mim',
@@ -22,6 +25,12 @@ export class AboutComponent {
       description: 'Responsible for the Italy portal including Rome, Venice, and Florence content.'
     }
   ];
+
+  heroImage() {
+    const code = this.countryService.currentCountry();
+    if (code === 'spain') return '/images/spain/spain1.jpg';
+    return '/assets/images/italia.webp';
+  }
 
   getInitials(name: string): string {
     return name

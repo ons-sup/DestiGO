@@ -11,13 +11,9 @@ import { Destination } from '../../models/destination.model';
   imports: [RouterLink, HeroSectionComponent, FavoriteButtonComponent],
   template: `
     @if (destination(); as d) {
-      <app-hero-section
-        [isDetailPage]="true"
-        [eyebrow]="d.tagline"
-        [title]="d.name"
-        [titleAccent]="' '"
-        [imageSrc]="d.image"
-      />
+      <div class="detail-banner-wrap">
+        <img [src]="d.image" [alt]="d.name" class="detail-banner" (error)="onImgError($event, d.name)" />
+      </div>
       <main class="detail-main">
         <div class="detail-header">
           <div class="header-content">
@@ -85,6 +81,8 @@ import { Destination } from '../../models/destination.model';
     }
   `,
   styles: `
+    .detail-banner-wrap { width: 100%; height: 280px; background: linear-gradient(135deg, #c60b1e, #ffc400); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.5rem; overflow: hidden; }
+    .detail-banner { width: 100%; height: 100%; object-fit: cover; }
     .detail-main { padding: 0; }
     .detail-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding: 12px 2%; border-bottom: 1px solid #eee; }
     .header-content h2 { font-size: 1.5rem; margin: 0; }
@@ -121,8 +119,15 @@ export class DestinationDetailComponent {
     return i >= 0 && i < list.length - 1 ? list[i + 1] : undefined;
   };
 
-  onError(e: Event) {
-    const img = e.target as HTMLImageElement;
-    img.style.opacity = '0';
+  onImgError(event: Event, name: string): void {
+    const img = event.target as HTMLImageElement;
+    const wrap = img.parentElement as HTMLElement;
+    img.style.display = 'none';
+    if (!wrap.querySelector('.fallback-label')) {
+      const span = document.createElement('span');
+      span.className = 'fallback-label';
+      span.textContent = name;
+      wrap.appendChild(span);
+    }
   }
 }

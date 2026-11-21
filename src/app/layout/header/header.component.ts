@@ -30,14 +30,21 @@ export class HeaderComponent {
   });
 
   favoritesCount = this.favoritesService.count;
+  favoritesRoute = computed(() => {
+    const prefix = this.countryName() === 'spain' ? '/spain' : this.countryName() === 'turkey' ? '/turkey' : '';
+    return prefix + '/favorites';
+  });
 
-  navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/destinations', label: 'Destinations' },
-    { path: '/experiences', label: 'Experiences' },
-    { path: '/plan-your-trip', label: 'Plan Your Trip' },
-    { path: '/about', label: 'About' }
-  ];
+  navLinks = computed(() => {
+    const prefix = this.countryName() === 'spain' ? '/spain' : this.countryName() === 'turkey' ? '/turkey' : '';
+    return [
+      { path: prefix + '/', label: 'Home' },
+      { path: prefix + '/destinations', label: 'Destinations' },
+      { path: prefix + '/experiences', label: 'Experiences' },
+      { path: prefix + '/plan-your-trip', label: 'Plan Your Trip' },
+      { path: prefix + '/about', label: 'About' }
+    ];
+  });
 
   icons = ['♡'];
 }

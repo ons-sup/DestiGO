@@ -3,7 +3,7 @@
     <div class="not-found-content">
       <h1>Experience Not Found</h1>
       <p>Sorry, we couldn't find an experience with that ID.</p>
-      <a routerLink="/experiences" class="back-link">← Back to Experiences</a>
+      <a [routerLink]="backRoute('/experiences')" class="back-link">← Back to Experiences</a>
     </div>
   </section>
 } @else if (experience(); as exp) {
@@ -72,7 +72,7 @@
         <p class="section-intro">Visit these destinations to experience the authentic flavors and traditions of this category.</p>
         <div class="where-grid">
           @for (item of exp.whereToTry; track item.destinationId) {
-            <a [routerLink]="['/destinations', item.destinationId]" class="where-card">
+            <a [routerLink]="[backRoute('/destinations'), item.destinationId]" class="where-card">
               <h3>{{ item.destinationName }}</h3>
               <p>{{ item.note }}</p>
             </a>

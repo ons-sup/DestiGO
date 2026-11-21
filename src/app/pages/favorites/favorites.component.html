@@ -3,7 +3,7 @@
   [title]="'Your '"
   [titleAccent]="'Saved Places'"
   [subtitle]="'Your saved destinations, ready for your next adventure.'"
-  [imageSrc]="'/assets/images/cinque-terre.jpg'"
+  [imageSrc]="heroImage()"
 />
 
 <section class="favorites-section">
@@ -37,7 +37,7 @@
         <div class="empty-icon">♡</div>
         <h2>No Favorites Yet</h2>
         <p>Start exploring destinations and save the ones you love by clicking the heart icon.</p>
-        <a routerLink="/destinations" class="explore-btn">Explore Destinations</a>
+          <a [routerLink]="destinationsRoute()" class="explore-btn">Explore Destinations</a>
       </div>
     }
   </div>
