@@ -121,21 +121,26 @@
         </a>
 
         <!-- Spain -->
-        <div class="dest-card dest-card--soon" appRevealOnScroll [revealDelay]="200">
-          <div class="dest-card__media dest-card__media--placeholder">
-            <div class="dest-card__placeholder-inner">
-              <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2"/>
-              </svg>
-            </div>
+        <a class="dest-card" routerLink="/spain" appRevealOnScroll [revealDelay]="200">
+          <div class="dest-card__media">
+            <img
+              src="images/spain/spain.jpg"
+              alt="Sun, rhythm, and timeless cities of Spain"
+              loading="lazy"
+            />
           </div>
           <div class="dest-card__content">
-            <span class="dest-card__tag dest-card__tag--soon">Coming soon</span>
+            <span class="dest-card__tag">Available now</span>
             <h3 class="dest-card__name">Spain</h3>
             <p class="dest-card__tagline">Sun, rhythm, and timeless cities</p>
+            <span class="dest-card__action">
+              Explore
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
