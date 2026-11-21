@@ -1,26 +1,27 @@
-﻿import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TURKEY_DATA } from '../../data/turkey.data';
+import { RevealOnScrollDirective } from '../../../../shared/directives/reveal-on-scroll.directive';
 
 interface TripPlan { destinations: string[]; days: number; interests: string[]; }
 
 @Component({
   selector: 'app-turkey-plan-your-trip',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RevealOnScrollDirective],
   template: `
     <section class="tr-plan">
       <header class="tr-hero">
         <div class="tr-hero__bg"><img src="/images/turkey/destinations/cappadocia.jpg" alt="" aria-hidden="true" /></div>
         <div class="tr-hero__overlay"></div>
         <div class="tr-hero__content">
-        <p class="tr-eyebrow">PLAN YOUR TRIP</p>
-        <h1 class="tr-title">Build your <span class="tr-accent">TÃ¼rkiye journey</span></h1>
-        <p class="tr-lead">Choose destinations, trip length, and interests to generate a simple itinerary suggestion. Your plan is saved locally in this browser.</p>
+        <p class="tr-eyebrow reveal-item" style="--item-delay:40ms">PLAN YOUR TRIP</p>
+        <h1 class="tr-title reveal-item" style="--item-delay:120ms">Build your <span class="tr-accent">TÃƒÂ¼rkiye journey</span></h1>
+        <p class="tr-lead reveal-item" style="--item-delay:200ms">Choose destinations, trip length, and interests to generate a simple itinerary suggestion. Your plan is saved locally in this browser.</p>
         </div>
       </header>
 
-      <div class="tr-body">
+      <div class="tr-body" appRevealOnScroll>
       <div class="tr-layout">
         <form class="tr-form" (ngSubmit)="generate()" aria-label="Trip planner form">
           <label class="tr-label" for="days">Trip duration (days)</label>
@@ -67,7 +68,7 @@ interface TripPlan { destinations: string[]; days: number; interests: string[]; 
     .tr-plan{color:#1f2937;}
     .tr-hero{position:relative;min-height:52vh;display:flex;align-items:flex-end;overflow:hidden;}
     .tr-hero__bg,.tr-hero__overlay{position:absolute;inset:0;}
-    .tr-hero__bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .tr-hero__bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transform:scale(1.05);animation:tr-hero-bg var(--motion-hero,780ms) var(--ease-standard,cubic-bezier(.22,1,.36,1)) forwards;transition:transform 1.8s var(--ease-standard,cubic-bezier(.22,1,.36,1));} .tr-hero:hover .tr-hero__bg img{transform:scale(1.03);} @keyframes tr-hero-bg{to{opacity:1;transform:scale(1)}} .tr-hero__content>*{opacity:0;transform:translateY(16px);animation:tr-enter var(--motion-hero,780ms) var(--ease-standard,cubic-bezier(.22,1,.36,1)) forwards;} .tr-hero__content>:nth-child(1){animation-delay:.08s}.tr-hero__content>:nth-child(2){animation-delay:.2s}.tr-hero__content>:nth-child(3){animation-delay:.34s} @keyframes tr-enter{to{opacity:1;transform:none}} .tr-btn{transition:transform var(--motion-micro,180ms) var(--ease-standard),background-color var(--motion-hover,280ms) var(--ease-standard);} .tr-btn:hover{transform:translateY(-1px);} @media (prefers-reduced-motion: reduce){.tr-hero__bg img,.tr-hero__content>*,.tr-btn{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;}}
     .tr-hero__overlay{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.72) 100%);}
     .tr-hero__content{position:relative;z-index:1;max-width:1240px;width:100%;margin:0 auto;padding:8rem 1.5rem 3.5rem;color:#fff;}
     .tr-body{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}

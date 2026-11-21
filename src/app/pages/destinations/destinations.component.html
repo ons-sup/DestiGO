@@ -6,18 +6,18 @@
   [imageSrc]="'/assets/images/italy-destinations.jpg'"
 />
 
-<section class="destinations-section">
+<section class="destinations-section" appRevealOnScroll>
   <div class="destinations-heading">
     <div>
-      <p class="section-label">WHERE TO GO</p>
-      <h2>Explore Our <span class="accent">Destinations</span></h2>
-      <p>Discover the most beautiful places across Italy.</p>
+      <p class="section-label reveal-item" style="--item-delay:40ms">WHERE TO GO</p>
+      <h2 class="reveal-item" style="--item-delay:120ms">Explore Our <span class="accent">Destinations</span></h2>
+      <p class="reveal-item" style="--item-delay:200ms">Discover the most beautiful places across Italy.</p>
     </div>
   </div>
 
   <div class="destinations-grid">
-    @for (destination of destinations; track destination.id) {
-      <app-destination-card [destination]="destination" variant="large" />
+    @for (destination of destinations; track destination.id; let i = $index) {
+      <app-destination-card [destination]="destination" variant="large" appRevealOnScroll [revealDelay]="i * 80" />
     }
   </div>
 </section>

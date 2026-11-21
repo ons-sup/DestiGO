@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeroSectionComponent } from '../../shared/components/hero-section/hero-section.component';
 import { TripPlan, TravelStyle, BudgetRange, ITALY_DESTINATIONS_FOR_PLANNING, TRAVEL_STYLES, BUDGET_RANGES, generateItinerary, ItineraryDay } from './plan-your-trip.data';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-plan-your-trip',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeroSectionComponent],
+  imports: [CommonModule, FormsModule, HeroSectionComponent, RevealOnScrollDirective],
   templateUrl: './plan-your-trip.component.html',
   styleUrl: './plan-your-trip.component.css'
 })

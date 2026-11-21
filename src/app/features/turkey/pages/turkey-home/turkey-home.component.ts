@@ -4,11 +4,12 @@ import { TURKEY_DATA } from '../../data/turkey.data';
 import { HeroComponent } from '../../components/hero/hero.component';
 import { IntroComponent } from '../../components/intro/intro.component';
 import { DestinationCardComponent } from '../../components/destination-card/destination-card.component';
+import { RevealOnScrollDirective } from '../../../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-turkey-home',
   standalone: true,
-  imports: [HeroComponent, IntroComponent, DestinationCardComponent],
+  imports: [HeroComponent, IntroComponent, DestinationCardComponent, RevealOnScrollDirective],
   templateUrl: './turkey-home.component.html',
   styleUrl: './turkey-home.component.css',
 })

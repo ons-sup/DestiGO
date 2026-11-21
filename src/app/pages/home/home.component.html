@@ -9,17 +9,17 @@
   [showCta]="true"
 />
 
-<section class="popular-destinations">
+<section class="popular-destinations" appRevealOnScroll>
   <div class="section-header">
     <div>
-      <h2>Popular Destinations</h2>
-      <p>Hand-picked places you can't miss.</p>
+      <h2 class="reveal-item" style="--item-delay:40ms">Popular Destinations</h2>
+      <p class="reveal-item" style="--item-delay:120ms">Hand-picked places you can't miss.</p>
     </div>
-    <a routerLink="/italy/destinations" class="view-all">View All →</a>
+    <a routerLink="/italy/destinations" class="view-all">View All ï¿½ï¿½'</a>
   </div>
   <div class="destination-cards">
-    @for (destination of popularDestinations; track destination.id) {
-      <app-destination-card [destination]="destination" variant="small" />
+    @for (destination of popularDestinations; track destination.id; let i = $index) {
+      <app-destination-card [destination]="destination" variant="small" appRevealOnScroll [revealDelay]="i * 90" />
     }
   </div>
 </section>

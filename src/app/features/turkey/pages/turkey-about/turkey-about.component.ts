@@ -1,40 +1,42 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { RevealOnScrollDirective } from '../../../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-turkey-about',
   standalone: true,
+  imports: [RevealOnScrollDirective],
   template: `
     <section class="tr-about">
       <header class="tr-hero">
         <div class="tr-hero__bg"><img src="/images/turkey/destinations/ephesus.jpg" alt="" aria-hidden="true" /></div>
         <div class="tr-hero__overlay"></div>
         <div class="tr-hero__content">
-        <p class="tr-eyebrow">ABOUT TÃœRKÄ°YE</p>
-        <h1 class="tr-title">A country shaped by <span class="tr-accent">many worlds</span></h1>
-        <p class="tr-lead">TÃ¼rkiye sits at the crossroads of Europe and Asia, with a heritage shaped by ancient civilizations, Byzantine and Ottoman history, diverse landscapes, and vibrant local traditions.</p>
+        <p class="tr-eyebrow reveal-item" style="--item-delay:40ms">ABOUT TÜRKİYE</p>
+        <h1 class="tr-title reveal-item" style="--item-delay:120ms">A country shaped by <span class="tr-accent">many worlds</span></h1>
+        <p class="tr-lead reveal-item" style="--item-delay:200ms">Türkiye sits at the crossroads of Europe and Asia, with a heritage shaped by ancient civilizations, Byzantine and Ottoman history, diverse landscapes, and vibrant local traditions.</p>
         </div>
       </header>
       <div class="tr-body">
 
-      <section class="tr-section tr-two-col">
+      <section class="tr-section tr-two-col" appRevealOnScroll>
         <img src="/images/turkey/destinations/istanbul.jpg" alt="Istanbul skyline and historic architecture" loading="lazy" />
         <div>
           <h2>Geography & Culture</h2>
-          <p>From the Bosphorus in Istanbul to the Mediterranean coast and the Anatolian plateau, TÃ¼rkiyeâ€™s geography is as varied as its culture. Its cities and regions reflect centuries of exchange between cultures, religions, and empires.</p>
-          <p>Visitors can experience grand mosques, ancient ruins, lively bazaars, coastal towns, and traditional villagesâ€”often within the same trip.</p>
+          <p>From the Bosphorus in Istanbul to the Mediterranean coast and the Anatolian plateau, Türkiye'nin geography is as varied as its culture. Its cities and regions reflect centuries of exchange between cultures, religions, and empires.</p>
+          <p>Visitors can experience grand mosques, ancient ruins, lively bazaars, coastal towns, and traditional villagesÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Âoften within the same trip.</p>
         </div>
       </section>
 
-      <section class="tr-section">
+      <section class="tr-section" appRevealOnScroll>
         <h2>Travel Highlights</h2>
         <div class="tr-cards">
-          <article class="tr-info-card"><img src="/images/turkey/destinations/cappadocia.jpg" alt="Hot air balloons over Cappadocia" loading="lazy" /><div><h3>Landscapes</h3><p>Cappadociaâ€™s valleys, Pamukkaleâ€™s terraces, and the Turquoise Coast offer striking natural scenery.</p></div></article>
-          <article class="tr-info-card"><img src="/images/turkey/destinations/ephesus.jpg" alt="Library of Celsus in Ephesus" loading="lazy" /><div><h3>History</h3><p>Ephesus, ancient theaters, and Ottoman landmarks reveal TÃ¼rkiyeâ€™s deep historical layers.</p></div></article>
+          <article class="tr-info-card"><img src="/images/turkey/destinations/cappadocia.jpg" alt="Hot air balloons over Cappadocia" loading="lazy" /><div><h3>Landscapes</h3><p>Cappadocia'nun valleys, Pamukkale'nin terraces, and the Turquoise Coast offer striking natural scenery.</p></div></article>
+          <article class="tr-info-card"><img src="/images/turkey/destinations/ephesus.jpg" alt="Library of Celsus in Ephesus" loading="lazy" /><div><h3>History</h3><p>Ephesus, ancient theaters, and Ottoman landmarks reveal Türkiye'nin deep historical layers.</p></div></article>
           <article class="tr-info-card"><img src="/images/turkey/experiences/turkish-cuisine.jpg" alt="Turkish baklava and sweets" loading="lazy" /><div><h3>Cuisine</h3><p>Turkish food ranges from meze and kebabs to baklava, simit, and regional specialties.</p></div></article>
         </div>
       </section>
 
-      <section class="tr-section tr-practical">
+      <section class="tr-section tr-practical" appRevealOnScroll>
         <h2>Practical Visitor Information</h2>
         <div class="tr-practical__grid">
           <div><h3>Best Seasons</h3><p>Spring and autumn are generally comfortable for sightseeing in many regions. Summer suits coastal areas, while Cappadocia can be visited year-round with seasonal differences.</p></div>
@@ -49,7 +51,7 @@
     .tr-about{color:#1f2937;}
     .tr-hero{position:relative;min-height:52vh;display:flex;align-items:flex-end;overflow:hidden;}
     .tr-hero__bg,.tr-hero__overlay{position:absolute;inset:0;}
-    .tr-hero__bg img{width:100%;height:100%;object-fit:cover;display:block;}
+    .tr-hero__bg img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transform:scale(1.05);animation:tr-hero-bg var(--motion-hero,780ms) var(--ease-standard,cubic-bezier(.22,1,.36,1)) forwards;transition:transform 1.8s var(--ease-standard,cubic-bezier(.22,1,.36,1));} .tr-hero:hover .tr-hero__bg img{transform:scale(1.03);} @keyframes tr-hero-bg{to{opacity:1;transform:scale(1)}} .tr-hero__content>*{opacity:0;transform:translateY(16px);animation:tr-enter var(--motion-hero,780ms) var(--ease-standard,cubic-bezier(.22,1,.36,1)) forwards;} .tr-hero__content>:nth-child(1){animation-delay:.08s}.tr-hero__content>:nth-child(2){animation-delay:.2s}.tr-hero__content>:nth-child(3){animation-delay:.34s} @keyframes tr-enter{to{opacity:1;transform:none}} .tr-info-card{transition:transform var(--motion-hover,280ms) var(--ease-standard),box-shadow var(--motion-hover,280ms) var(--ease-standard);} .tr-info-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,23,42,.06);} @media (prefers-reduced-motion: reduce){.tr-hero__bg img,.tr-hero__content>*,.tr-info-card{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;}}
     .tr-hero__overlay{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.72) 100%);}
     .tr-hero__content{position:relative;z-index:1;max-width:1240px;width:100%;margin:0 auto;padding:8rem 1.5rem 3.5rem;color:#fff;}
     .tr-body{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}

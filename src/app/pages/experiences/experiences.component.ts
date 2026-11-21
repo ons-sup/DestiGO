@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HeroSectionComponent } from '../../shared/components/hero-section/hero-section.component';
 import { Experience, ExperienceCategory, ITALY_EXPERIENCES, EXPERIENCE_CATEGORIES } from './experience.data';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-experiences',
   standalone: true,
-  imports: [CommonModule, RouterLink, HeroSectionComponent],
+  imports: [CommonModule, RouterLink, HeroSectionComponent, RevealOnScrollDirective],
   templateUrl: './experiences.component.html',
   styleUrl: './experiences.component.css'
 })
@@ -22,7 +23,8 @@ export class ExperiencesComponent {
     return this.experiences.filter(e => e.category === cat);
   });
 
-  selectCategory(category: ExperienceCategory) {
+  readonly animKey = signal(0);
+  selectCategory(category: ExperienceCategory) { this.animKey.update(v => v + 1);
     this.selectedCategory.set(category);
   }
 

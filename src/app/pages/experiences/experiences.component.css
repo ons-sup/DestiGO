@@ -58,7 +58,7 @@
   outline-offset: 2px;
 }
 
-.experience-card-link {
+@keyframes card-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}} .experience-card-link { opacity:0; transform:translateY(18px); animation:card-in var(--motion-reveal,560ms) var(--ease-standard) calc(var(--i,0)*70ms) forwards;
   text-decoration: none;
   color: inherit;
   display: block;
@@ -82,20 +82,23 @@
   height: 100%;
 }
 
-.experience-card-link:hover .experience-card {
-  transform: translateY(-8px);
+.experience-card-link:hover .experience-card,
+.experience-card-link:focus-visible .experience-card {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
+.experience-card-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 20px; }
 
 .experience-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.65s var(--ease-standard, cubic-bezier(.22,1,.36,1));
 }
 
-.experience-card-link:hover .experience-card img {
+.experience-card-link:hover .experience-card img,
+.experience-card-link:focus-visible .experience-card img {
   transform: scale(1.04);
 }
 

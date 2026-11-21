@@ -1,0 +1,78 @@
+/* Shared motion primitives */
+:root {
+  --motion-micro: 180ms;
+  --motion-hover: 280ms;
+  --motion-reveal: 560ms;
+  --motion-hero: 780ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-on-scroll.reveal-pending {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--motion-reveal) var(--ease-standard) var(--reveal-delay, 0ms),
+    transform var(--motion-reveal) var(--ease-standard) var(--reveal-delay, 0ms);
+}
+.reveal-on-scroll:not(.reveal-pending):not(.is-revealed) {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-on-scroll.reveal-pending .reveal-item,
+.reveal-on-scroll.reveal-item.reveal-pending {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--motion-reveal) var(--ease-standard) var(--item-delay, 0ms),
+    transform var(--motion-reveal) var(--ease-standard) var(--item-delay, 0ms);
+}
+
+.reveal-on-scroll.is-revealed .reveal-item,
+.reveal-on-scroll.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-on-scroll.reveal-pending .reveal-media,
+.reveal-on-scroll.reveal-media.reveal-pending {
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity var(--motion-hero) var(--ease-standard) var(--item-delay, 0ms),
+    transform 1.2s var(--ease-standard) var(--item-delay, 0ms);
+}
+
+.reveal-on-scroll.is-revealed .reveal-media,
+.reveal-on-scroll.reveal-media.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-revealed,
+  .reveal-on-scroll .reveal-item,
+  .reveal-on-scroll.reveal-item,
+  .reveal-on-scroll.is-revealed .reveal-item,
+  .reveal-on-scroll.reveal-item.is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+}
+
+.reveal-on-scroll:not(.reveal-pending):not(.is-revealed) .reveal-item,
+.reveal-on-scroll:not(.reveal-pending):not(.is-revealed) .reveal-media {
+  opacity: 1;
+  transform: none;
+}
+

@@ -37,7 +37,7 @@
   }
 }
 
-/* ─── Left Visual Panel ─── */
+/* â”€â”€â”€ Left Visual Panel â”€â”€â”€ */
 .auth-visual {
   display: none;
   position: relative;
@@ -93,7 +93,7 @@
   font-weight: 500;
   text-decoration: none;
   backdrop-filter: blur(8px);
-  transition: all 0.2s ease;
+  transition: border-color var(--motion-hover,280ms) var(--ease-standard), background-color var(--motion-hover,280ms) var(--ease-standard), transform var(--motion-micro,180ms) var(--ease-standard), color var(--motion-micro,180ms) var(--ease-standard), box-shadow var(--motion-hover,280ms) var(--ease-standard);
 }
 
 .auth-visual__back-link:hover {
@@ -161,7 +161,7 @@
   text-transform: uppercase;
 }
 
-/* ─── Right Form Panel ─── */
+/* â”€â”€â”€ Right Form Panel â”€â”€â”€ */
 .auth-panel {
   display: flex;
   flex-direction: column;
@@ -224,7 +224,7 @@
   height: 1rem;
 }
 
-/* ─── Card & Form Typography ─── */
+/* â”€â”€â”€ Card & Form Typography â”€â”€â”€ */
 .auth-card {
   width: 100%;
 }
@@ -250,7 +250,7 @@
   color: var(--text-muted);
 }
 
-/* ─── Alert ─── */
+/* â”€â”€â”€ Alert â”€â”€â”€ */
 .auth-alert {
   display: flex;
   align-items: flex-start;
@@ -272,7 +272,7 @@
   margin-top: 0.1rem;
 }
 
-/* ─── Form & Fields ─── */
+/* â”€â”€â”€ Form & Fields â”€â”€â”€ */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -400,7 +400,7 @@
   line-height: 1.35;
 }
 
-/* ─── Submit Button ─── */
+/* â”€â”€â”€ Submit Button â”€â”€â”€ */
 .auth-submit {
   display: inline-flex;
   align-items: center;
@@ -449,7 +449,7 @@
   transform: translateX(3px);
 }
 
-/* ─── Footer & Switch Link ─── */
+/* â”€â”€â”€ Footer & Switch Link â”€â”€â”€ */
 .auth-card__footer {
   margin-top: 2rem;
   padding-top: 1.5rem;
@@ -488,7 +488,7 @@
   color: var(--text-dim);
 }
 
-/* ─── Animations ─── */
+/* â”€â”€â”€ Animations â”€â”€â”€ */
 @keyframes authFadeIn {
   from {
     opacity: 0;

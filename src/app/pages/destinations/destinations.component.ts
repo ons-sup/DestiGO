@@ -5,11 +5,12 @@ import { DestinationCardComponent } from '../../shared/components/destination-ca
 import { DestinationService } from '../../core/services/destination.service';
 import { CountryService } from '../../core/services/country.service';
 import { ITALY_DESTINATIONS } from '../../core/data/italy-destinations';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-destinations',
   standalone: true,
-  imports: [CommonModule, HeroSectionComponent, DestinationCardComponent],
+  imports: [CommonModule, HeroSectionComponent, DestinationCardComponent, RevealOnScrollDirective],
   templateUrl: './destinations.component.html',
   styleUrl: './destinations.component.css'
 })

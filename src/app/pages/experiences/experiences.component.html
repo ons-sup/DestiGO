@@ -6,13 +6,13 @@
   [imageSrc]="'/assets/images/amalfi.jpg'"
 />
 
-<section class="experiences-section">
+<section class="experiences-section" appRevealOnScroll>
   <div class="section-header">
-    <h2>Experiences</h2>
-    <p>Choose your Italian adventure</p>
+    <h2 class="reveal-item" style="--item-delay:40ms">Experiences</h2>
+    <p class="reveal-item" style="--item-delay:120ms">Choose your Italian adventure</p>
   </div>
 
-  <div class="category-filter" role="group" aria-label="Experience categories">
+  <div class="category-filter reveal-item" style="--item-delay:180ms" role="group" aria-label="Experience categories">
     @for (category of categories; track category.value) {
       <button
         type="button"
@@ -27,8 +27,8 @@
   </div>
 
   <div class="experiences-grid">
-    @for (experience of filteredExperiences(); track experience.id) {
-      <a [routerLink]="['/italy/experiences', experience.id]" class="experience-card-link" aria-label="Learn more about {{ experience.title }}">
+    @for (experience of filteredExperiences(); track experience.id + '-' + animKey(); let i = $index) {
+      <a [routerLink]="['/italy/experiences', experience.id]" class="experience-card-link" aria-label="Learn more about {{ experience.title }}" [style.--i]="i">
         <article class="experience-card">
           <img [src]="experience.imageUrl" [alt]="experience.title" loading="lazy">
           <div class="experience-info">
@@ -36,7 +36,7 @@
             <h3>{{ experience.title }}</h3>
             <p>{{ experience.description }}</p>
             <div class="experience-footer">
-              <span class="related-destination">📍 {{ experience.relatedDestination }}</span>
+              <span class="related-destination">Ã°Å¸â€œÂ {{ experience.relatedDestination }}</span>
               <span class="experience-btn">Learn More</span>
             </div>
           </div>

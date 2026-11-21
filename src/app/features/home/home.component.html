@@ -1,6 +1,6 @@
 <main class="home" [class.hero-visible]="heroVisible()">
 
-  <!-- ─── Navigation ─── -->
+  <!-- â”€â”€â”€ Navigation â”€â”€â”€ -->
   <nav class="nav" aria-label="DestiGO main navigation">
     <div class="nav__inner">
       <a class="nav__brand" routerLink="/" aria-label="DestiGO home">
@@ -30,7 +30,7 @@
     </div>
   </nav>
 
-  <!-- ─── Hero ─── -->
+  <!-- â”€â”€â”€ Hero â”€â”€â”€ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__bg">
       <img
@@ -66,18 +66,18 @@
     </div>
   </section>
 
-  <!-- ─── Destinations ─── -->
-  <section class="destinations" aria-labelledby="destinations-title" #reveal>
+  <!-- â”€â”€â”€ Destinations â”€â”€â”€ -->
+  <section class="destinations" aria-labelledby="destinations-title" appRevealOnScroll>
     <div class="destinations__inner">
       <div class="destinations__header">
-        <p class="section-eyebrow">Explore the world</p>
-        <h2 id="destinations-title" class="section-title">Choose your journey</h2>
-        <p class="section-desc">Three countries, three stories. Each portal is a curated guide to a nation's landscapes, food, and culture.</p>
+        <p class="section-eyebrow reveal-item" style="--item-delay:40ms">Explore the world</p>
+        <h2 id="destinations-title" class="section-title reveal-item" style="--item-delay:120ms">Choose your journey</h2>
+        <p class="section-desc reveal-item" style="--item-delay:200ms">Three countries, three stories. Each portal is a curated guide to a nation's landscapes, food, and culture.</p>
       </div>
 
       <div class="destinations__grid">
         <!-- Turkey -->
-        <a class="dest-card dest-card--large" routerLink="/turkey" #reveal>
+        <a class="dest-card dest-card--large" routerLink="/turkey" appRevealOnScroll [revealDelay]="40">
           <div class="dest-card__media">
             <img
               src="images/turkey/cappadocia.jpg"
@@ -99,7 +99,7 @@
         </a>
 
         <!-- Italy -->
-        <a class="dest-card" routerLink="/italy" #reveal>
+        <a class="dest-card" routerLink="/italy" appRevealOnScroll [revealDelay]="120">
           <div class="dest-card__media">
             <img
               src="assets/images/cinque-terre.jpg"
@@ -121,7 +121,7 @@
         </a>
 
         <!-- Spain -->
-        <div class="dest-card dest-card--soon" #reveal>
+        <div class="dest-card dest-card--soon" appRevealOnScroll [revealDelay]="200">
           <div class="dest-card__media dest-card__media--placeholder">
             <div class="dest-card__placeholder-inner">
               <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
@@ -140,22 +140,22 @@
     </div>
   </section>
 
-  <!-- ─── About ─── -->
-  <section class="about" aria-labelledby="about-title" #reveal>
+  <!-- â”€â”€â”€ About â”€â”€â”€ -->
+  <section class="about" aria-labelledby="about-title" appRevealOnScroll>
     <div class="about__inner">
       <div class="about__text">
-        <p class="section-eyebrow">About DestiGO</p>
-        <h2 id="about-title" class="section-title">Discover first.<br/>Book later.</h2>
-        <p class="about__desc">
+        <p class="section-eyebrow reveal-item" style="--item-delay:40ms">About DestiGO</p>
+        <h2 id="about-title" class="section-title reveal-item" style="--item-delay:120ms">Discover first.<br/>Book later.</h2>
+        <p class="about__desc reveal-item" style="--item-delay:200ms">
           DestiGO is not a booking platform. It's a place to explore destinations through the eyes of fellow travelers.
           Each country portal is independently curated — with hand-picked destinations, local experiences,
           and cultural insights that help you decide where to go next.
         </p>
-        <p class="about__desc">
+        <p class="about__desc reveal-item" style="--item-delay:280ms">
           Built as a university project by Ahmed Ben Mim and Ons Chtioui.
         </p>
       </div>
-      <div class="about__visual" aria-hidden="true">
+      <div class="about__visual reveal-item" style="--item-delay:180ms" aria-hidden="true">
         <div class="about__compass">
           <svg viewBox="0 0 120 120" fill="none" width="120" height="120">
             <circle cx="60" cy="60" r="56" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
@@ -172,7 +172,7 @@
     </div>
   </section>
 
-  <!-- ─── Footer ─── -->
+  <!-- â”€â”€â”€ Footer â”€â”€â”€ -->
 
   <app-site-footer variant="global" />
 

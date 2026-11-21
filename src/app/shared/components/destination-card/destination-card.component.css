@@ -10,9 +10,15 @@
   color: inherit;
 }
 
-.destination-card:hover {
+.destination-card:hover,
+.destination-card:focus-within {
   transform: translateY(-4px);
   box-shadow: var(--shadow-sm);
+}
+
+.destination-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .card-image-wrapper {
@@ -27,11 +33,12 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.65s var(--ease-standard, cubic-bezier(.22,1,.36,1));
 }
 
-.destination-card:hover .card-image-wrapper img {
-  transform: scale(1.02);
+.destination-card:hover .card-image-wrapper img,
+.destination-card:focus-within .card-image-wrapper img {
+  transform: scale(1.04);
 }
 
 .card-favorite-btn {
@@ -124,9 +131,15 @@
   color: inherit;
 }
 
-.destination-card-large:hover {
-  transform: translateY(-8px);
+.destination-card-large:hover,
+.destination-card-large:focus-within {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+
+.destination-card-large:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .destination-card-large .card-image-wrapper {
@@ -140,10 +153,11 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.65s var(--ease-standard, cubic-bezier(.22,1,.36,1));
 }
 
-.destination-card-large:hover .card-image-wrapper img {
+.destination-card-large:hover .card-image-wrapper img,
+.destination-card-large:focus-within .card-image-wrapper img {
   transform: scale(1.04);
 }
 

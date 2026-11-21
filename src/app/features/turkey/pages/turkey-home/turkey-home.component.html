@@ -4,36 +4,36 @@
   [countryImage]="countryImage"
 ></app-turkey-hero>
 
-<app-turkey-intro [introduction]="introduction" [image]="countryImage"></app-turkey-intro>
+<app-turkey-intro [introduction]="introduction" [image]="countryImage" appRevealOnScroll></app-turkey-intro>
 
-<section class="destinations" id="destinations">
+<section class="destinations" id="destinations" appRevealOnScroll>
   <div class="destinations__header">
-    <h2 class="destinations__heading">Featured destinations</h2>
-    <p class="destinations__subtitle">Start your journey in one of these remarkable regions.</p>
+    <h2 class="destinations__heading reveal-item" style="--item-delay:40ms">Featured destinations</h2>
+    <p class="destinations__subtitle reveal-item" style="--item-delay:120ms">Start your journey in one of these remarkable regions.</p>
   </div>
   <div class="destinations__grid">
-    @for (destination of destinations; track destination.id) {
-      <app-destination-card [destination]="destination"></app-destination-card>
+    @for (destination of destinations; track destination.id; let i = $index) {
+      <app-destination-card [destination]="destination" appRevealOnScroll [revealDelay]="i * 90"></app-destination-card>
     }
   </div>
 </section>
 
-<section class="experiences">
+<section class="experiences" appRevealOnScroll>
   <div class="experiences__wrapper">
     <div class="experiences__text">
-      <h2 class="experiences__heading">Places to visit</h2>
-      <p class="experiences__body">
+      <h2 class="experiences__heading reveal-item" style="--item-delay:40ms">Places to visit</h2>
+      <p class="experiences__body reveal-item" style="--item-delay:120ms">
         From ancient bazaars to cave hotels, Türkiye offers experiences that stay with you long
         after you return home.
       </p>
       <ul class="experiences__list">
-        <li>Historic old towns and UNESCO World Heritage sites</li>
-        <li>Coastal drives along the turquoise Mediterranean</li>
-        <li>Underground cities and rock-cut churches</li>
-        <li>Traditional hamams and Turkish cuisine</li>
+        <li class="reveal-item" style="--item-delay:180ms">Historic old towns and UNESCO World Heritage sites</li>
+        <li class="reveal-item" style="--item-delay:240ms">Coastal drives along the turquoise Mediterranean</li>
+        <li class="reveal-item" style="--item-delay:300ms">Underground cities and rock-cut churches</li>
+        <li class="reveal-item" style="--item-delay:360ms">Traditional hamams and Turkish cuisine</li>
       </ul>
     </div>
-    <figure class="experiences__figure">
+    <figure class="experiences__figure reveal-media reveal-item" style="--item-delay:160ms">
       <img
         class="experiences__image"
         src="/images/turkey/cappadocia.jpg"
