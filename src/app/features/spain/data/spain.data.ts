@@ -8,7 +8,7 @@ export const SPAIN_DATA: CountryData = {
     'heritage. From the royal grandeur of Madrid to the modernist wonders of ' +
     'Barcelona and the Moorish palaces of Granada, every region offers a ' +
     'distinct rhythm and flavor.',
-  image: '/images/spain/spain-hero.jpg',
+  image: '/images/spain/spain.webp',
   destinations: [
     {
       id: 'madrid',
@@ -18,7 +18,7 @@ export const SPAIN_DATA: CountryData = {
         'Madrid is Spain\u2019s lively capital, where grand boulevards meet ' +
         'world-class museums. Stroll through Retiro Park, admire masterpieces ' +
         'at the Prado, and enjoy tapas late into the night.',
-      image: '/images/spain/madrid.jpg',
+      image: '/images/spain/destinations/madrid.webp',
       region: 'Community of Madrid',
       landmarks: ['Royal Palace', 'Prado Museum', 'Retiro Park', 'Plaza Mayor', 'Puerta del Sol'],
       dishes: ['tortilla espa\u00f1ola', 'jam\u00f3n ib\u00e9rico', 'patatas bravas', 'churros con chocolate'],
@@ -35,7 +35,7 @@ export const SPAIN_DATA: CountryData = {
         'Barcelona blends Gaud\u00ed\u2019s fantastical architecture with ' +
         'Mediterranean beaches. Explore the Sagrada Familia, wander the ' +
         'Gothic Quarter, and relax along La Rambla.',
-      image: '/images/spain/barcelona.jpg',
+      image: '/images/spain/destinations/barcelona.webp',
       region: 'Catalonia',
       landmarks: ['Sagrada Familia', 'Park G\u00fcell', 'Casa Batll\u00f3', 'La Rambla', 'Gothic Quarter'],
       dishes: ['paella', 'tapas', 'crema catalana', 'pan con tomate'],
@@ -52,7 +52,7 @@ export const SPAIN_DATA: CountryData = {
         'Seville is the heart of Andalusia, with the Alc\u00e1zar, a towering ' +
         'cathedral, and the sweeping Plaza de Espa\u00f1a. Flamenco fills the ' +
         'narrow streets of Triana.',
-      image: '/images/spain/seville.jpg',
+      image: '/images/spain/destinations/seville.webp',
       region: 'Andalusia',
       landmarks: ['Alc\u00e1zar', 'Seville Cathedral', 'Plaza de Espa\u00f1a', 'Triana'],
       dishes: ['gazpacho', 'salmorejo', 'espinacas con garbanzos', 'churros'],
@@ -69,7 +69,7 @@ export const SPAIN_DATA: CountryData = {
         'Valencia mixes futuristic architecture with historic markets. Visit ' +
         'the City of Arts and Sciences, taste authentic paella, and stroll ' +
         'the Turia Gardens.',
-      image: '/images/spain/valencia.jpg',
+      image: '/images/spain/destinations/valencia.webp',
       region: 'Valencian Community',
       landmarks: ['City of Arts and Sciences', 'Central Market', 'La Lonja', 'Turia Gardens'],
       dishes: ['paella valenciana', 'horchata', 'fideu\u00e0', 'bu\u00f1uelos'],
@@ -86,7 +86,7 @@ export const SPAIN_DATA: CountryData = {
         'Granada sits at the foot of the Sierra Nevada, crowned by the ' +
         'Alhambra palace. Wander the Albaic\u00edn quarter and enjoy free ' +
         'tapas with drinks.',
-      image: '/images/spain/granada.jpg',
+      image: '/images/spain/destinations/granada.webp',
       region: 'Andalusia',
       landmarks: ['Alhambra', 'Albaic\u00edn', 'Generalife', 'Sacromonte'],
       dishes: ['pisto', 'tortilla del Sacromonte', 'remoj\u00f3n', 'tapas'],
@@ -102,7 +102,7 @@ export const SPAIN_DATA: CountryData = {
       description:
         'Mallorca offers turquoise coves, the Serra de Tramuntana, and the ' +
         'Gothic Palma Cathedral. Drive winding roads and relax on quiet beaches.',
-      image: '/images/spain/mallorca.jpg',
+      image: '/images/spain/destinations/mallorca.webp',
       region: 'Balearic Islands',
       landmarks: ['Palma Cathedral', 'Serra de Tramuntana', 'Cala Mondrag\u00f3', 'S\u00f3ller'],
       dishes: ['ensaimada', 'sobrassada', 'tumbet', 'pa amb oli'],

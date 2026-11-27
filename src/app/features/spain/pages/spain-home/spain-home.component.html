@@ -1,0 +1,56 @@
+<app-spain-hero
+  [countryName]="countryName"
+  [countryTagline]="countryTagline"
+  [countryImage]="countryImage"
+></app-spain-hero>
+
+<app-spain-intro
+  [introduction]="introduction"
+  [image]="introImage"
+  appRevealOnScroll
+></app-spain-intro>
+
+<section class="destinations" id="destinations" appRevealOnScroll>
+  <div class="destinations__header">
+    <h2 class="destinations__heading reveal-item" style="--item-delay: 40ms">
+      Featured destinations
+    </h2>
+    <p class="destinations__subtitle reveal-item" style="--item-delay: 120ms">
+      Start your journey in one of these remarkable regions.
+    </p>
+  </div>
+  <div class="destinations__grid">
+    @for (destination of destinations; track destination.id; let i = $index) {
+      <app-spain-destination-card
+        [destination]="destination"
+        appRevealOnScroll
+        [revealDelay]="i * 90"
+      ></app-spain-destination-card>
+    }
+  </div>
+</section>
+
+<section class="experiences" appRevealOnScroll>
+  <div class="experiences__wrapper">
+    <div class="experiences__text">
+      <h2 class="experiences__heading reveal-item" style="--item-delay: 40ms">Places to visit</h2>
+      <p class="experiences__body reveal-item" style="--item-delay: 120ms">
+        From ancient palaces to sun-drenched coasts, Spain offers experiences that stay with you
+        long after you return home.
+      </p>
+      <ul class="experiences__list">
+        @for (place of placesToVisit; track place; let i = $index) {
+          <li class="reveal-item" [style.--item-delay]="180 + i * 60 + 'ms'">{{ place }}</li>
+        }
+      </ul>
+    </div>
+    <figure class="experiences__figure reveal-media reveal-item" style="--item-delay: 160ms">
+      <app-spain-safe-image
+        class="experiences__image"
+        [src]="experiencesImage"
+        alt="Spain landscape"
+        loading="lazy"
+      />
+    </figure>
+  </div>
+</section>

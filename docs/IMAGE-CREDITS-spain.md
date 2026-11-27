@@ -1,0 +1,64 @@
+# Spain image credits (Wikimedia Commons)
+
+Downloaded images are from Wikimedia Commons (PD/CC0/CC BY/CC BY-SA), re-encoded to optimized WebP. Originals preserved. ood/churros.webp is an original Spain asset whose license was not re-verified; no reliable Wikimedia replacement could be downloaded in this environment.
+
+| file | Commons title | author | license | source URL |
+|---|---|---|---|---|
+| /images/spain/hero.webp | File:Playa de la Cola del Caballo in La Unión, Murcia, Spain, 2022 January - 2.jpg | Ximonic (Simo Räsänen) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Playa_de_la_Cola_del_Caballo_in_La_Uni%C3%B3n,_Murcia,_Spain,_2022_January_-_2.jpg |
+| /images/spain/spain.webp | File:Countryside landscape in Confrides, Alicante, Valencia, Spain, 2020 January.jpg | Ximonic (Simo Räsänen) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Countryside_landscape_in_Confrides,_Alicante,_Valencia,_Spain,_2020_January.jpg |
+| /images/spain/destinations/madrid.webp | File:Madrid (Spain) (33115369301).jpg | Jose A. | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Madrid_(Spain)_(33115369301).jpg |
+| /images/spain/destinations/barcelona.webp | File:Port Vell, Barcelona, Spain - Jan 2007.jpg | Diliff | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Port_Vell,_Barcelona,_Spain_-_Jan_2007.jpg |
+| /images/spain/destinations/seville.webp | File:Seville, Spain - 43558528932.jpg | Charlie Marchant | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Seville,_Spain_-_43558528932.jpg |
+| /images/spain/destinations/valencia.webp | File:L'Umbracle, Valencia, Spain - Jan 2007.jpg | Diliff | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:L%27Umbracle,_Valencia,_Spain_-_Jan_2007.jpg |
+| /images/spain/destinations/granada.webp | File:Granada, Spain - Sunset.jpg | Charlie Marchant | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Granada,_Spain_-_Sunset.jpg |
+| /images/spain/destinations/mallorca.webp | File:Rathaus Palma de Mallorca abends.jpg | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 de | https://commons.wikimedia.org/wiki/File:Rathaus_Palma_de_Mallorca_abends.jpg |
+| /images/spain/attractions/royal-palace.webp | File:Royal Palace of Madrid 01.jpg | Bernard Gagnon | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Royal_Palace_of_Madrid_01.jpg |
+| /images/spain/attractions/prado-museum.webp | File:Prado museum building 2018 1.jpg | Steven Lek | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Prado_museum_building_2018_1.jpg |
+| /images/spain/attractions/retiro-park.webp | File:Monumento a Alfonso XII de España en los Jardines del Retiro - 04.jpg | Carlos Delgado | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Monumento_a_Alfonso_XII_de_Espa%C3%B1a_en_los_Jardines_del_Retiro_-_04.jpg |
+| /images/spain/attractions/plaza-mayor.webp | File:Plaza Mayor de Madrid - 01.jpg | Carlos Delgado | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Plaza_Mayor_de_Madrid_-_01.jpg |
+| /images/spain/attractions/puerta-del-sol.webp | File:Interior Árbol de Navidad -- 2013 -- Puerta del Sol, Madrid, España.jpg | Jose María Ligero Loarte | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Interior_%C3%81rbol_de_Navidad_--_2013_--_Puerta_del_Sol,_Madrid,_Espa%C3%B1a.jpg |
+| /images/spain/attractions/sagrada-familia.webp | File:Sagrada Familia, Barcelona (P1170683).jpg | Matti Blume | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sagrada_Familia,_Barcelona_(P1170683).jpg |
+| /images/spain/attractions/park-guell.webp | File:Park Güell 02.jpg | Bernard Gagnon | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Park_G%C3%BCell_02.jpg |
+| /images/spain/attractions/casa-batllo.webp | File:Chimneys of Casa Batlló - Barcelona 2014.jpg | José Luiz | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Chimneys_of_Casa_Batll%C3%B3_-_Barcelona_2014.jpg |
+| /images/spain/attractions/la-rambla.webp | File:La Rambla Barcelona bird stall 1991.jpg | JopkeB | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:La_Rambla_Barcelona_bird_stall_1991.jpg |
+| /images/spain/attractions/gothic-quarter.webp | File:Gothic Quarter, Barcelona, Spain - panoramio (5).jpg | Maxim Karpinskiy | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Gothic_Quarter,_Barcelona,_Spain_-_panoramio_(5).jpg |
+| /images/spain/attractions/alcazar.webp | File:Alcázar Seville April 2019-11.jpg | Alvesgaspar | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Alc%C3%A1zar_Seville_April_2019-11.jpg |
+| /images/spain/attractions/seville-cathedral.webp | File:Plaza Virgen de los Reyes, Seville, Spain - Sep 2009.jpg | Diliff | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Plaza_Virgen_de_los_Reyes,_Seville,_Spain_-_Sep_2009.jpg |
+| /images/spain/attractions/plaza-de-espana.webp | File:Seville, Plaza de España (38625005691) (edited).jpg | Dmitry Dzhus from London | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Seville,_Plaza_de_Espa%C3%B1a_(38625005691)_(edited).jpg |
+| /images/spain/attractions/triana.webp | File:Triana embankment Seville Spain.jpg | Jebulon | CC0 | https://commons.wikimedia.org/wiki/File:Triana_embankment_Seville_Spain.jpg |
+| /images/spain/attractions/city-of-arts-and-sciences.webp | File:L'Umbracle, Valencia, Spain - Jan 2007.jpg | Diliff | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:L%27Umbracle,_Valencia,_Spain_-_Jan_2007.jpg |
+| /images/spain/attractions/central-market.webp | File:Mercado Central, Valencia, España, 2014-06-30, DD 116.JPG | Diego Delso | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mercado_Central,_Valencia,_Espa%C3%B1a,_2014-06-30,_DD_116.JPG |
+| /images/spain/attractions/la-lonja.webp | File:Lonja de la Seda, Valencia, España, 2014-06-29, DD 23-25 HDR.JPG | Diego Delso | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Lonja_de_la_Seda,_Valencia,_Espa%C3%B1a,_2014-06-29,_DD_23-25_HDR.JPG |
+| /images/spain/attractions/turia-gardens.webp | File:L'Àgora and Assut de l'Or bridge from the Turia gardens, Valencia.jpg | Esniom | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:L%27%C3%80gora_and_Assut_de_l%27Or_bridge_from_the_Turia_gardens,_Valencia.jpg |
+| /images/spain/attractions/alhambra.webp | File:Alhambra in the evening.jpg | Jebulon | Public domain | https://commons.wikimedia.org/wiki/File:Alhambra_in_the_evening.jpg |
+| /images/spain/attractions/albaicin.webp | File:View of Albaicín from Alhambra. Granada, Spain.jpg | Ввласенко | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:View_of_Albaic%C3%ADn_from_Alhambra._Granada,_Spain.jpg |
+| /images/spain/attractions/generalife.webp | File:Generalife palace, detail, Granada, Spain.jpg | Jebulon | CC0 | https://commons.wikimedia.org/wiki/File:Generalife_palace,_detail,_Granada,_Spain.jpg |
+| /images/spain/attractions/sacromonte.webp | File:Albaicin 2012 San Nicolas Sacromonte.jpg | Jebulon | CC0 | https://commons.wikimedia.org/wiki/File:Albaicin_2012_San_Nicolas_Sacromonte.jpg |
+| /images/spain/attractions/palma-cathedral.webp | File:Cathedral of Mallorca - entrance.jpg | T meltzer | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cathedral_of_Mallorca_-_entrance.jpg |
+| /images/spain/attractions/serra-de-tramuntana.webp | File:Puig d'Alaró - Serra de Tramuntana - Mallorca.jpg | H. Zell | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Puig_d%27Alar%C3%B3_-_Serra_de_Tramuntana_-_Mallorca.jpg |
+| /images/spain/attractions/cala-mondrago.webp | File:Cala Mondragó 07.jpg | Xxlstier | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cala_Mondrag%C3%B3_07.jpg |
+| /images/spain/attractions/soller.webp | File:Panorama Soller and Ofre.jpg | Heuschrecke (Dmitry Tonkonog and Ksenia Fedosova) | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Panorama_Soller_and_Ofre.jpg |
+| /images/spain/beaches/costa-brava.webp | File:Lloret de Mar - Camí a Cala Banys - Mediterranean Sea Coast of Costa Brava 02.jpg | Txllxt TxllxT | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lloret_de_Mar_-_Cam%C3%AD_a_Cala_Banys_-_Mediterranean_Sea_Coast_of_Costa_Brava_02.jpg |
+| /images/spain/beaches/san-sebastian.webp | File:San Sebastian Donostia Panoramic 1190583.jpg | Ermell | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:San_Sebastian_Donostia_Panoramic_1190583.jpg |
+| /images/spain/beaches/tenerife.webp | File:At Tenerife 2023 214.jpg | Photograph by Mike Peel (www.mikepeel.net). | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:At_Tenerife_2023_214.jpg |
+| /images/spain/food/paella.webp | File:Paella de fruit de mer.jpg | Wilfredor | CC0 | https://commons.wikimedia.org/wiki/File:Paella_de_fruit_de_mer.jpg |
+| /images/spain/food/tapas.webp | File:Tapas in Barcelona 02.jpg | Kritzolina | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Tapas_in_Barcelona_02.jpg |
+| /images/spain/food/patatas-bravas.webp | File:Patatas bravas con salsa rosa picante.jpg | Juan Emilio Prades Bel | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Patatas_bravas_con_salsa_rosa_picante.jpg |
+| /images/spain/food/tortilla-espanola.webp | File:Tortilla Española.jpg | Juan Emilio Prades Bel | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Tortilla_Espa%C3%B1ola.jpg |
+| /images/spain/food/gazpacho.webp | File:Gazpacho Cazuela Barro.jpg | Bocadorada | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Gazpacho_Cazuela_Barro.jpg |
+| /images/spain/food/salmorejo.webp | File:Salmorejo cordouan.JPG | P.Lechien | CC0 | https://commons.wikimedia.org/wiki/File:Salmorejo_cordouan.JPG |
+| /images/spain/food/crema-catalana.webp | File:Food in Catalonia 06.jpg | Kritzolina | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Food_in_Catalonia_06.jpg |
+| /images/spain/food/ensaimada.webp | File:Ensaimada DSCN0885.jpg | Lisa Stevens from Sutton Coldfield, UK | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Ensaimada_DSCN0885.jpg |
+| /images/spain/food/horchata.webp | File:Horchata de Valencia CHUFI original - 20110530 (1).jpg | Olybrius | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Horchata_de_Valencia_CHUFI_original_-_20110530_(1).jpg |
+| /images/spain/food/fideua.webp | File:"Fideuà", gastronomía valenciana.jpg | Juan Emilio Prades Bel | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:%22Fideu%C3%A0%22,_gastronom%C3%ADa_valenciana.jpg |
+| /images/spain/food/pisto.webp | File:Pisto, sofrito de verduras.jpg | Juan Emilio Prades Bel | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Pisto,_sofrito_de_verduras.jpg |
+| /images/spain/experiences/tapas-tour-madrid.webp | File:( Tapas in Spain, Madrid ).jpg | David Adam Kess | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:(_Tapas_in_Spain,_Madrid_).jpg |
+| /images/spain/experiences/sagrada-familia-tour.webp | File:Sagrada Familia March 2015-10a.jpg | Alvesgaspar | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sagrada_Familia_March_2015-10a.jpg |
+| /images/spain/experiences/prado-museum-tour.webp | File:Interior of Prado Museum Madrid.jpg | Iantomferry | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Interior_of_Prado_Museum_Madrid.jpg |
+| /images/spain/experiences/mallorca-coves.webp | File:View from Avinguda del Pinar to rocky cove Costa dels Pins Mallorca.jpg | Steffen Mokosch | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:View_from_Avinguda_del_Pinar_to_rocky_cove_Costa_dels_Pins_Mallorca.jpg |
+| /images/spain/experiences/alhambra-tour.webp | File:Alhambra in the evening.jpg | Jebulon | Public domain | https://commons.wikimedia.org/wiki/File:Alhambra_in_the_evening.jpg |
+| /images/spain/experiences/tramuntana-hiking.webp | File:Hikers in snow with Puig Major in background, February 2012.jpg | Amic Hoteles Hotel Horizonte | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Hikers_in_snow_with_Puig_Major_in_background,_February_2012.jpg |
+| /images/spain/experiences/art-culture.webp | File:Antigua (Fuerteventura, Spain), Museo de las Salinas del Carmen, Kristallisierungsbecken -- 2025 -- 7216.jpg | Dietmar Rabich | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Antigua_(Fuerteventura,_Spain),_Museo_de_las_Salinas_del_Carmen,_Kristallisierungsbecken_--_2025_--_7216.jpg |
+| /images/spain/experiences/coast-beaches.webp | File:Morro Jable (Fuerteventura, Spain), Strand -- 2025 -- 2487.jpg | Dietmar Rabich | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Morro_Jable_(Fuerteventura,_Spain),_Strand_--_2025_--_2487.jpg |
+| /images/spain/food/sobrassada.webp | File:Sobrassada en budell natural.jpg | (public domain; author per Commons file page) | Public domain | https://commons.wikimedia.org/wiki/File:Sobrassada_en_budell_natural.jpg |
+| /images/spain/food/churros.webp | Churros con chocolate (original Spain asset; license not re-verified; no reliable Wikimedia replacement downloaded) | original Spain asset; author not verified | license not re-verified | |

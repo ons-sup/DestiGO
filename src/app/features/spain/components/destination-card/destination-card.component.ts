@@ -1,29 +1,52 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FavoriteButtonComponent } from '../../../../shared/components/favorite-button/favorite-button.component';
+import { SafeImageComponent } from '../safe-image/safe-image.component';
+import { Destination } from '../../models/destination.model';
 
 @Component({
   selector: 'app-spain-destination-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FavoriteButtonComponent, SafeImageComponent],
   template: `
     <article class="card">
-      <img class="card__image" [src]="image()" [alt]="name()" (error)="onError($event)" />
-      <div class="card__body">
-        <h3 class="card__title">{{ name() }}</h3>
-        <p class="card__tagline">{{ tagline() }}</p>
-        <a class="card__link" [routerLink]="['/spain', id()]">View</a>
+      <div class="card__image-wrapper">
+        <app-spain-safe-image
+          class="card__image"
+          [src]="destination().image"
+          [alt]="destination().name"
+          [title]="destination().name"
+          loading="lazy"
+        />
+        <div class="card__overlay"></div>
+        <span class="card__badge">{{ destination().region }}</span>
+        <div class="card__favorite">
+          <app-favorite-button
+            [destinationId]="destination().id"
+            [ariaLabel]="'Add ' + destination().name + ' to favorites'"
+            size="small"
+          />
+        </div>
+      </div>
+      <div class="card__content">
+        <h2 class="card__title">
+          <a class="card__link" [routerLink]="['/spain/destinations', destination().id]">
+            {{ destination().name }}
+          </a>
+        </h2>
+        <p class="card__tagline">{{ destination().tagline }}</p>
+        <p class="card__description">{{ destination().description }}</p>
+        <ul class="card__highlights">
+          @for (highlight of destination().landmarks; track highlight) {
+            <li>{{ highlight }}</li>
+          }
+        </ul>
+        <span class="card__meta">Best time: {{ destination().bestTimeToVisit }}</span>
       </div>
     </article>
   `,
-  styles: `.card{border:1px solid #ddd;border-radius:12px;overflow:hidden}.card__image{width:100%;height:160px;object-fit:cover;background:linear-gradient(135deg,#c60b1e,#ffc400)}.card__body{padding:.75rem}.card__title{margin:0}.card__tagline{font-size:.9rem;color:#555}.card__link{text-decoration:none;color:#c60b1e}`,
+  styleUrl: './destination-card.component.css',
 })
 export class DestinationCardComponent {
-  readonly id = input.required<string>();
-  readonly name = input.required<string>();
-  readonly tagline = input.required<string>();
-  readonly image = input.required<string>();
-  onError(e: Event) {
-    const img = e.target as HTMLImageElement;
-    img.style.opacity = '0';
-  }
+  readonly destination = input.required<Destination>();
 }

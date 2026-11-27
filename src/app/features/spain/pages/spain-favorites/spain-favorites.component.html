@@ -1,0 +1,60 @@
+<section class="tr-fav">
+  <app-spain-page-hero
+    eyebrow="YOUR FAVORITES"
+    title="Your "
+    titleAccent="Saved Places"
+    lead="Your saved Spanish destinations, ready for your next adventure."
+    [image]="heroImage"
+  />
+
+  <div class="tr-body">
+    @if (favoriteDestinations().length > 0) {
+      <div class="tr-fav__header">
+        <h2>
+          {{ favoriteDestinations().length }} Saved Destination{{
+            favoriteDestinations().length !== 1 ? 's' : ''
+          }}
+        </h2>
+      </div>
+
+      <div class="tr-grid">
+        @for (destination of favoriteDestinations(); track destination.id) {
+          <article class="tr-card">
+            <a [routerLink]="['/spain/destinations', destination.id]" class="tr-card__img-wrap">
+              <app-spain-safe-image
+                [src]="destination.image"
+                [alt]="destination.name"
+                [title]="destination.name"
+                loading="lazy"
+              />
+            </a>
+            <div class="tr-card__body">
+              <h3>
+                <a [routerLink]="['/spain/destinations', destination.id]">{{ destination.name }}</a>
+              </h3>
+              <p class="tr-card__tagline">{{ destination.tagline }}</p>
+              <p class="tr-card__desc">{{ destination.description }}</p>
+              <div class="tr-card__actions">
+                <app-favorite-button
+                  [destinationId]="destination.id"
+                  ariaLabel="Remove from favorites"
+                  size="small"
+                  (toggled)="removeFavorite(destination.id)"
+                />
+                <a class="tr-card__cta" [routerLink]="['/spain/destinations', destination.id]"
+                  >View destination →</a
+                >
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="tr-empty">
+        <h2>No Favorites Yet</h2>
+        <p>Start exploring destinations and save the ones you love by clicking the heart icon.</p>
+        <a routerLink="/spain/destinations" class="tr-btn">Explore Destinations</a>
+      </div>
+    }
+  </div>
+</section>

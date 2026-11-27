@@ -1,0 +1,79 @@
+<section class="tr-plan">
+  <app-spain-page-hero
+    eyebrow="PLAN YOUR TRIP"
+    title="Build your "
+    titleAccent="Spain journey"
+    lead="Choose destinations, trip length, and interests to generate a simple itinerary suggestion. Your plan is saved locally in this browser."
+    [image]="heroImage"
+  />
+
+  <div class="tr-body" appRevealOnScroll>
+    <div class="tr-layout">
+      <form class="tr-form" (ngSubmit)="generate()" aria-label="Trip planner form">
+        <label class="tr-label" for="days">Trip duration (days)</label>
+        <input
+          id="days"
+          class="tr-input"
+          type="number"
+          min="2"
+          max="14"
+          [ngModel]="days()"
+          (ngModelChange)="days.set($event)"
+          name="days"
+        />
+
+        <fieldset class="tr-fieldset">
+          <legend>Destinations</legend>
+          @for (d of destinations; track d.id) {
+            <label class="tr-check"
+              ><input
+                type="checkbox"
+                [checked]="selectedDestinations().includes(d.id)"
+                (change)="toggleDestination(d.id)"
+              />
+              {{ d.name }}</label
+            >
+          }
+        </fieldset>
+
+        <fieldset class="tr-fieldset">
+          <legend>Interests</legend>
+          @for (interest of interests; track interest) {
+            <label class="tr-check"
+              ><input
+                type="checkbox"
+                [checked]="selectedInterests().includes(interest)"
+                (change)="toggleInterest(interest)"
+              />
+              {{ interest }}</label
+            >
+          }
+        </fieldset>
+
+        <div class="tr-actions">
+          <button type="submit" class="tr-btn">Generate itinerary</button>
+          <button type="button" class="tr-btn tr-btn--ghost" (click)="reset()">Reset</button>
+        </div>
+      </form>
+
+      <section class="tr-result" aria-live="polite">
+        <h2>Suggested itinerary</h2>
+        @if (itinerary().length === 0) {
+          <p class="tr-empty">Select at least one destination and generate your plan.</p>
+        } @else {
+          <ol class="tr-itinerary">
+            @for (day of itinerary(); track day.day) {
+              <li>
+                <strong>Day {{ day.day }}:</strong> {{ day.text }}
+              </li>
+            }
+          </ol>
+          <p class="tr-note">
+            This is a simple suggestion based on your selections. Check official local information
+            before traveling.
+          </p>
+        }
+      </section>
+    </div>
+  </div>
+</section>

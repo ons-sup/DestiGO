@@ -1,57 +1,40 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { HeroSectionComponent } from '../../../../shared/components/hero-section/hero-section.component';
+import { Component, computed, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 import { FavoriteButtonComponent } from '../../../../shared/components/favorite-button/favorite-button.component';
+import { SafeImageComponent } from '../safe-image/safe-image.component';
 import {
-  DestinationDetail,
   getDestinationDetail,
   getPreviousDestinationId,
   getNextDestinationId,
-  getAllDestinationIds
 } from '../../data/destination-details.data';
 
 @Component({
   selector: 'app-destination-detail',
   standalone: true,
-  imports: [CommonModule, HeroSectionComponent, FavoriteButtonComponent, RouterLink],
+  imports: [RouterLink, FavoriteButtonComponent, SafeImageComponent],
   templateUrl: './destination-detail.component.html',
-  styleUrl: './destination-detail.component.css'
+  styleUrl: './destination-detail.component.css',
 })
 export class DestinationDetailComponent {
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
-  destination = signal<DestinationDetail | null>(null);
-  notFound = signal(false);
+  private readonly id = toSignal(this.route.paramMap.pipe(map((p) => p.get('id') ?? '')), {
+    initialValue: this.route.snapshot.paramMap.get('id') ?? '',
+  });
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      const detail = getDestinationDetail(id);
-      if (detail) {
-        this.destination.set(detail);
-      } else {
-        this.notFound.set(true);
-      }
-    } else {
-      this.notFound.set(true);
-    }
-  }
+  readonly destination = computed(() => getDestinationDetail(this.id()));
 
-  previousId = computed(() => {
+  readonly previousId = computed(() => {
     const dest = this.destination();
     return dest ? getPreviousDestinationId(dest.id) : undefined;
   });
 
-  nextId = computed(() => {
+  readonly nextId = computed(() => {
     const dest = this.destination();
     return dest ? getNextDestinationId(dest.id) : undefined;
   });
-
-  trackByName(index: number, item: { name: string }): string {
-    return item.name;
-  }
 
   getDestinationName(id: string): string | undefined {
     return getDestinationDetail(id)?.name;

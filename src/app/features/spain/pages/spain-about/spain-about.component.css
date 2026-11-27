@@ -1,0 +1,91 @@
+.tr-about {
+  color: #1f2937;
+}
+.tr-body {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.tr-section {
+  margin-top: 3rem;
+}
+.tr-section h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin: 0 0 1.25rem;
+}
+.tr-two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.tr-two-col app-spain-safe-image {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.tr-two-col p,
+.tr-practical p,
+.tr-info-card p {
+  color: #4b5563;
+  line-height: 1.75;
+}
+.tr-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.tr-cards--sm {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.tr-info-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  transition:
+    transform var(--motion-hover, 280ms) var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow var(--motion-hover, 280ms) var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1));
+}
+.tr-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+.tr-info-card app-spain-safe-image {
+  width: 100%;
+  height: 210px;
+}
+.tr-info-card div {
+  padding: 1.2rem;
+}
+.tr-info-card h3,
+.tr-practical h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+.tr-info-card--text {
+  padding: 1rem;
+}
+.tr-practical__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.tr-practical__grid div {
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fffaf5;
+}
+
+@media (min-width: 900px) {
+  .tr-two-col {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tr-info-card {
+    transition: none !important;
+  }
+}

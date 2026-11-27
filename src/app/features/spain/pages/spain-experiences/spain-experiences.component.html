@@ -1,0 +1,55 @@
+<section class="tr-exp">
+  <app-spain-page-hero
+    eyebrow="EXPERIENCES IN SPAIN"
+    title="Live the "
+    titleAccent="Spanish Way"
+    lead="Go beyond sightseeing with experiences that connect you to Spain's culture, cuisine, landscapes, and history."
+    [image]="heroImage"
+  />
+
+  <div class="tr-body">
+    <div
+      class="tr-filters reveal-item"
+      style="--item-delay: 80ms"
+      role="group"
+      aria-label="Filter experiences by category"
+    >
+      @for (cat of categories; track cat.value) {
+        <button
+          type="button"
+          class="tr-filter"
+          [class.active]="selected() === cat.value"
+          (click)="selectCategory(cat.value)"
+        >
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <div class="tr-grid">
+      @for (exp of filtered(); track exp.id + '-' + animKey(); let i = $index) {
+        <article class="tr-card" [style.--i]="i">
+          <div class="tr-card__img-wrap">
+            <app-spain-safe-image
+              [src]="exp.imageUrl"
+              [alt]="exp.title"
+              [title]="exp.title"
+              loading="lazy"
+            />
+            <span class="tr-card__cat">{{ labelFor(exp.category) }}</span>
+          </div>
+          <div class="tr-card__body">
+            <p class="tr-card__loc">{{ exp.relatedDestination }}</p>
+            <h2>
+              <a [routerLink]="['/spain/experiences', exp.id]">{{ exp.title }}</a>
+            </h2>
+            <p class="tr-card__desc">{{ exp.description }}</p>
+            <a class="tr-card__cta" [routerLink]="['/spain/experiences', exp.id]"
+              >View experience →</a
+            >
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

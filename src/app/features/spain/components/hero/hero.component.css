@@ -1,0 +1,131 @@
+.hero {
+  position: relative;
+  height: 70vh;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.55);
+  opacity: 0;
+  transform: scale(1.05);
+  animation: es-hero-bg var(--motion-hero, 780ms)
+    var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+  transition: transform 1.8s var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hero:hover .hero__bg {
+  transform: scale(1.03);
+}
+
+@keyframes es-hero-bg {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero__content > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: es-hero-enter var(--motion-hero, 780ms)
+    var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+}
+.hero__kicker {
+  animation-delay: 0.08s;
+}
+.hero__title {
+  animation-delay: 0.2s;
+}
+.hero__tagline {
+  animation-delay: 0.34s;
+}
+.hero__cta {
+  animation-delay: 0.48s;
+}
+
+@keyframes es-hero-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 0 1.5rem;
+  max-width: 720px;
+}
+
+.hero__kicker {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ffab91;
+}
+
+.hero__title {
+  margin: 0 0 1rem 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero__tagline {
+  margin: 0 0 1.75rem 0;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: #e8e8e8;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.hero__cta {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #7a1fa2;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.3);
+}
+
+.hero__cta:focus-visible {
+  outline: 2px solid #ffab91;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__bg,
+  .hero__cta,
+  .hero__content > * {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

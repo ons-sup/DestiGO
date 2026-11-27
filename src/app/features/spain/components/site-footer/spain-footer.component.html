@@ -1,0 +1,68 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__container">
+    <div class="site-footer__main">
+      <div class="site-footer__brand">
+        <a routerLink="/spain" class="site-footer__brand-link">
+          <span class="site-footer__logo" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="#c9a84c" stroke-width="2" />
+              <path
+                d="m19.5 12.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"
+                stroke="#c9a84c"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+                fill="#c9a84c"
+                fill-opacity="0.15"
+              />
+              <circle cx="16" cy="16" r="1.5" fill="#c9a84c" />
+            </svg>
+          </span>
+          <span class="site-footer__brand-name">DestiGO</span>
+        </a>
+        <p class="site-footer__tagline">
+          Discover destinations, cultures, and unforgettable Spanish journeys.
+        </p>
+      </div>
+
+      <div class="site-footer__links-grid">
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Explore</h2>
+          <ul class="site-footer__list">
+            @for (link of exploreLinks; track link.label) {
+              <li>
+                <a [routerLink]="link.path">{{ link.label }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Navigation</h2>
+          <ul class="site-footer__list">
+            @for (link of navigationLinks; track link.label) {
+              <li>
+                <a [routerLink]="link.path">{{ link.label }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Project</h2>
+          <ul class="site-footer__list">
+            <li><span>SUP'COM</span></li>
+            <li><span>University project</span></li>
+            <li><a routerLink="/spain/photo-credits">Photo credits</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="site-footer__divider" />
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">© {{ year }} DestiGO. All rights reserved.</p>
+      <p class="site-footer__credit">Built at SUP'COM</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,46 @@
+.tr-dest {
+  color: #1f2937;
+}
+.tr-body {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.tr-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.tr-filter {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #374151;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tr-filter:hover,
+.tr-filter.active {
+  background: #1f2937;
+  color: #fff;
+  border-color: #1f2937;
+}
+.tr-filter:focus-visible {
+  outline: 2px solid #b45309;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.tr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-filter {
+    transition: none !important;
+  }
+}
