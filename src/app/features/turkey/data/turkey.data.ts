@@ -1,4 +1,18 @@
 import { Destination, CountryData } from '../models/destination.model';
+import { TURKEY_DESTINATION_DETAILS } from './turkey-content.data';
+
+const ADDITIONAL_DESTINATIONS: Destination[] = TURKEY_DESTINATION_DETAILS.filter(
+  (detail) => !['istanbul', 'cappadocia', 'antalya', 'pamukkale', 'ephesus'].includes(detail.id),
+).map((detail) => ({
+  id: detail.id,
+  name: detail.name,
+  tagline: detail.signatureExperiences[0] ?? detail.region,
+  description: detail.summary,
+  image: detail.image,
+  region: detail.region,
+  highlights: [...detail.signatureExperiences],
+  bestTimeToVisit: detail.bestSeasons,
+}));
 
 export interface TurkeyExperience {
   id: string;
@@ -89,7 +103,7 @@ export const TURKEY_DATA: CountryData = {
       name: 'Cappadocia',
       tagline: 'Fairy chimneys and hot air balloons.',
       description: 'Cappadocia’s surreal landscape of rock formations and cave dwellings is best appreciated at dawn, when balloons rise over valleys and stone-carved history.',
-      image: '/images/turkey/destinations/cappadocia.jpg',
+  image: '/images/turkey/cappadocia.jpg',
       region: 'Central Anatolia',
       highlights: ['Göreme Open-Air Museum', 'Hot air balloon ride', 'Underground cities', 'Ihlara Valley'],
       bestTimeToVisit: 'April to June, September to October',
@@ -124,5 +138,6 @@ export const TURKEY_DATA: CountryData = {
       highlights: ['Library of Celsus', 'Great Theatre', 'Temple of Artemis site', 'Marble Road'],
       bestTimeToVisit: 'April to May, September to October',
     },
+    ...ADDITIONAL_DESTINATIONS,
   ],
 };

@@ -1,45 +1,109 @@
 @if (destination(); as destination) {
   <article class="detail">
+    <nav class="detail__breadcrumb" aria-label="Breadcrumb">
+      <a [routerLink]="['/turkey']">Türkiye</a>
+      <span aria-hidden="true">/</span>
+      <a [routerLink]="['/turkey/destinations']">Destinations</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ destination.name }}</span>
+    </nav>
+
     <header class="detail__header">
       <div class="detail__media">
         <img
           class="detail__image"
           [src]="destination.image"
-          [alt]="destination.name"
-          loading="lazy"
+          [alt]="guide()?.altText ?? destination.name"
+          loading="eager"
+          fetchpriority="high"
+          width="1600"
+          height="1067"
         />
         <span class="detail__badge">{{ destination.region }}</span>
       </div>
       <div class="detail__meta">
-        <a class="detail__back" [routerLink]="['/turkey/destinations']">← Back to destinations</a>
+        <p class="detail__eyebrow">Destination guide</p>
         <h1 class="detail__title">{{ destination.name }}</h1>
         <p class="detail__tagline">{{ destination.tagline }}</p>
+        <p class="detail__summary">{{ guide()?.summary ?? destination.description }}</p>
+        <dl class="detail__facts">
+          <div>
+            <dt>Suggested stay</dt>
+            <dd>{{ guide()?.suggestedStay ?? 'Flexible' }}</dd>
+          </div>
+          <div>
+            <dt>When to go</dt>
+            <dd>{{ guide()?.bestSeasons ?? destination.bestTimeToVisit }}</dd>
+          </div>
+        </dl>
+        <a class="detail__plan" [routerLink]="['/turkey/plan-your-trip']">
+          Add to your trip plan
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </header>
 
-    <section class="detail__body">
-      <h2>Overview</h2>
-      <p>{{ destination.description }}</p>
-    </section>
+    @if (guide(); as guide) {
+      <section class="detail__section" aria-labelledby="why-title">
+        <h2 id="why-title">Why it matters</h2>
+        <p>{{ guide.significance }}</p>
+        <h3 class="detail__subhead">Signature experiences</h3>
+        <ul class="detail__pills">
+          @for (item of guide.signatureExperiences; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </section>
+    }
 
-    <section class="detail__highlights">
-      <h2>Places to visit</h2>
-      <ul>
+    <section class="detail__section" aria-labelledby="places-title">
+      <h2 id="places-title">Places to visit</h2>
+      <ul class="detail__highlights">
         @for (highlight of destination.highlights; track highlight) {
           <li>{{ highlight }}</li>
         }
       </ul>
     </section>
 
-    <section class="detail__info">
-      <h2>Best time to visit</h2>
-      <p>{{ destination.bestTimeToVisit }}</p>
+    <section class="detail__section" aria-labelledby="related-title">
+      <h2 id="related-title">Keep exploring</h2>
+      <ul class="detail__related">
+        @for (item of related(); track item.id) {
+          <li>
+            <a [routerLink]="['/turkey/destinations', item.id]">
+              <img [src]="item.image" [alt]="item.name" loading="lazy" width="480" height="360" />
+              <span>{{ item.name }} <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+        }
+      </ul>
     </section>
+
+    @if (sources().length) {
+      <section class="detail__section detail__sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ul>
+          @for (source of sources(); track source.id) {
+            <li>
+              <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                {{ source.title }} <span aria-hidden="true">↗</span>
+              </a>
+              <span class="detail__publisher">{{ source.publisher }}</span>
+            </li>
+          }
+        </ul>
+      </section>
+    }
   </article>
 } @else {
   <section class="detail detail--missing">
-    <a class="detail__back" [routerLink]="['/turkey/destinations']">← Back to destinations</a>
+    <nav class="detail__breadcrumb" aria-label="Breadcrumb">
+      <a [routerLink]="['/turkey/destinations']">Destinations</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Not found</span>
+    </nav>
     <h1 class="detail__title">Destination not found</h1>
     <p class="detail__tagline">This Türkiye destination is not available.</p>
+    <a class="detail__plan" [routerLink]="['/turkey/destinations']">Browse all destinations →</a>
   </section>
 }

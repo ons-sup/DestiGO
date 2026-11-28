@@ -1,13 +1,14 @@
 import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TURKEY_DATA } from '../../data/turkey.data';
+import { RevealOnScrollDirective } from '../../../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-turkey-destinations',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RevealOnScrollDirective],
   template: `
-    <section class="tr-dest">
+    <section class="tr-dest" appRevealOnScroll>
       <header class="tr-hero">
         <div class="tr-hero__bg"><img src="/images/turkey/destinations/istanbul.jpg" alt="" aria-hidden="true" /></div>
         <div class="tr-hero__overlay"></div>
@@ -20,10 +21,11 @@ import { TURKEY_DATA } from '../../data/turkey.data';
 
       <div class="tr-body">
         <div class="tr-filters" role="group" aria-label="Filter destinations by region">
-          <button type="button" class="tr-filter" [class.active]="selectedRegion() === 'all'" (click)="selectRegion('all')">All</button>
+          <button type="button" class="tr-filter" [class.active]="selectedRegion() === 'all'" [attr.aria-pressed]="selectedRegion() === 'all'" (click)="selectRegion('all')">All</button>
           @for (region of regions; track region) {
-            <button type="button" class="tr-filter" [class.active]="selectedRegion() === region" (click)="selectRegion(region)">{{ region }}</button>
+            <button type="button" class="tr-filter" [class.active]="selectedRegion() === region" [attr.aria-pressed]="selectedRegion() === region" (click)="selectRegion(region)">{{ region }}</button>
           }
+          <output class="tr-count" aria-live="polite">{{ filteredDestinations().length }} of {{ destinations.length }} destinations</output>
         </div>
 
         <div class="tr-grid">
@@ -58,7 +60,8 @@ import { TURKEY_DATA } from '../../data/turkey.data';
     .tr-accent{color:#fbbf24;}
     .tr-lead{max-width:46rem;color:rgba(255,255,255,.92);line-height:1.75;margin:0;font-size:1.05rem;}
     .tr-body{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
-    .tr-filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem;}
+    .tr-filters{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-bottom:2rem;}
+    .tr-count{margin-left:auto;color:#6b7280;font-size:.85rem;}
     .tr-filter{border:1px solid #d1d5db;background:#fff;color:#374151;padding:.55rem 1rem;border-radius:999px;font:inherit;cursor:pointer;transition:all .2s;}
     .tr-filter:hover,.tr-filter.active{background:#1f2937;color:#fff;border-color:#1f2937;}
     .tr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
@@ -77,7 +80,7 @@ import { TURKEY_DATA } from '../../data/turkey.data';
     .tr-card__cta{color:#b45309;text-decoration:none;font-weight:600;}
     .tr-card__cta:hover{text-decoration:underline;}
     .tr-filter:focus-visible,.tr-card h2 a:focus-visible,.tr-card__cta:focus-visible,.tr-card__img-wrap:focus-visible{outline:2px solid #b45309;outline-offset:3px;border-radius:4px;}
-    @media (max-width:600px){.tr-hero{min-height:52vh;}.tr-hero__content{padding-top:7rem;}} @media (prefers-reduced-motion: reduce){.tr-hero__bg img,.tr-hero__content>*,.tr-card,.tr-card__img-wrap img,.tr-filter{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;}}
+    @media (max-width:600px){.tr-hero{min-height:52vh;}.tr-hero__content{padding-top:7rem;}.tr-count{margin-left:0;width:100%;}} @media (prefers-reduced-motion: reduce){.tr-hero__bg img,.tr-hero__content>*,.tr-card,.tr-card__img-wrap img,.tr-filter{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;}}
   `],
 })
 export class TurkeyDestinationsComponent {

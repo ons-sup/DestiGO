@@ -4,42 +4,111 @@
   [countryImage]="countryImage"
 ></app-turkey-hero>
 
-<app-turkey-intro [introduction]="introduction" [image]="countryImage" appRevealOnScroll></app-turkey-intro>
+<app-turkey-intro [introduction]="introduction" [image]="introImage" appRevealOnScroll></app-turkey-intro>
 
-<section class="destinations" id="destinations" appRevealOnScroll>
-  <div class="destinations__header">
-    <h2 class="destinations__heading reveal-item" style="--item-delay:40ms">Featured destinations</h2>
-    <p class="destinations__subtitle reveal-item" style="--item-delay:120ms">Start your journey in one of these remarkable regions.</p>
-  </div>
-  <div class="destinations__grid">
-    @for (destination of destinations; track destination.id; let i = $index) {
-      <app-destination-card [destination]="destination" appRevealOnScroll [revealDelay]="i * 90"></app-destination-card>
-    }
+<section class="heritage" aria-labelledby="heritage-title" appRevealOnScroll>
+  <div class="heritage__inner">
+    <div class="heritage__heading">
+      <p class="eyebrow reveal-item" style="--item-delay:40ms">A crossroads of civilizations</p>
+      <h2 id="heritage-title" class="reveal-item" style="--item-delay:100ms">
+        Where two continents share a story
+      </h2>
+    </div>
+    <dl class="heritage__stats">
+      <div class="reveal-item" style="--item-delay:140ms">
+        <dt>UNESCO properties</dt>
+        <dd>{{ heritage.inscribedProperties }}</dd>
+        <span>{{ heritage.cultural }} cultural · {{ heritage.mixed }} mixed</span>
+      </div>
+      <div class="reveal-item" style="--item-delay:200ms">
+        <dt>Continents</dt>
+        <dd>2</dd>
+        <span>Europe and Asia, divided by the Bosphorus</span>
+      </div>
+      <div class="reveal-item" style="--item-delay:260ms">
+        <dt>Places to discover</dt>
+        <dd>{{ destinations.length }}</dd>
+        <span>From Neolithic sites to the Turquoise Coast</span>
+      </div>
+    </dl>
   </div>
 </section>
 
-<section class="experiences" appRevealOnScroll>
+<section class="destinations" id="destinations" appRevealOnScroll>
+  <div class="destinations__header">
+    <p class="eyebrow reveal-item" style="--item-delay:40ms">Featured destinations</p>
+    <h2 class="destinations__heading reveal-item" style="--item-delay:100ms">Start somewhere remarkable</h2>
+    <p class="destinations__subtitle reveal-item" style="--item-delay:160ms">
+      Ancient cities, surreal landscapes, mountain monasteries and turquoise coves — choose your first stop.
+    </p>
+  </div>
+  <div class="destinations__grid">
+    @for (destination of destinations; track destination.id; let i = $index) {
+      <app-destination-card [destination]="destination" appRevealOnScroll [revealDelay]="i * 70"></app-destination-card>
+    }
+  </div>
+  <a class="section-link" routerLink="/turkey/destinations">Browse all destinations <span aria-hidden="true">→</span></a>
+</section>
+
+<section class="experiences" aria-labelledby="experiences-title" appRevealOnScroll>
   <div class="experiences__wrapper">
     <div class="experiences__text">
-      <h2 class="experiences__heading reveal-item" style="--item-delay:40ms">Places to visit</h2>
-      <p class="experiences__body reveal-item" style="--item-delay:120ms">
-        From ancient bazaars to cave hotels, Türkiye offers experiences that stay with you long
-        after you return home.
+      <p class="eyebrow reveal-item" style="--item-delay:40ms">Beyond the sights</p>
+      <h2 id="experiences-title" class="experiences__heading reveal-item" style="--item-delay:100ms">Live the Turkish way</h2>
+      <p class="experiences__body reveal-item" style="--item-delay:160ms">
+        Türkiye is experienced as much through its tables, tea gardens and ceremonies as through its monuments.
       </p>
       <ul class="experiences__list">
-        <li class="reveal-item" style="--item-delay:180ms">Historic old towns and UNESCO World Heritage sites</li>
-        <li class="reveal-item" style="--item-delay:240ms">Coastal drives along the turquoise Mediterranean</li>
-        <li class="reveal-item" style="--item-delay:300ms">Underground cities and rock-cut churches</li>
-        <li class="reveal-item" style="--item-delay:360ms">Traditional hamams and Turkish cuisine</li>
+        @for (experience of featuredExperiences; track experience.id) {
+          <li class="reveal-item" [style.--item-delay]="(220 + $index * 60) + 'ms'">
+            <span class="experiences__cat">{{ experience.category }}</span>
+            <strong>{{ experience.title }}</strong>
+            <span class="experiences__desc">{{ experience.description }}</span>
+          </li>
+        }
       </ul>
+      <a class="section-link" routerLink="/turkey/experiences">See all experiences <span aria-hidden="true">→</span></a>
     </div>
-    <figure class="experiences__figure reveal-media reveal-item" style="--item-delay:160ms">
+    <figure class="experiences__figure reveal-item" style="--item-delay:180ms">
       <img
         class="experiences__image"
-        src="/images/turkey/cappadocia.jpg"
-        alt="Cappadocia balloons"
+        src="/images/turkey/editorial/hagia-sophia-interior.jpg"
+        alt="Interior of Hagia Sophia in Istanbul"
         loading="lazy"
+        width="1920"
+        height="1280"
       />
+      <figcaption>Hagia Sophia, Istanbul · UNESCO Historic Areas</figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="culture" aria-labelledby="culture-title" appRevealOnScroll>
+  <div class="culture__inner">
+    <h2 id="culture-title" class="reveal-item" style="--item-delay:40ms">Good to know</h2>
+    <div class="culture__grid">
+      @for (note of cultureNotes; track note.id; let i = $index) {
+        <article class="culture__card reveal-item" [style.--item-delay]="(100 + i * 80) + 'ms'">
+          @if (note.image) {
+            <img [src]="note.image" [alt]="note.title" loading="lazy" width="1200" height="800" />
+          }
+          <div>
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.body }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-title" appRevealOnScroll>
+  <div class="cta__inner reveal-item" style="--item-delay:80ms">
+    <div>
+      <p class="eyebrow">Make it your journey</p>
+      <h2 id="cta-title">Turn inspiration into a plan</h2>
+      <p>Pick your places, set your pace, and get a simple itinerary you can refine.</p>
+    </div>
+    <a class="cta__button" routerLink="/turkey/plan-your-trip">Plan your trip <span aria-hidden="true">→</span></a>
   </div>
 </section>

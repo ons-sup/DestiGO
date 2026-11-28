@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { TurkeyPlanYourTripComponent } from './turkey-plan-your-trip.component';
 
 describe('TurkeyPlanYourTripComponent', () => {
@@ -7,7 +8,10 @@ describe('TurkeyPlanYourTripComponent', () => {
   });
 
   it('generates an itinerary and saves plan', async () => {
-    await TestBed.configureTestingModule({ imports: [TurkeyPlanYourTripComponent] }).compileComponents();
+    await TestBed.configureTestingModule({
+      imports: [TurkeyPlanYourTripComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
     const fixture = TestBed.createComponent(TurkeyPlanYourTripComponent);
     fixture.detectChanges();
     fixture.componentInstance.generate();
