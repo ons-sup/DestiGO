@@ -34,6 +34,14 @@ export class DestinationWheelComponent {
     this.buildSegments(this.countries()),
   );
 
+  protected readonly compassTicks = Array.from({ length: 36 }, (_, i) => {
+    const angle = i * 10;
+    const isMajor = i % 3 === 0;
+    const inner = this.polar(isMajor ? 179 : 182, angle);
+    const outer = this.polar(isMajor ? 189 : 187, angle);
+    return { x1: inner.x, y1: inner.y, x2: outer.x, y2: outer.y, isMajor };
+  });
+
   protected readonly selectedCountry = computed<WheelCountry | null>(() => {
     if (this.isHomeSelected()) {
       return this.homeDestination;

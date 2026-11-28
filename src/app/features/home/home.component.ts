@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnDestroy,
-  PLATFORM_ID,
-  inject,
-  signal,
-} from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
@@ -13,18 +7,13 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [RouterLink, SiteFooterComponent, RevealOnScrollDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent {
   protected readonly auth = inject(AuthService);
   private readonly platformId = inject(PLATFORM_ID);
-
-  protected readonly heroVisible = signal(true);
-
-  ngOnDestroy(): void {}
 
   protected openWheel(): void {
     if (!isPlatformBrowser(this.platformId)) {

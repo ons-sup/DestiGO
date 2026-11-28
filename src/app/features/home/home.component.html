@@ -1,184 +1,257 @@
-<main class="home" [class.hero-visible]="heroVisible()">
-
-  <!-- â”€â”€â”€ Navigation â”€â”€â”€ -->
-  <nav class="nav" aria-label="DestiGO main navigation">
-    <div class="nav__inner">
-      <a class="nav__brand" routerLink="/" aria-label="DestiGO home">
-        <span class="nav__logo" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" width="28" height="28">
-            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
-            <path d="m19.5 12.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-            <circle cx="16" cy="16" r="1.2" fill="currentColor"/>
-          </svg>
-        </span>
-        <span class="nav__name">DestiGO</span>
+<main class="home">
+  <header class="masthead">
+    <nav class="masthead__inner" aria-label="DestiGO main navigation">
+      <a class="brand" routerLink="/" aria-label="DestiGO home">
+        <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5" />
+          <path
+            d="m19.5 12.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linejoin="round"
+          />
+          <circle cx="16" cy="16" r="1.2" fill="currentColor" />
+        </svg>
+        <span class="brand__name">DestiGO</span>
       </a>
 
-      <div class="nav__links">
-        <button type="button" class="nav__link" (click)="openWheel()">Destinations</button>
-      </div>
+      <button
+        type="button"
+        class="masthead__map"
+        aria-label="Destinations — open destination map"
+        aria-haspopup="dialog"
+        (click)="openWheel()"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <path d="m15 9-2 4-4 2 2-4 4-2Z" />
+        </svg>
+        <span>Destinations</span>
+      </button>
 
-      <div class="nav__auth">
+      <div class="masthead__auth">
         @if (auth.currentUser(); as user) {
-          <span class="nav__greeting">{{ user.name }}</span>
-          <button type="button" class="nav__btn nav__btn--outline" (click)="auth.logout()">Log out</button>
+          <span class="masthead__greeting">{{ user.name }}</span>
+          <button type="button" class="auth-button" (click)="auth.logout()">Log out</button>
         } @else {
-          <a class="nav__btn nav__btn--outline" routerLink="/auth/login">Log in</a>
-          <a class="nav__btn nav__btn--solid" routerLink="/auth/register">Sign up</a>
+          <a class="auth-button" routerLink="/auth/login">Log in</a>
+          <a class="auth-button auth-button--solid" routerLink="/auth/register">Sign up</a>
         }
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- â”€â”€â”€ Hero â”€â”€â”€ -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__bg">
+    <div class="hero__visual">
       <img
-        class="hero__img"
         src="images/turkey/istanbul.jpg"
-        alt="Panoramic view of Istanbul at golden hour"
+        alt="Minarets and domes of Istanbul's old city across the Bosphorus at dusk"
         loading="eager"
         fetchpriority="high"
+        width="3004"
+        height="1372"
       />
-      <div class="hero__overlay"></div>
     </div>
 
-    <div class="hero__content">
-      <p class="hero__eyebrow">Travel discovery platform</p>
-      <h1 id="hero-title" class="hero__title">
-        Your next story starts<br/>
-        <span class="hero__accent">somewhere.</span>
-      </h1>
-      <p class="hero__subtitle">
-        Discover places, cultures, and experiences through DestiGO.
-      </p>
-      <button type="button" class="hero__cta" (click)="openWheel()">
-        <span>Explore destinations</span>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6"/>
-        </svg>
-      </button>
-    </div>
-
-    <div class="hero__scroll" aria-hidden="true">
-      <span class="hero__scroll-line"></span>
-      <span class="hero__scroll-text">Scroll</span>
-    </div>
-  </section>
-
-  <!-- â”€â”€â”€ Destinations â”€â”€â”€ -->
-  <section class="destinations" aria-labelledby="destinations-title" appRevealOnScroll>
-    <div class="destinations__inner">
-      <div class="destinations__header">
-        <p class="section-eyebrow reveal-item" style="--item-delay:40ms">Explore the world</p>
-        <h2 id="destinations-title" class="section-title reveal-item" style="--item-delay:120ms">Choose your journey</h2>
-        <p class="section-desc reveal-item" style="--item-delay:200ms">Three countries, three stories. Each portal is a curated guide to a nation's landscapes, food, and culture.</p>
+    <div class="hero__layout">
+      <div class="hero__copy">
+        <p class="overline">DestiGO · destination discovery</p>
+        <h1 id="hero-title" class="hero__title">A traveler's atlas<br /> to three countries.</h1>
+        <p class="hero__lede">
+          Türkiye, Italy and Spain. Each guide collects destinations, local food and experiences, so
+          you can choose where to begin.
+        </p>
+        <div class="hero__actions">
+          <button type="button" class="button" aria-haspopup="dialog" (click)="openWheel()">
+            Open the destination map
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+          <a class="text-link" routerLink="/turkey">
+            Start with Türkiye
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <div class="destinations__grid">
-        <!-- Turkey -->
-        <a class="dest-card dest-card--large" routerLink="/turkey" appRevealOnScroll [revealDelay]="40">
-          <div class="dest-card__media">
+      <aside class="hero__caption" aria-label="Featured photograph">
+        <span class="hero__caption-index">Cover / 01</span>
+        <p class="hero__caption-title">Istanbul, Türkiye</p>
+        <p class="hero__caption-text">The old city skyline across the Bosphorus at dusk.</p>
+      </aside>
+    </div>
+
+    <a class="hero__jump" href="#country-guides">
+      Three guides below
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 5v14M6 13l6 6 6-6" />
+      </svg>
+    </a>
+  </section>
+
+  <section id="country-guides" class="guides" aria-labelledby="guides-title" appRevealOnScroll>
+    <div class="guides__inner">
+      <div class="guides__head">
+        <h2 id="guides-title" class="section-title">Pick a country</h2>
+        <p class="section-lede">
+          Three live guides. Each one collects real places, local experiences and the details that
+          help you decide where to go.
+        </p>
+      </div>
+
+      <div class="guides__layout">
+        <a class="feature" routerLink="/turkey">
+          <div class="feature__media">
             <img
               src="images/turkey/cappadocia.jpg"
-              alt="Hot air balloons over the fairy chimneys of Cappadocia, Türkiye"
+              alt="Hot-air balloons at sunrise over Cappadocia, Türkiye"
               loading="lazy"
+              width="4000"
+              height="2670"
             />
           </div>
-          <div class="dest-card__content">
-            <span class="dest-card__tag">Available now</span>
-            <h3 class="dest-card__name">Türkiye</h3>
-            <p class="dest-card__tagline">Where continents meet</p>
-            <span class="dest-card__action">
-              Explore
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6"/>
+          <div class="feature__body">
+            <span class="index">01 — Türkiye</span>
+            <h3>Balloons over Cappadocia</h3>
+            <p>Fairy chimneys, cave churches and a landscape best seen at first light.</p>
+            <span class="action">
+              Read the Türkiye guide
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </span>
           </div>
         </a>
 
-        <!-- Italy -->
-        <a class="dest-card" routerLink="/italy" appRevealOnScroll [revealDelay]="120">
-          <div class="dest-card__media">
-            <img
-              src="assets/images/cinque-terre.jpg"
-              alt="Colorful houses of Cinque Terre on the Italian Riviera"
-              loading="lazy"
-            />
-          </div>
-          <div class="dest-card__content">
-            <span class="dest-card__tag">Available now</span>
-            <h3 class="dest-card__name">Italy</h3>
-            <p class="dest-card__tagline">La dolce vita, from the Alps to the sea</p>
-            <span class="dest-card__action">
-              Explore
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6"/>
-              </svg>
-            </span>
-          </div>
-        </a>
+        <div class="guides__stack">
+          <a class="mini" routerLink="/italy">
+            <div class="mini__media">
+              <img
+                src="assets/images/cinque-terre.jpg"
+                alt="Painted houses above the harbor at Manarola, Cinque Terre, Italy"
+                loading="lazy"
+                width="2000"
+                height="1334"
+              />
+            </div>
+            <div class="mini__body">
+              <span class="index">02 — Italy</span>
+              <h3>Villages above the sea</h3>
+              <p>Walk the coastal paths, then stay for the food and the long evenings.</p>
+              <span class="action">
+                Read the Italy guide
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+          </a>
 
-        <!-- Spain -->
-        <a class="dest-card" routerLink="/spain" appRevealOnScroll [revealDelay]="200">
-          <div class="dest-card__media">
-            <img
-              src="images/spain/spain.jpg"
-              alt="Sun, rhythm, and timeless cities of Spain"
-              loading="lazy"
-            />
-          </div>
-          <div class="dest-card__content">
-            <span class="dest-card__tag">Available now</span>
-            <h3 class="dest-card__name">Spain</h3>
-            <p class="dest-card__tagline">Sun, rhythm, and timeless cities</p>
-            <span class="dest-card__action">
-              Explore
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6"/>
-              </svg>
-            </span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- â”€â”€â”€ About â”€â”€â”€ -->
-  <section class="about" aria-labelledby="about-title" appRevealOnScroll>
-    <div class="about__inner">
-      <div class="about__text">
-        <p class="section-eyebrow reveal-item" style="--item-delay:40ms">About DestiGO</p>
-        <h2 id="about-title" class="section-title reveal-item" style="--item-delay:120ms">Discover first.<br/>Book later.</h2>
-        <p class="about__desc reveal-item" style="--item-delay:200ms">
-          DestiGO is not a booking platform. It's a place to explore destinations through the eyes of fellow travelers.
-          Each country portal is independently curated — with hand-picked destinations, local experiences,
-          and cultural insights that help you decide where to go next.
-        </p>
-        <p class="about__desc reveal-item" style="--item-delay:280ms">
-          Built as a university project by Ahmed Ben Mim and Ons Chtioui.
-        </p>
-      </div>
-      <div class="about__visual reveal-item" style="--item-delay:180ms" aria-hidden="true">
-        <div class="about__compass">
-          <svg viewBox="0 0 120 120" fill="none" width="120" height="120">
-            <circle cx="60" cy="60" r="56" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
-            <circle cx="60" cy="60" r="44" stroke="currentColor" stroke-width="0.5" opacity="0.2" stroke-dasharray="2 4"/>
-            <path d="m68 52-3.5 8.2-8.2 3.5 3.5-8.2 8.2-3.5Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
-            <circle cx="60" cy="60" r="2" fill="currentColor" opacity="0.4"/>
-            <text x="60" y="18" text-anchor="middle" fill="currentColor" font-size="8" font-weight="600" opacity="0.35">N</text>
-            <text x="60" y="108" text-anchor="middle" fill="currentColor" font-size="8" font-weight="600" opacity="0.35">S</text>
-            <text x="108" y="63" text-anchor="middle" fill="currentColor" font-size="8" font-weight="600" opacity="0.35">E</text>
-            <text x="12" y="63" text-anchor="middle" fill="currentColor" font-size="8" font-weight="600" opacity="0.35">W</text>
-          </svg>
+          <a class="mini" routerLink="/spain">
+            <div class="mini__media">
+              <img
+                src="images/spain/hero.jpg"
+                alt="The Alhambra above Granada at dusk"
+                loading="lazy"
+                width="547"
+                height="365"
+              />
+            </div>
+            <div class="mini__body">
+              <span class="index">03 — Spain</span>
+              <h3>The Alhambra at dusk</h3>
+              <p>Granada is one stop in a guide to Spanish cities, coastlines and food.</p>
+              <span class="action">
+                Read the Spain guide
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- â”€â”€â”€ Footer â”€â”€â”€ -->
+  <section class="about" aria-labelledby="about-title" appRevealOnScroll>
+    <div class="about__inner">
+      <div class="about__copy">
+        <p class="overline">The idea</p>
+        <h2 id="about-title">Read the place<br /> before you choose it.</h2>
+        <p>
+          DestiGO is a discovery atlas. Each country guide is organized around destinations and
+          experiences, with the cultural details that turn a name on a map into a place you know.
+        </p>
+        <div class="about__links">
+          <a class="text-link" routerLink="/italy">Browse Italy</a>
+          <a class="text-link" routerLink="/spain">Browse Spain</a>
+        </div>
+      </div>
+      <div class="about__colophon">
+        <p>Built by Ahmed Ben Mim and Ons Chtioui.</p>
+        <p>University project · SUP'COM</p>
+      </div>
+    </div>
+  </section>
 
   <app-site-footer variant="global" />
-
 </main>

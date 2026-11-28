@@ -27,7 +27,6 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby="destination-wheel-dialog-title"
-      aria-describedby="destination-wheel-dialog-description"
       tabindex="-1"
     >
       <button
@@ -49,13 +48,10 @@
       </button>
 
       <header class="wheel-overlay__header">
-        <p class="wheel-overlay__eyebrow">DestiGO compass</p>
+        <p class="wheel-overlay__eyebrow">DestiGO Compass</p>
         <h2 class="wheel-overlay__title" id="destination-wheel-dialog-title">
           Choose your destination
         </h2>
-        <p class="wheel-overlay__subtitle" id="destination-wheel-dialog-description">
-          Hover a sector and click to explore a country guide.
-        </p>
       </header>
 
       <app-destination-wheel (exploreSelected)="onExplore($event)" />
