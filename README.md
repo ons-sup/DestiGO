@@ -25,9 +25,9 @@ This is an academic project at **SUP'COM** Higher School of Communication of Tun
 | Route              | Status  | Notes                                                      |
 | ------------------ | ------- | ---------------------------------------------------------- |
 | `/`                | Current | Dark DestiGO landing page with destination wheel           |
-| `/turkey`          | Current | Türkiye portal: home, destinations, and detail pages       |
+| `/turkey`          | Current | Türkiye portal: home, destinations, experiences, about, plan-your-trip, and detail pages |
 | `/italy`           | Current | Italy portal: home, destinations, experiences, and details |
-| `/spain`           | Current | Spain portal: home, destinations, and detail pages       |
+| `/spain`           | Current | Spain portal: home, destinations, experiences, about, plan-your-trip, and detail pages |
 | `/auth/login`      | Current | Demo login                                                 |
 | `/auth/register`   | Current | Demo registration                                          |
 | `/favorites`       | Current | Shared favorites page                                      |
@@ -43,8 +43,8 @@ This is an academic project at **SUP'COM** Higher School of Communication of Tun
 | Dark homepage (`/`)         | Current | Black/gold theme, hero imagery, animations, destination cards |
 | Turkey portal (`/turkey`)   | Current | Home, destinations, experiences, about, plan-your-trip, detail |
 | Italy portal (`/italy`)     | Current | Home, destinations, experiences, detail pages, favorites      |
-| Spain portal (`/spain`)     | Current | Home, destinations, detail pages                          |
-| Destination details         | Current | Türkiye and Italy detail pages                               |
+| Spain portal (`/spain`)     | Current | Home, destinations, experiences, about, plan-your-trip, favorites, detail |
+| Destination details         | Current | Türkiye, Italy, and Spain detail pages                      |
 | Authentication              | Current | Demo login and registration backed by localStorage           |
 | Favorites                   | Current | Shared service, reusable button, `/favorites` page           |
 | About (`/about`)            | Current | Project and team information                                 |
@@ -133,7 +133,7 @@ The Türkiye, Italy, and Spain portals are implemented. The global homepage is t
 | Area                          | Owner           | Branch                    |
 | ----------------------------- | --------------- | ------------------------- |
 | Turkey portal                 | Ahmed Ben Mim   | `feature/turkey`          |
-| Italy portal                  | Ons Chtioui     | `feature/italy` (planned) |
+| Italy portal                  | Ons Chtioui     | `feature/italy`           |
 | Spain portal                  | Implemented      | `feature/spain` (merged to master)  |
 | Shell, auth, favorites, wheel | Both developers | Dedicated shared branch   |
 

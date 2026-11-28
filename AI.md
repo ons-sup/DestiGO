@@ -16,7 +16,7 @@ The application contains **independent country portals** that each own their pag
 - **Italy portal** (`/italy`): Developed by Ons Chtioui. Contains Rome, Venice, Florence, and all major destinations/experiences.
 - **Spain portal** (`/spain`): Implemented. Contains home, destinations, and detail pages.
 
-The global application shell (`app.ts`) renders `<router-outlet />` and the shared destination wheel (`app-destination-wheel-nav`). The homepage (`/`) is the global dark DestiGO landing page; `/turkey` and `/italy` are independent country portals.
+The global application shell (`app.ts`) renders `<router-outlet />` and the shared destination wheel (`app-destination-wheel-nav`). The homepage (`/`) is the global dark DestiGO landing page; `/turkey`, `/italy`, and `/spain` are independent country portals.
 
 ---
 
@@ -29,7 +29,7 @@ The actual component and routing hierarchy in the repository:
 - `src/app/app.ts` — Root component with `<router-outlet />` and `<app-destination-wheel-nav />`
 - `src/app/app.html` — Template: `<router-outlet />` + destination wheel nav
 - `src/app/app.routes.ts` — Global route definitions (home, turkey, italy, auth, fallbacks)
-- `src/app/app.routes.server.ts` — SSR prerender config for Italy detail/experience routes
+- `src/app/app.routes.server.ts` — SSR prerender config for Italy and Spain detail/experience routes
 - `src/app/app.config.ts` — Client-side providers (Router, hydration)
 - `src/app/app.config.server.ts` — Server-side rendering with `withRoutes()`
 - `src/app/layout/layout.component.ts` — Italy portal layout with header + footer
@@ -43,8 +43,9 @@ The actual component and routing hierarchy in the repository:
 
 | Portal | Route | Key Files |
 |--------|-------|-----------|
-| **Turkey** | `/turkey` | `features/turkey/turkey.routes.ts`, `turkey.component.ts`, `turkey-home/`, `destination-detail/` |
-| **Italy** | `/italy` (lazy) | `features/italy/`, `italy.routes.ts` (via app.routes.ts children), components, data |
+| **Turkey** | `/turkey` | `features/turkey/turkey.routes.ts`, `turkey.component.ts`, `turkey-home/`, `turkey-destinations/`, `turkey-experiences/`, `turkey-about/`, `turkey-plan-your-trip/`, `destination-detail/` |
+| **Italy** | `/italy` (lazy) | `features/italy/`, `italy.routes.ts`, components, data |
+| **Spain** | `/spain` (lazy) | `features/spain/spain.routes.ts`, `spain.component.ts`, home/destinations/experiences/about/plan-your-trip/detail pages |
 
 ### Shared UI Components (outside country folders)
 
@@ -54,7 +55,7 @@ The actual component and routing hierarchy in the repository:
 - `src/app/shared/components/feedback/` — Empty, error, and loading state components
 - `src/app/shared/components/form-field/` — Shared form field wrapper
 - `src/app/shared/components/hero-section/` — Hero image/title/subtitle component
-- `src/app/shared/components/destination-wheel/` — Radial country selector (global, mounted once)
+- `src/app/shared/destination-wheel/` — Radial country selector (global, mounted once)
 - `src/app/shared/services/favorites.service.ts` — Centralized favorites state
 
 ### Shared Services
@@ -83,7 +84,7 @@ The actual component and routing hierarchy in the repository:
 ### Destination & Experience Data
 
 - **Italy data** (`features/italy/data/`): `destination-details.data.ts` (6 destinations with rich detail), `experience-details.data.ts` (4 categories with highlights, wines, where-to-try).
-- **Turkey data** (`features/turkey/data/`): `turkey.data.ts` (3 destinations: Istanbul, Cappadocia, Antalya).
+- **Turkey data** (`features/turkey/data/`): `turkey.data.ts` (destinations including Istanbul, Cappadocia, Antalya, Pamukkale, Ephesus, Göbeklitepe, Nemrut Dağ, Safranbolu, Sümela Monastery, and Ölüdeniz), `turkey-content.data.ts` (destination details, experience guides, UNESCO snapshot, culture notes, and practical facts), and `turkey-fact-sources.data.ts` (source references).
 - Both portals have their own local data; no shared data layer yet.
 - `getAllDestinationIds()` and `getAllExperienceIds()` are exported for SSR prerender param generation.
 

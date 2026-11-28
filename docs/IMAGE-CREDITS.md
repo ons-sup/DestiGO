@@ -1,5 +1,7 @@
 ﻿# Image credits (Wikimedia Commons)
 
+This file documents the Italy portal images. Türkiye image credits live in [`public/images/turkey/ATTRIBUTION.md`](../public/images/turkey/ATTRIBUTION.md), and Spain image credits live in [`IMAGE-CREDITS-spain.md`](./IMAGE-CREDITS-spain.md).
+
 | File | Title | Author | License | Source |
 |---|---|---|---|---|
 | alici-cetara.jpg | File:Spaghetti di Gragnano e colatura di alici.jpg | Elga Cappellari | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Spaghetti_di_Gragnano_e_colatura_di_alici.jpg |

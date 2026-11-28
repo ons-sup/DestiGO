@@ -31,7 +31,7 @@ MANDATORY:
   - Italy portal: Ons Chtioui
   - Spain portal: implemented
 - **Architecture:** feature-based. Each country owns its pages, components, data, models, and scoped styles. Shared UI and infrastructure are separate.
-- **Current state is small and evolving.** Only the root app files, `src/app/features/turkey/`, `src/app/features/spain/`, and documentation artwork under `docs/assets/` exist. `/` currently redirects to `/turkey`. The dashboard, `core/`, `shared/`, `italy/`, `auth/`, `favorites/`, `about/`, and the destination wheel are planned. Always verify the actual state; never assume a planned folder or feature exists.
+- **Current state.** The repository now contains the root app files, the global dashboard (`src/app/features/home/`), shared UI and infrastructure (`src/app/shared/`, `src/app/core/`, `src/app/layout/`), demo authentication (`src/app/features/auth/`), and the Türkiye, Italy, and Spain portals under `src/app/features/`. `/` renders the dark DestiGO landing page with the shared destination wheel; `/turkey`, `/italy`, and `/spain` are independent country portals. Always verify the actual state; never assume a planned folder or feature exists.
 - **Integration branch:** `master` (the current GitHub default; verify with `git symbolic-ref refs/remotes/origin/HEAD`). A rename to `main` has been discussed but is not approved; do not rename or switch branches on your own.
 
 ---

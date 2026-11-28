@@ -1,5 +1,7 @@
 # Missing Images for DestiGo Italy Portal
 
+> **Status note:** This Italy checklist predates the current portal layout. Türkiye and Spain now keep their own attribution files (`public/images/turkey/ATTRIBUTION.md`, `docs/IMAGE-CREDITS-spain.md`); current Italy credits are in [`IMAGE-CREDITS.md`](./IMAGE-CREDITS.md).
+
 This document lists all images referenced in the data files that do not currently exist in `public/assets/images/`. Each entry includes the exact suggested filename and a brief description.
 
 ## Destination Detail Images
