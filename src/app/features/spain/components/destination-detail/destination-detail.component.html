@@ -1,154 +1,137 @@
-@if (notFound()) {
-  <section class="not-found">
-    <div class="not-found-content">
-      <h1>Destination Not Found</h1>
-      <p>Sorry, we couldn't find a destination with that ID.</p>
-      <a routerLink="/spain/destinations" class="back-link">← Back to Destinations</a>
-    </div>
-  </section>
-} @else if (destination(); as dest) {
-  <app-hero-section
-    [isDetailPage]="true"
-    [eyebrow]="dest.tagline"
-    [title]="dest.name"
-    [titleAccent]="' '"
-    [subtitle]="' '"
-    [imageSrc]="dest.heroImage"
-  />
-
-  <main class="detail-main">
-    <div class="detail-header">
-      <div class="header-content">
-        <h2>{{ dest.name }}</h2>
-        <p class="tagline">{{ dest.tagline }}</p>
-      </div>
-      <div class="header-actions">
-        <app-favorite-button
-          [destinationId]="dest.id"
-          [ariaLabel]="'Add ' + dest.name + ' to favorites'"
-          size="large"
+@if (destination(); as dest) {
+  <article class="detail">
+    <header class="detail__header">
+      <div class="detail__media">
+        <app-spain-safe-image
+          class="detail__image"
+          [src]="dest.heroImage"
+          [alt]="dest.name"
+          [title]="dest.name"
+          loading="lazy"
         />
-        <a routerLink="/spain/destinations" class="back-link" aria-label="Back to destinations">← Destinations</a>
+        <span class="detail__badge">{{ dest.name }}</span>
       </div>
-    </div>
-
-    <section class="detail-section about-section" aria-labelledby="about-heading">
-      <div class="section-container">
-        <h2 id="about-heading">About</h2>
-        <div class="about-content">
-          @for (paragraph of dest.about; track $index) {
-            <p>{{ paragraph }}</p>
-          }
+      <div class="detail__meta">
+        <a class="detail__back" routerLink="/spain/destinations">← Back to destinations</a>
+        <h1 class="detail__title">{{ dest.name }}</h1>
+        <p class="detail__tagline">{{ dest.tagline }}</p>
+        <div class="detail__actions">
+          <app-favorite-button
+            [destinationId]="dest.id"
+            [ariaLabel]="'Add ' + dest.name + ' to favorites'"
+            size="large"
+          />
         </div>
+      </div>
+    </header>
+
+    <section class="detail__body" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      @for (paragraph of dest.about; track $index) {
+        <p>{{ paragraph }}</p>
+      }
+    </section>
+
+    <section class="detail__highlights" aria-labelledby="places-heading">
+      <h2 id="places-heading">Famous places to see</h2>
+      <div class="detail__places">
+        @for (place of dest.famousPlaces; track place.name) {
+          <article class="detail__place">
+            <app-spain-safe-image
+              class="detail__place-image"
+              [src]="place.image"
+              [alt]="place.name"
+              [title]="place.name"
+              loading="lazy"
+            />
+            <div class="detail__place-body">
+              <h3>{{ place.name }}</h3>
+              <p>{{ place.description }}</p>
+            </div>
+          </article>
+        }
       </div>
     </section>
 
-    <section class="detail-section famous-places-section" aria-labelledby="famous-heading">
-      <div class="section-container">
-        <h2 id="famous-heading">Famous Places to See</h2>
-        <div class="places-grid">
-          @for (place of dest.famousPlaces; track place.name) {
-            <article class="place-card">
-              <div class="place-image-wrapper">
-                @if (place.image) {
-                  <img [src]="place.image" [alt]="place.name" loading="lazy">
-                } @else {
-                  <div class="image-placeholder" aria-hidden="true">{{ place.name }}</div>
-                }
-              </div>
-              <div class="place-info">
-                <h3>{{ place.name }}</h3>
-                <p>{{ place.description }}</p>
-              </div>
-            </article>
-          }
-        </div>
+    <section class="detail__highlights" aria-labelledby="food-heading">
+      <h2 id="food-heading">What to eat</h2>
+      <div class="detail__places">
+        @for (item of dest.food; track item.name) {
+          <article class="detail__place">
+            <app-spain-safe-image
+              class="detail__place-image"
+              [src]="item.image"
+              [alt]="item.name"
+              [title]="item.name"
+              loading="lazy"
+            />
+            <div class="detail__place-body">
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
+          </article>
+        }
       </div>
     </section>
 
-    <section class="detail-section food-section" aria-labelledby="food-heading">
-      <div class="section-container">
-        <h2 id="food-heading">What to Eat</h2>
-        <div class="food-grid">
-          @for (item of dest.food; track item.name) {
-            <article class="food-card">
-              <div class="food-image-wrapper">
-                @if (item.image) {
-                  <img [src]="item.image" [alt]="item.name" loading="lazy">
-                } @else {
-                  <div class="image-placeholder" aria-hidden="true">{{ item.name }}</div>
-                }
-              </div>
-              <div class="food-info">
-                <h3>{{ item.name }}</h3>
-                <p>{{ item.description }}</p>
-              </div>
-            </article>
-          }
-        </div>
-      </div>
+    <section class="detail__highlights" aria-labelledby="neighborhoods-heading">
+      <h2 id="neighborhoods-heading">Where to eat and stay</h2>
+      <ul>
+        @for (hood of dest.neighborhoods; track hood.name) {
+          <li>
+            <strong>{{ hood.name }}</strong> — {{ hood.description }}
+          </li>
+        }
+      </ul>
     </section>
 
-    <section class="detail-section neighborhoods-section" aria-labelledby="neighborhoods-heading">
-      <div class="section-container">
-        <h2 id="neighborhoods-heading">Where to Eat and Stay</h2>
-        <p class="section-intro">Authentic neighborhoods for dining, aperitivo, and local atmosphere — no restaurant names or ratings, just the areas locals love.</p>
-        <div class="neighborhoods-grid">
-          @for (hood of dest.neighborhoods; track hood.name) {
-            <article class="neighborhood-card">
-              <h3>{{ hood.name }}</h3>
-              <p>{{ hood.description }}</p>
-            </article>
-          }
+    <section class="detail__info" aria-labelledby="tips-heading">
+      <h2 id="tips-heading">Good to know</h2>
+      <div class="detail__tips">
+        <div class="detail__tip">
+          <h3>Best time to visit</h3>
+          <p>{{ dest.goodToKnow.bestTimeToVisit }}</p>
+        </div>
+        <div class="detail__tip">
+          <h3>Recommended stay</h3>
+          <p>{{ dest.goodToKnow.recommendedStay }}</p>
         </div>
       </div>
+      <h3>Tips</h3>
+      <ul>
+        @for (tip of dest.goodToKnow.tips; track $index) {
+          <li>{{ tip }}</li>
+        }
+      </ul>
     </section>
 
-    <section class="detail-section good-to-know-section" aria-labelledby="tips-heading">
-      <div class="section-container">
-        <h2 id="tips-heading">Good to Know</h2>
-        <div class="tips-grid">
-          <div class="tip-card">
-            <h3>Best Time to Visit</h3>
-            <p>{{ dest.goodToKnow.bestTimeToVisit }}</p>
-          </div>
-          <div class="tip-card">
-            <h3>Recommended Stay</h3>
-            <p>{{ dest.goodToKnow.recommendedStay }}</p>
-          </div>
-        </div>
-        <div class="tips-list">
-          <h3>Tips</h3>
-          <ul>
-            @for (tip of dest.goodToKnow.tips; track $index) {
-              <li>{{ tip }}</li>
-            }
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <nav class="detail-nav" aria-label="Previous and next destinations">
+    <nav class="detail__nav" aria-label="Previous and next destinations">
       @if (previousId() || nextId()) {
-        <div class="nav-inner">
+        <div class="detail__nav-inner">
           @if (previousId(); as prevId) {
-            <a [routerLink]="['/spain/destinations', prevId]" class="nav-link prev">
-              <span class="nav-label">Previous</span>
-              <span class="nav-name">{{ getDestinationName(prevId) }}</span>
+            <a [routerLink]="['/spain/destinations', prevId]" class="detail__nav-link">
+              <span class="detail__nav-label">Previous</span>
+              <span>{{ getDestinationName(prevId) }}</span>
             </a>
           } @else {
-            <div class="nav-link prev disabled"></div>
+            <span class="detail__nav-link detail__nav-link--disabled"></span>
           }
           @if (nextId(); as nextId) {
-            <a [routerLink]="['/spain/destinations', nextId]" class="nav-link next">
-              <span class="nav-label">Next</span>
-              <span class="nav-name">{{ getDestinationName(nextId) }}</span>
+            <a [routerLink]="['/spain/destinations', nextId]" class="detail__nav-link">
+              <span class="detail__nav-label">Next</span>
+              <span>{{ getDestinationName(nextId) }}</span>
             </a>
           } @else {
-            <div class="nav-link next disabled"></div>
+            <span class="detail__nav-link detail__nav-link--disabled"></span>
           }
         </div>
       }
     </nav>
-  </main>
+  </article>
+} @else {
+  <section class="detail detail--missing">
+    <a class="detail__back" routerLink="/spain/destinations">← Back to destinations</a>
+    <h1 class="detail__title">Destination not found</h1>
+    <p class="detail__tagline">This Spain destination is not available.</p>
+  </section>
 }

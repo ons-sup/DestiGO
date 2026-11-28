@@ -1,0 +1,113 @@
+@if (notFound()) {
+  <section class="exp-detail exp-detail--missing">
+    <a class="exp-back" routerLink="/spain/experiences">← Back to experiences</a>
+    <h1>Experience not found</h1>
+    <p>This Spain experience is not available.</p>
+  </section>
+} @else {
+  <article class="exp-detail">
+    <a class="exp-back" routerLink="/spain/experiences">← Back to experiences</a>
+
+    @if (experience(); as exp) {
+      <header class="exp-hero">
+        <app-spain-safe-image
+          class="exp-hero__img"
+          [src]="exp.imageUrl"
+          [alt]="exp.title"
+          [title]="exp.title"
+          loading="eager"
+        />
+        <div class="exp-hero__overlay"></div>
+        <div class="exp-hero__content">
+          <p class="exp-eyebrow">{{ labelFor(exp.category) }}</p>
+          <h1>{{ exp.title }}</h1>
+          <p class="exp-lead">{{ exp.description }}</p>
+        </div>
+      </header>
+
+      <section class="exp-section" aria-labelledby="where-heading">
+        <h2 id="where-heading">Where to try</h2>
+        <p class="exp-lead-text">
+          Explore {{ exp.relatedDestination }} in Spain.
+          <a [routerLink]="['/spain/destinations']">Browse destinations →</a>
+        </p>
+      </section>
+
+      <section class="exp-section" aria-labelledby="cat-heading">
+        <h2 id="cat-heading">More in {{ labelFor(exp.category) }}</h2>
+        <a class="exp-cat-link" [routerLink]="['/spain/experiences', exp.category]"
+          >See the full {{ labelFor(exp.category) }} guide →</a
+        >
+      </section>
+    }
+
+    @if (detail(); as det) {
+      <header class="exp-hero">
+        <app-spain-safe-image
+          class="exp-hero__img"
+          [src]="det.heroImage"
+          [alt]="det.title"
+          [title]="det.title"
+          loading="eager"
+        />
+        <div class="exp-hero__overlay"></div>
+        <div class="exp-hero__content">
+          <p class="exp-eyebrow">{{ labelFor(det.category) }}</p>
+          <h1>{{ det.title }}</h1>
+          <p class="exp-lead">{{ det.description }}</p>
+        </div>
+      </header>
+
+      <section class="exp-section" aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading">Highlights</h2>
+        <div class="exp-grid">
+          @for (h of det.highlights; track h.name) {
+            <article class="exp-card">
+              <app-spain-safe-image
+                class="exp-card__img"
+                [src]="h.image"
+                [alt]="h.name"
+                [title]="h.name"
+                loading="lazy"
+              />
+              <div class="exp-card__body">
+                <p class="exp-card__region">{{ h.region }}</p>
+                <h3>{{ h.name }}</h3>
+                <p>{{ h.description }}</p>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+
+      @if (det.wineSection; as wine) {
+        <section class="exp-section" aria-labelledby="wine-heading">
+          <h2 id="wine-heading">{{ wine.title }}</h2>
+          <div class="exp-wine">
+            @for (w of wine.wines; track w.name) {
+              <article class="exp-tip">
+                <h3>{{ w.name }}</h3>
+                <p class="exp-card__region">{{ w.region }}</p>
+                <p>{{ w.description }}</p>
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      <section class="exp-section" aria-labelledby="try-heading">
+        <h2 id="try-heading">Where to try</h2>
+        <ul class="exp-where">
+          @for (t of det.whereToTry; track t.destinationId) {
+            <li>
+              <a [routerLink]="['/spain/destinations', t.destinationId]"
+                ><strong>{{ t.destinationName }}</strong></a
+              >
+              — {{ t.note }}
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </article>
+}

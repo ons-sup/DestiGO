@@ -1,0 +1,163 @@
+.exp-detail {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  color: #1f2937;
+}
+.exp-back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #b45309;
+  text-decoration: none;
+  font-weight: 600;
+}
+.exp-back:hover {
+  text-decoration: underline;
+}
+.exp-back:focus-visible {
+  outline: 2px solid #b45309;
+  outline-offset: 3px;
+}
+
+.exp-hero {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+.exp-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.exp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.72));
+}
+.exp-hero__content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 2rem;
+  max-width: 46rem;
+}
+.exp-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  margin: 0 0 0.5rem;
+}
+.exp-hero__content h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 0.75rem;
+  line-height: 1.1;
+}
+.exp-lead {
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.exp-section {
+  margin-top: 2.5rem;
+}
+.exp-section h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0 0 1rem;
+}
+.exp-lead-text {
+  color: #4b5563;
+  line-height: 1.7;
+}
+.exp-lead-text a,
+.exp-cat-link {
+  color: #b45309;
+  text-decoration: none;
+  font-weight: 600;
+}
+.exp-lead-text a:hover,
+.exp-cat-link:hover {
+  text-decoration: underline;
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.exp-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.exp-card__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+.exp-card__body {
+  padding: 1rem;
+}
+.exp-card__region {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #92400e;
+  margin: 0 0 0.35rem;
+}
+.exp-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+}
+.exp-card p {
+  margin: 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.exp-wine {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.exp-tip {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1rem;
+  background: #fffaf5;
+}
+.exp-tip h3 {
+  margin: 0 0 0.35rem;
+}
+
+.exp-where {
+  margin: 0;
+  padding-left: 1.25rem;
+  line-height: 1.8;
+  color: #374151;
+}
+.exp-where a {
+  color: #b45309;
+  text-decoration: none;
+}
+.exp-where a:hover {
+  text-decoration: underline;
+}
+.exp-detail--missing {
+  padding-top: 3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

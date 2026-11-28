@@ -1,0 +1,45 @@
+<section class="tr-dest">
+  <app-spain-page-hero
+    eyebrow="EXPLORE SPAIN"
+    title="Destinations across "
+    titleAccent="Spain"
+    lead="From ancient cities to sun-drenched coasts and island escapes, explore Spain through places that define its culture, history, and natural beauty."
+    [image]="heroImage"
+  />
+
+  <div class="tr-body" appRevealOnScroll>
+    <div class="tr-filters" role="group" aria-label="Filter destinations by region">
+      <button
+        type="button"
+        class="tr-filter"
+        [class.active]="selectedRegion() === 'all'"
+        (click)="selectRegion('all')"
+      >
+        All
+      </button>
+      @for (region of regions; track region) {
+        <button
+          type="button"
+          class="tr-filter"
+          [class.active]="selectedRegion() === region"
+          (click)="selectRegion(region)"
+        >
+          {{ region }}
+        </button>
+      }
+    </div>
+
+    <div class="tr-grid">
+      @for (
+        destination of filteredDestinations();
+        track destination.id + '-' + animKey();
+        let i = $index
+      ) {
+        <app-spain-destination-card
+          [destination]="destination"
+          [style.--i]="i"
+        ></app-spain-destination-card>
+      }
+    </div>
+  </div>
+</section>
